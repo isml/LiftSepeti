@@ -1,0 +1,28 @@
+﻿@using LiftSepeti.Models.Entity
+@model List<musteriTable> 
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Müşteri Sayfası deneme</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>
+            Müşteri ad
+        </th>
+        <th>
+            Müşteri soyad
+        </th>
+    </tr>
+    <tbody>
+        @foreach(var musteri in Model)
+        {
+        <tr>
+            <td>@musteri.ad</td>
+            <td>@musteri.soyad</td>
+        </tr>
+        }
+    </tbody>
+
+</table>
