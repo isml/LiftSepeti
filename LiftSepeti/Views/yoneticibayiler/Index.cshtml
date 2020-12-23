@@ -1,0 +1,63 @@
+﻿@model IEnumerable<LiftSepeti.Models.Entity.bayiTable>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Bayiler</title>
+    <link href="~/CSS/table.css" rel="stylesheet" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+   
+    <table class="styled-table">
+        <thead>
+            <th>
+                @Html.DisplayNameFor(model => model.ulke)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sehir)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.bayiad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sifre)
+            </th>
+            <th></th>
+        </thead>
+    
+    @foreach (var item in Model) {
+        <tbody>
+            <td>
+                @Html.DisplayFor(modelItem => item.ulke)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sehir)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.bayiad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sifre)
+            </td>
+            <td>
+                <a href="/yoneticibayiler/Edit/@item.id" class="btn btn-warning">Düzenle</a>|
+                <a href="/yoneticibayiler/Details/@item.id" class="btn btn-info">Detay</a>|
+                <a href="/yoneticibayiler/Delete/@item.id" class="btn btn-danger">Sil</a>
+            </td>
+        </tbody>
+    }
+    <a href="/yoneticidepo/Create" class="btn btn-success">Bayi Ekle</a>
+    </table>
+</body>
+</html>

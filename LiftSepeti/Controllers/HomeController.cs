@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using LiftSepeti.Models.Entity;
 namespace LiftSepeti.Controllers
 {
     public class HomeController : Controller
     {
         public ActionResult Index()
         {
-            return View();
+            LiftSepetiEntities1 db = new LiftSepetiEntities1();
+            var degerler = db.liftTable.ToList();       
+            return View(degerler);
+            
         }
 
         public ActionResult About()

@@ -1,0 +1,59 @@
+﻿@model IEnumerable<LiftSepeti.Models.Entity.depoTable>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Depo</title>
+    <link href="~/CSS/table.css" rel="stylesheet" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <table class="styled-table">
+        <thead>
+        <th>
+            @Html.DisplayNameFor(model => model.ad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.stok)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.teminsuresi)
+        </th>
+        <th></th>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tbody>
+            <td>
+                @Html.DisplayFor(modelItem => item.ad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.stok)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.teminsuresi)
+            </td>
+            <td>
+                <a href="/yoneticidepo/Edit/@item.id" class="btn btn-warning">Düzenle</a>|
+                <a href="/yoneticidepo/Details/@item.id" class="btn btn-info">Detay</a>|
+                <a href="/yoneticidepo/Delete/@item.id" class="btn btn-danger">Sil</a>
+            </td>
+            </tbody>
+        }
+
+    </table>
+    <a href="/yoneticidepo/Create" class="btn btn-success">Hammadde Ekle</a>
+</body>
+</html>

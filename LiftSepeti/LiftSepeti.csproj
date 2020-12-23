@@ -46,10 +46,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -128,9 +128,15 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\anasayfaController.cs" />
+    <Compile Include="Controllers\bayianasayfaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\loginController.cs" />
     <Compile Include="Controllers\MusteriController.cs" />
+    <Compile Include="Controllers\yoneticianasayfaController.cs" />
+    <Compile Include="Controllers\yoneticibayilerController.cs" />
+    <Compile Include="Controllers\yoneticidepoController.cs" />
+    <Compile Include="Controllers\yoneticiliftlerController.cs" />
+    <Compile Include="Controllers\yoneticisiparislerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -195,6 +201,52 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="CSS\login\css\main.css" />
+    <Content Include="CSS\login\css\util.css" />
+    <Content Include="CSS\login\fonts\font-awesome-4.7.0\css\font-awesome.css" />
+    <Content Include="CSS\login\fonts\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <Content Include="CSS\login\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="CSS\login\fonts\font-awesome-4.7.0\HELP-US-OUT.txt" />
+    <Content Include="CSS\login\fonts\Linearicons-Free-v1.0.0\icon-font.min.css" />
+    <Content Include="CSS\login\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.svg" />
+    <Content Include="CSS\login\fonts\montserrat\OFL.txt" />
+    <Content Include="CSS\login\fonts\ubuntu\UFL.txt" />
+    <Content Include="CSS\login\images\icons\favicon.ico" />
+    <Content Include="CSS\login\images\icons\icon-google.png" />
+    <Content Include="CSS\login\images\icons\map-marker.png" />
+    <Content Include="CSS\login\images\icons\symbol-01.png" />
+    <Content Include="CSS\login\js\main.js" />
+    <Content Include="CSS\login\vendor\animate\animate.css" />
+    <Content Include="CSS\login\vendor\animsition\css\animsition.css" />
+    <Content Include="CSS\login\vendor\animsition\css\animsition.min.css" />
+    <Content Include="CSS\login\vendor\animsition\js\animsition.js" />
+    <Content Include="CSS\login\vendor\animsition\js\animsition.min.js" />
+    <Content Include="CSS\login\vendor\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="CSS\login\vendor\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="CSS\login\vendor\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="CSS\login\vendor\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="CSS\login\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="CSS\login\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="CSS\login\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="CSS\login\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="CSS\login\vendor\bootstrap\js\popper.js" />
+    <Content Include="CSS\login\vendor\bootstrap\js\popper.min.js" />
+    <Content Include="CSS\login\vendor\bootstrap\js\tooltip.js" />
+    <Content Include="CSS\login\vendor\countdowntime\countdowntime.js" />
+    <Content Include="CSS\login\vendor\css-hamburgers\hamburgers.css" />
+    <Content Include="CSS\login\vendor\css-hamburgers\hamburgers.min.css" />
+    <Content Include="CSS\login\vendor\daterangepicker\daterangepicker.css" />
+    <Content Include="CSS\login\vendor\daterangepicker\daterangepicker.js" />
+    <Content Include="CSS\login\vendor\daterangepicker\moment.js" />
+    <Content Include="CSS\login\vendor\daterangepicker\moment.min.js" />
+    <Content Include="CSS\login\vendor\jquery\jquery-3.2.1.min.js" />
+    <Content Include="CSS\login\vendor\perfect-scrollbar\perfect-scrollbar.css" />
+    <Content Include="CSS\login\vendor\perfect-scrollbar\perfect-scrollbar.min.js" />
+    <Content Include="CSS\login\vendor\select2\select2.css" />
+    <Content Include="CSS\login\vendor\select2\select2.js" />
+    <Content Include="CSS\login\vendor\select2\select2.min.css" />
+    <Content Include="CSS\login\vendor\select2\select2.min.js" />
+    <Content Include="CSS\table.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -218,6 +270,93 @@
     <Content Include="Models\Entity\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="CSS\login\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="CSS\login\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="CSS\login\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="CSS\login\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="CSS\login\fonts\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <Content Include="CSS\login\fonts\font-awesome-4.7.0\less\animated.less" />
+    <Content Include="CSS\login\fonts\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <Content Include="CSS\login\fonts\font-awesome-4.7.0\less\core.less" />
+    <Content Include="CSS\login\fonts\font-awesome-4.7.0\less\fixed-width.less" />
+    <Content Include="CSS\login\fonts\font-awesome-4.7.0\less\font-awesome.less" />
+    <Content Include="CSS\login\fonts\font-awesome-4.7.0\less\icons.less" />
+    <Content Include="CSS\login\fonts\font-awesome-4.7.0\less\larger.less" />
+    <Content Include="CSS\login\fonts\font-awesome-4.7.0\less\list.less" />
+    <Content Include="CSS\login\fonts\font-awesome-4.7.0\less\mixins.less" />
+    <Content Include="CSS\login\fonts\font-awesome-4.7.0\less\path.less" />
+    <Content Include="CSS\login\fonts\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <Content Include="CSS\login\fonts\font-awesome-4.7.0\less\screen-reader.less" />
+    <Content Include="CSS\login\fonts\font-awesome-4.7.0\less\stacked.less" />
+    <Content Include="CSS\login\fonts\font-awesome-4.7.0\less\variables.less" />
+    <Content Include="CSS\login\fonts\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <Content Include="CSS\login\fonts\font-awesome-4.7.0\scss\_animated.scss" />
+    <Content Include="CSS\login\fonts\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <Content Include="CSS\login\fonts\font-awesome-4.7.0\scss\_core.scss" />
+    <Content Include="CSS\login\fonts\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <Content Include="CSS\login\fonts\font-awesome-4.7.0\scss\_icons.scss" />
+    <Content Include="CSS\login\fonts\font-awesome-4.7.0\scss\_larger.scss" />
+    <Content Include="CSS\login\fonts\font-awesome-4.7.0\scss\_list.scss" />
+    <Content Include="CSS\login\fonts\font-awesome-4.7.0\scss\_mixins.scss" />
+    <Content Include="CSS\login\fonts\font-awesome-4.7.0\scss\_path.scss" />
+    <Content Include="CSS\login\fonts\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <Content Include="CSS\login\fonts\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <Content Include="CSS\login\fonts\font-awesome-4.7.0\scss\_stacked.scss" />
+    <Content Include="CSS\login\fonts\font-awesome-4.7.0\scss\_variables.scss" />
+    <Content Include="CSS\login\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.eot" />
+    <Content Include="CSS\login\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.ttf" />
+    <Content Include="CSS\login\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.woff" />
+    <Content Include="CSS\login\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.woff2" />
+    <Content Include="CSS\login\fonts\montserrat\Montserrat-Black.ttf" />
+    <Content Include="CSS\login\fonts\montserrat\Montserrat-BlackItalic.ttf" />
+    <Content Include="CSS\login\fonts\montserrat\Montserrat-Bold.ttf" />
+    <Content Include="CSS\login\fonts\montserrat\Montserrat-BoldItalic.ttf" />
+    <Content Include="CSS\login\fonts\montserrat\Montserrat-ExtraBold.ttf" />
+    <Content Include="CSS\login\fonts\montserrat\Montserrat-ExtraBoldItalic.ttf" />
+    <Content Include="CSS\login\fonts\montserrat\Montserrat-ExtraLight.ttf" />
+    <Content Include="CSS\login\fonts\montserrat\Montserrat-ExtraLightItalic.ttf" />
+    <Content Include="CSS\login\fonts\montserrat\Montserrat-Italic.ttf" />
+    <Content Include="CSS\login\fonts\montserrat\Montserrat-Light.ttf" />
+    <Content Include="CSS\login\fonts\montserrat\Montserrat-LightItalic.ttf" />
+    <Content Include="CSS\login\fonts\montserrat\Montserrat-Medium.ttf" />
+    <Content Include="CSS\login\fonts\montserrat\Montserrat-MediumItalic.ttf" />
+    <Content Include="CSS\login\fonts\montserrat\Montserrat-Regular.ttf" />
+    <Content Include="CSS\login\fonts\montserrat\Montserrat-SemiBold.ttf" />
+    <Content Include="CSS\login\fonts\montserrat\Montserrat-SemiBoldItalic.ttf" />
+    <Content Include="CSS\login\fonts\montserrat\Montserrat-Thin.ttf" />
+    <Content Include="CSS\login\fonts\montserrat\Montserrat-ThinItalic.ttf" />
+    <Content Include="CSS\login\fonts\poppins\Poppins-Black.ttf" />
+    <Content Include="CSS\login\fonts\poppins\Poppins-BlackItalic.ttf" />
+    <Content Include="CSS\login\fonts\poppins\Poppins-Bold.ttf" />
+    <Content Include="CSS\login\fonts\poppins\Poppins-BoldItalic.ttf" />
+    <Content Include="CSS\login\fonts\poppins\Poppins-ExtraBold.ttf" />
+    <Content Include="CSS\login\fonts\poppins\Poppins-ExtraBoldItalic.ttf" />
+    <Content Include="CSS\login\fonts\poppins\Poppins-ExtraLight.ttf" />
+    <Content Include="CSS\login\fonts\poppins\Poppins-ExtraLightItalic.ttf" />
+    <Content Include="CSS\login\fonts\poppins\Poppins-Italic.ttf" />
+    <Content Include="CSS\login\fonts\poppins\Poppins-Light.ttf" />
+    <Content Include="CSS\login\fonts\poppins\Poppins-LightItalic.ttf" />
+    <Content Include="CSS\login\fonts\poppins\Poppins-Medium.ttf" />
+    <Content Include="CSS\login\fonts\poppins\Poppins-MediumItalic.ttf" />
+    <Content Include="CSS\login\fonts\poppins\Poppins-Regular.ttf" />
+    <Content Include="CSS\login\fonts\poppins\Poppins-SemiBold.ttf" />
+    <Content Include="CSS\login\fonts\poppins\Poppins-SemiBoldItalic.ttf" />
+    <Content Include="CSS\login\fonts\poppins\Poppins-Thin.ttf" />
+    <Content Include="CSS\login\fonts\poppins\Poppins-ThinItalic.ttf" />
+    <Content Include="CSS\login\fonts\ubuntu\Ubuntu-Bold.ttf" />
+    <Content Include="CSS\login\fonts\ubuntu\Ubuntu-BoldItalic.ttf" />
+    <Content Include="CSS\login\fonts\ubuntu\Ubuntu-Italic.ttf" />
+    <Content Include="CSS\login\fonts\ubuntu\Ubuntu-Light.ttf" />
+    <Content Include="CSS\login\fonts\ubuntu\Ubuntu-LightItalic.ttf" />
+    <Content Include="CSS\login\fonts\ubuntu\Ubuntu-Medium.ttf" />
+    <Content Include="CSS\login\fonts\ubuntu\Ubuntu-MediumItalic.ttf" />
+    <Content Include="CSS\login\fonts\ubuntu\Ubuntu-Regular.ttf" />
+    <Content Include="CSS\login\vendor\bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="CSS\login\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="CSS\login\vendor\bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="CSS\login\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="CSS\login\vendor\bootstrap\css\bootstrap.css.map" />
+    <Content Include="CSS\login\vendor\bootstrap\css\bootstrap.min.css.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -244,7 +383,29 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Musteri\Index.cshtml" />
-    <Content Include="Views\anasayfa\Index.cshtml" />
+    <Content Include="Views\login\Index.cshtml" />
+    <Content Include="Views\yoneticianasayfa\Index.cshtml" />
+    <Content Include="Views\bayianasayfa\Index.cshtml" />
+    <Content Include="Views\yoneticiliftler\Create.cshtml" />
+    <Content Include="Views\yoneticiliftler\Delete.cshtml" />
+    <Content Include="Views\yoneticiliftler\Details.cshtml" />
+    <Content Include="Views\yoneticiliftler\Edit.cshtml" />
+    <Content Include="Views\yoneticiliftler\Index.cshtml" />
+    <Content Include="Views\yoneticibayiler\Create.cshtml" />
+    <Content Include="Views\yoneticibayiler\Delete.cshtml" />
+    <Content Include="Views\yoneticibayiler\Details.cshtml" />
+    <Content Include="Views\yoneticibayiler\Edit.cshtml" />
+    <Content Include="Views\yoneticibayiler\Index.cshtml" />
+    <Content Include="Views\yoneticisiparisler\Create.cshtml" />
+    <Content Include="Views\yoneticisiparisler\Delete.cshtml" />
+    <Content Include="Views\yoneticisiparisler\Details.cshtml" />
+    <Content Include="Views\yoneticisiparisler\Edit.cshtml" />
+    <Content Include="Views\yoneticisiparisler\Index.cshtml" />
+    <Content Include="Views\yoneticidepo\Create.cshtml" />
+    <Content Include="Views\yoneticidepo\Delete.cshtml" />
+    <Content Include="Views\yoneticidepo\Details.cshtml" />
+    <Content Include="Views\yoneticidepo\Edit.cshtml" />
+    <Content Include="Views\yoneticidepo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

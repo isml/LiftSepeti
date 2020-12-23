@@ -1,0 +1,77 @@
+﻿@model IEnumerable<LiftSepeti.Models.Entity.liftTable>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Liftler</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <link href="~/CSS/table.css" rel="stylesheet" />
+
+
+</head>
+<body>
+
+
+
+    <table class="styled-table">
+        <thead>
+        <th>
+            @Html.DisplayNameFor(model => model.adet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fiyat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bakimperiyot)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.resim)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.modelTable.ad)
+        </th>
+        <th></th>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tbody>
+            <td>
+                @Html.DisplayFor(modelItem => item.adet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fiyat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.bakimperiyot)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.resim)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.modelTable.ad)
+            </td>
+            <td>
+                <a href="/yoneticiliftler/Edit/@item.id" class="btn btn-warning">Düzenle</a>|
+                <a href="/yoneticiliftler/Details/@item.id" class="btn btn-info">Detay</a>|
+                <a href="/yoneticiliftler/Delete/@item.id" class="btn btn-danger">Sil</a>
+
+            </td>
+            </tbody>
+        }
+
+    </table>
+    <a href="/yoneticiliftler/Create" class="btn btn-success">Lift Ekle</a>
+</body>
+</html>

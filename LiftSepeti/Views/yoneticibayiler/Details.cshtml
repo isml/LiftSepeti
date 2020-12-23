@@ -1,0 +1,68 @@
+﻿@model LiftSepeti.Models.Entity.bayiTable
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Bayi Detayı</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        h4 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h4>Bayi Detayı</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ulke)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ulke)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.sehir)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.sehir)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.bayiad)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.bayiad)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.sifre)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.sifre)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        <a href="/yoneticibayiler/Edit/@Model.id" class="btn btn-warning">Düzenle</a>|
+        <a href="/yoneticibayiler/Index" class="btn btn-info">Listeye Geri Dön</a>
+    </p>
+</body>
+</html>
