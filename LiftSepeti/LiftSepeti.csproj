@@ -129,9 +129,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\bayianasayfaController.cs" />
+    <Compile Include="Controllers\bayimagazaController.cs" />
+    <Compile Include="Controllers\bayisepetController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\loginController.cs" />
     <Compile Include="Controllers\MusteriController.cs" />
+    <Compile Include="Controllers\urunreceteController.cs" />
     <Compile Include="Controllers\yoneticianasayfaController.cs" />
     <Compile Include="Controllers\yoneticibayilerController.cs" />
     <Compile Include="Controllers\yoneticidepoController.cs" />
@@ -246,6 +249,7 @@
     <Content Include="CSS\login\vendor\select2\select2.js" />
     <Content Include="CSS\login\vendor\select2\select2.min.css" />
     <Content Include="CSS\login\vendor\select2\select2.min.js" />
+    <Content Include="CSS\recete.css" />
     <Content Include="CSS\table.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -406,6 +410,17 @@
     <Content Include="Views\yoneticidepo\Details.cshtml" />
     <Content Include="Views\yoneticidepo\Edit.cshtml" />
     <Content Include="Views\yoneticidepo\Index.cshtml" />
+    <Content Include="Views\urunrecete\Index.cshtml" />
+    <Content Include="Views\bayimagaza\Create.cshtml" />
+    <Content Include="Views\bayimagaza\Delete.cshtml" />
+    <Content Include="Views\bayimagaza\Details.cshtml" />
+    <Content Include="Views\bayimagaza\Edit.cshtml" />
+    <Content Include="Views\bayimagaza\Index.cshtml" />
+    <Content Include="Views\bayisepet\Create.cshtml" />
+    <Content Include="Views\bayisepet\Delete.cshtml" />
+    <Content Include="Views\bayisepet\Details.cshtml" />
+    <Content Include="Views\bayisepet\Edit.cshtml" />
+    <Content Include="Views\bayisepet\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

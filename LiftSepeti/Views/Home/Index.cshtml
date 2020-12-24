@@ -1,5 +1,5 @@
 ﻿@using LiftSepeti.Models.Entity
-@model List<liftTable>
+@model IEnumerable<LiftSepeti.Models.Entity.liftTable>
 
 @{
     ViewBag.Title = "Index";
@@ -30,6 +30,17 @@
             float: left;
             padding: 0 0 10px 10px;
         }
+
+        .paragraf_d {
+            padding-top: 50px;
+            padding-right: 30px;
+            padding-bottom: 50px;
+            padding-left: 80px;
+        }
+
+
+
+    body { background-image: url('https://cutewallpaper.org/21/truck-wallpaper-hd/Volvo-Truck-Wallpaper-67+-Group-Wallpapers.jpg'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover; }
     </style>
 </head>
 <body>
@@ -59,8 +70,16 @@
 
             <div class="w3-panel w3-card w3-white">
                 <img src="@lft.resim" alt="Card image cap" width="900px" height="350px" class="sola-kaydir">
-                <p>Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle kalmamış, aynı zamanda pek değişmeden elektronik dizgiye de sıçramıştır.</p>
-                <p> 1960'larda Lorem Ipsum pasajları da içeren Letraset yapraklarının yayınlanması i>  <p>Ürünün özellikleri burada yazacak</p>
+                <br />
+                <div class="paragraf_d">
+                    <p>Model Türü : @lft.modelTable.ad</p>
+                    <p>Model Ebatı : @lft.modelTable.ebat</p>
+                    <p>Stok Adedi : @lft.adet</p>
+                    <p>Lift Fiyatı : @lft.fiyat</p>
+                    <p>Bakım Periyodu : @lft.bakimperiyot ay </p>
+                </div>
+
+
             </div>
         </div>
     }

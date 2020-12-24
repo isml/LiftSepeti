@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using LiftSepeti.Models.Entity;
@@ -11,8 +14,10 @@ namespace LiftSepeti.Controllers
         public ActionResult Index()
         {
             LiftSepetiEntities1 db = new LiftSepetiEntities1();
-            var degerler = db.liftTable.ToList();       
-            return View(degerler);
+          
+
+            var liftTable = db.liftTable.Include(l =>l.modelTable);
+            return View(liftTable.ToList());
             
         }
 

@@ -28,7 +28,7 @@ namespace LiftSepeti.Controllers
             if(bayi != null)
             {
                 ViewData["bayi id"] = bayi.id;
-                return RedirectToAction("Index", "bayianasayfa");
+                return RedirectToAction("Index", "bayianasayfa", new { bayiid = bayi.id});
             }
             else
             {

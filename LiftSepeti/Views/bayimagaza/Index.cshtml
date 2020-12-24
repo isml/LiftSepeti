@@ -1,0 +1,61 @@
+﻿@model IEnumerable<LiftSepeti.Models.Entity.bayiurunlerTable>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+   
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.stok)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fiyat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.bayiTable.ulke)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.modelTable.ad)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.stok)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fiyat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.bayiTable.ulke)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.modelTable.ad)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>

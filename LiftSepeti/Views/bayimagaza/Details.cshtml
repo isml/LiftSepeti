@@ -1,0 +1,58 @@
+﻿@model LiftSepeti.Models.Entity.bayiurunlerTable
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>bayiurunlerTable</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.stok)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.stok)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.fiyat)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.fiyat)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.bayiTable.ulke)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.bayiTable.ulke)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.modelTable.ad)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.modelTable.ad)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>
