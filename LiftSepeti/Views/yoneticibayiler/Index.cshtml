@@ -13,31 +13,51 @@
     <link href="~/CSS/table.css" rel="stylesheet" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
+
+<nav class="navbar navbar-expand-sm  justify-content-center">
+  
+</nav>
+
 <body>
-   
-    <table class="styled-table">
+
+    <table class="styled-table" border align="center" width="100%">
         <thead>
-            <th>
-                @Html.DisplayNameFor(model => model.ulke)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.sehir)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.bayiad)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.sifre)
-            </th>
-            <th></th>
+
+        <th>
+            Id
+        </th>
+        <th>
+            <!-- @Html.DisplayNameFor(model => model.ulke)-->
+            Ülke
+        </th>
+        <th>
+            Şehir
+            <!--  @Html.DisplayNameFor(model => model.sehir)-->
+        </th>
+        <th>
+            Bayi Adı
+            <!-- @Html.DisplayNameFor(model => model.bayiad)-->
+        </th>
+        <th>
+            Bayi Şifre
+            <!--  @Html.DisplayNameFor(model => model.sifre)-->
+        </th>
+        <th></th>
+        <th></th>
+        <th></th>
         </thead>
-    
-    @foreach (var item in Model) {
-        <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tbody>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ulke)
             </td>
@@ -51,13 +71,19 @@
                 @Html.DisplayFor(modelItem => item.sifre)
             </td>
             <td>
-                <a href="/yoneticibayiler/Edit/@item.id" class="btn btn-warning">Düzenle</a>|
-                <a href="/yoneticibayiler/Details/@item.id" class="btn btn-info">Detay</a>|
-                <a href="/yoneticibayiler/Delete/@item.id" class="btn btn-danger">Sil</a>
+                <a href="/yoneticibayiler/Edit/@item.id" class="btn btn-warning btn-block btn-toolbar ">Düzenle</a>|
             </td>
-        </tbody>
-    }
-    <a href="/yoneticidepo/Create" class="btn btn-success">Bayi Ekle</a>
+            <td>
+                <a href="/yoneticibayiler/Details/@item.id" class="btn btn-info btn-block btn-toolbar">Detay</a>|
+            </td>
+            <td>
+                <a href="/yoneticibayiler/Delete/@item.id" class="btn btn-danger btn-block btn-toolbar">Sil</a>
+            </td>
+            </tbody>
+        }
+
     </table>
+
+    <a href="/yoneticibayiler/Create" class="btn btn-success btn-block btn-toolbar btn-lg"> <div style="margin-left:650px"><i>BAYİ EKLE</i></div> </a>
 </body>
-</html>
+    </html>
