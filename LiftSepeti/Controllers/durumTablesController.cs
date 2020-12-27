@@ -10,117 +10,107 @@ using LiftSepeti.Models.Entity;
 
 namespace LiftSepeti.Controllers
 {
-    public class bayimagazaController : Controller
+    public class durumTablesController : Controller
     {
         private LiftSepetiEntities1 db = new LiftSepetiEntities1();
-         
 
-        // GET: bayimagaza
-        public ActionResult Index(int bayiid)
+        // GET: durumTables
+        public ActionResult Index()
         {
-            var bayiurunlerTable = db.bayiurunlerTable.Include(b => b.bayiTable).Include(b => b.modelTable);
-            return View(bayiurunlerTable.ToList());
+            return View(db.durumTable.ToList());
         }
 
-        // GET: bayimagaza/Details/5
+        // GET: durumTables/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            bayiurunlerTable bayiurunlerTable = db.bayiurunlerTable.Find(id);
-            if (bayiurunlerTable == null)
+            durumTable durumTable = db.durumTable.Find(id);
+            if (durumTable == null)
             {
                 return HttpNotFound();
             }
-            return View(bayiurunlerTable);
+            return View(durumTable);
         }
 
-        // GET: bayimagaza/Create
+        // GET: durumTables/Create
         public ActionResult Create()
         {
-            ViewBag.bayiid = new SelectList(db.bayiTable, "id", "ulke");
-            ViewBag.modelid = new SelectList(db.modelTable, "id", "ad");
             return View();
         }
 
-        // POST: bayimagaza/Create
+        // POST: durumTables/Create
         // Aşırı gönderim saldırılarından korunmak için bağlamak istediğiniz belirli özellikleri etkinleştirin. 
         // Daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,bayiid,modelid,stok,fiyat")] bayiurunlerTable bayiurunlerTable)
+        public ActionResult Create([Bind(Include = "id,durum")] durumTable durumTable)
         {
             if (ModelState.IsValid)
             {
-                db.bayiurunlerTable.Add(bayiurunlerTable);
+                db.durumTable.Add(durumTable);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.bayiid = new SelectList(db.bayiTable, "id", "ulke", bayiurunlerTable.bayiid);
-            ViewBag.modelid = new SelectList(db.modelTable, "id", "ad", bayiurunlerTable.modelid);
-            return View(bayiurunlerTable);
+            return View(durumTable);
         }
 
-        // GET: bayimagaza/Edit/5
+        // GET: durumTables/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            bayiurunlerTable bayiurunlerTable = db.bayiurunlerTable.Find(id);
-            if (bayiurunlerTable == null)
+            durumTable durumTable = db.durumTable.Find(id);
+            if (durumTable == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.bayiid = new SelectList(db.bayiTable, "id", "ulke", bayiurunlerTable.bayiid);
-            ViewBag.modelid = new SelectList(db.modelTable, "id", "ad", bayiurunlerTable.modelid);
-            return View(bayiurunlerTable);
+            return View(durumTable);
         }
 
-        // POST: bayimagaza/Edit/5
+        // POST: durumTables/Edit/5
         // Aşırı gönderim saldırılarından korunmak için bağlamak istediğiniz belirli özellikleri etkinleştirin. 
         // Daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,bayiid,modelid,stok,fiyat")] bayiurunlerTable bayiurunlerTable)
+        public ActionResult Edit([Bind(Include = "id,durum")] durumTable durumTable)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(bayiurunlerTable).State = EntityState.Modified;
+                db.Entry(durumTable).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.bayiid = new SelectList(db.bayiTable, "id", "ulke", bayiurunlerTable.bayiid);
-            ViewBag.modelid = new SelectList(db.modelTable, "id", "ad", bayiurunlerTable.modelid);
-            return View(bayiurunlerTable);
+            return View(durumTable);
         }
 
-        // GET: bayimagaza/Delete/5
+        // GET: durumTables/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            bayiurunlerTable bayiurunlerTable = db.bayiurunlerTable.Find(id);
-            if (bayiurunlerTable == null)
+            durumTable durumTable = db.durumTable.Find(id);
+            if (durumTable == null)
             {
                 return HttpNotFound();
             }
-            return View(bayiurunlerTable);
+            return View(durumTable);
         }
 
-        // POST: bayimagaza/Delete/5
+        // POST: durumTables/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            bayiurunlerTable bayiurunlerTable = db.bayiurunlerTable.Find(id);
-            db.bayiurunlerTable.Remove(bayiurunlerTable);
+            durumTable durumTable = db.durumTable.Find(id);
+            db.durumTable.Remove(durumTable);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

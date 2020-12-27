@@ -131,6 +131,8 @@
     <Compile Include="Controllers\bayianasayfaController.cs" />
     <Compile Include="Controllers\bayimagazaController.cs" />
     <Compile Include="Controllers\bayisepetController.cs" />
+    <Compile Include="Controllers\catoController.cs" />
+    <Compile Include="Controllers\durumTablesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\loginController.cs" />
     <Compile Include="Controllers\MusteriController.cs" />
@@ -421,9 +423,12 @@
     <Content Include="Views\bayisepet\Details.cshtml" />
     <Content Include="Views\bayisepet\Edit.cshtml" />
     <Content Include="Views\bayisepet\Index.cshtml" />
+    <Content Include="Views\bayisepet\getIndex.cshtml" />
+    <Content Include="Views\cato\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\durumTables\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

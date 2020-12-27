@@ -58,7 +58,7 @@
             </div>
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/bayianasayfa/Index?bayiid=@ViewBag.bayibilgiler.id">Ana Sayfa</a></li>
-                <li><a href="/bayisepet/Index?bayiid=@ViewBag.bayibilgiler.id">Sepet</a></li>
+                <li><a href="/bayisepet/getIndex?bayiid=@ViewBag.bayibilgiler.id">Sepet</a></li>
                 <li><a href="/bayimagaza/Index?bayiid=@ViewBag.bayibilgiler.id">Mağazam</a></li>
 
             </ul>
@@ -85,7 +85,7 @@
                     <p>Lift Fiyatı : @lft.fiyat TL</p>
                     <p>Bakım Periyodu : @lft.bakimperiyot ay </p>
                     <a href="/urunrecete/Index/@lft.modelid" class="btn btn-info">Ürün Detay</a>
-                    <a href="/bayimagaza/Index?bayiid=@ViewBag.bayibilgiler.id@lft.id" class="btn btn-success">Sepete Ekle</a>
+                    <a href="/bayisepet/Index?bayiid=@ViewBag.bayibilgiler.id&liftid=@lft.id" class="btn btn-success">Sepete Ekle</a>
                 </div>
 
 

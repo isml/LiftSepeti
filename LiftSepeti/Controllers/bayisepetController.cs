@@ -17,6 +17,22 @@ namespace LiftSepeti.Controllers
         // GET: bayisepet
         public ActionResult Index(int bayiid,int liftid)
         {
+            ViewBag.bayiid = bayiid;
+            ViewBag.liftid = liftid;
+            siparisTable siparis = new siparisTable();
+            siparis.bayiid = bayiid;
+            siparis.liftid = liftid;
+            siparis.durumid = 1;
+            siparis.tarih = DateTime.Now;
+            siparis.adet = 1.0;
+            siparis.odemeyontemiid = 1;
+            db.siparisTable.Add(siparis);
+            db.SaveChanges();
+            var siparisTable = db.siparisTable.Include(s => s.bayiTable).Include(s => s.durumTable).Include(s => s.liftTable).Include(s => s.odemeyontemiTable);
+            return View(siparisTable.ToList());
+        }
+        public ActionResult getIndex(int bayiid)
+        {
            
             var siparisTable = db.siparisTable.Include(s => s.bayiTable).Include(s => s.durumTable).Include(s => s.liftTable).Include(s => s.odemeyontemiTable);
             return View(siparisTable.ToList());
