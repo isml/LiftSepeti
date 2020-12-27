@@ -15,7 +15,7 @@ namespace LiftSepeti.Controllers
         // GET: bayianasayfa
         public ActionResult Index(int bayiid)
         {
-            LiftSepetiEntities1 db = new LiftSepetiEntities1();
+            LiftSepetiEntities2 db = new LiftSepetiEntities2();
 
             ViewBag.bayiid = bayiid;
             bayiTable bayi = db.bayiTable.Where(x => x.id == bayiid).SingleOrDefault();

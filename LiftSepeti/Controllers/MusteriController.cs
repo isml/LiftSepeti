@@ -11,7 +11,7 @@ namespace LiftSepeti.Controllers
     public class MusteriController : Controller
     {
         // GET: Musteri
-        LiftSepetiEntities1 db = new LiftSepetiEntities1();
+        LiftSepetiEntities2 db = new LiftSepetiEntities2();
         public ActionResult Index()
         {
             var degerler = db.musteriTable.ToList();

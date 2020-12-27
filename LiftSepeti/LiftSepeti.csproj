@@ -131,7 +131,6 @@
     <Compile Include="Controllers\bayianasayfaController.cs" />
     <Compile Include="Controllers\bayimagazaController.cs" />
     <Compile Include="Controllers\bayisepetController.cs" />
-    <Compile Include="Controllers\catoController.cs" />
     <Compile Include="Controllers\durumTablesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\loginController.cs" />
@@ -269,13 +268,6 @@
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\Entity\Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Entity\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
     <Content Include="CSS\login\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
     <Content Include="CSS\login\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
     <Content Include="CSS\login\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
@@ -363,6 +355,13 @@
     <Content Include="CSS\login\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
     <Content Include="CSS\login\vendor\bootstrap\css\bootstrap.css.map" />
     <Content Include="CSS\login\vendor\bootstrap\css\bootstrap.min.css.map" />
+    <EntityDeploy Include="Models\Entity\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Entity\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -424,7 +423,6 @@
     <Content Include="Views\bayisepet\Edit.cshtml" />
     <Content Include="Views\bayisepet\Index.cshtml" />
     <Content Include="Views\bayisepet\getIndex.cshtml" />
-    <Content Include="Views\cato\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

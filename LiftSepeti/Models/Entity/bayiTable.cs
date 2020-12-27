@@ -27,6 +27,7 @@ namespace LiftSepeti.Models.Entity
         public string sehir { get; set; }
         public string bayiad { get; set; }
         public string sifre { get; set; }
+        public string adres { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<bayisatisTable> bayisatisTable { get; set; }

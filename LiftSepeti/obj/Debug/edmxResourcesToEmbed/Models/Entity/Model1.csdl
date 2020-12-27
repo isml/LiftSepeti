@@ -24,6 +24,7 @@
     <Property Name="sehir" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="bayiad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="adres" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="bayisatisTable" Relationship="Self.FK_bayisatisTable_bayiTable" FromRole="bayiTable" ToRole="bayisatisTable" />
     <NavigationProperty Name="bayiurunlerTable" Relationship="Self.FK_bayiurunlerTable_bayiTable" FromRole="bayiTable" ToRole="bayiurunlerTable" />
     <NavigationProperty Name="siparisTable" Relationship="Self.FK_siparisTable_bayiTable" FromRole="bayiTable" ToRole="siparisTable" />
@@ -293,7 +294,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="LiftSepetiEntities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="LiftSepetiEntities2" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="bayisatisTable" EntityType="Self.bayisatisTable" />
     <EntitySet Name="bayiTable" EntityType="Self.bayiTable" />
     <EntitySet Name="bayiurunlerTable" EntityType="Self.bayiurunlerTable" />

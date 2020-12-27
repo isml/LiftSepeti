@@ -15,7 +15,7 @@ namespace LiftSepeti.Controllers
         private LiftSepetiEntities1 db = new LiftSepetiEntities1();
 
         // GET: bayisepet
-        public ActionResult Index(int bayiid,int liftid)
+        public ActionResult Index(int bayiid, int liftid)
         {
             ViewBag.bayiid = bayiid;
             ViewBag.liftid = liftid;
@@ -33,7 +33,14 @@ namespace LiftSepeti.Controllers
         }
         public ActionResult getIndex(int bayiid)
         {
-           
+            ViewBag.bayiid = bayiid;
+
+            var siparisTable = db.siparisTable.Include(s => s.bayiTable).Include(s => s.durumTable).Include(s => s.liftTable).Include(s => s.odemeyontemiTable);
+            return View(siparisTable.ToList());
+        }
+        public ActionResult ode(int bayiid, string odemeyontemi)
+        {
+
             var siparisTable = db.siparisTable.Include(s => s.bayiTable).Include(s => s.durumTable).Include(s => s.liftTable).Include(s => s.odemeyontemiTable);
             return View(siparisTable.ToList());
         }

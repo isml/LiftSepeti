@@ -21,6 +21,7 @@
     <Property Name="sehir" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="bayiad" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="sifre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="adres" Type="varchar" MaxLength="250" Nullable="false" />
   </EntityType>
   <EntityType Name="bayiurunlerTable">
     <Key>

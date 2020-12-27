@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="LiftSepetiModelStoreContainer" CdmEntityContainer="LiftSepetiEntities1">
+  <EntityContainerMapping StorageEntityContainer="LiftSepetiModelStoreContainer" CdmEntityContainer="LiftSepetiEntities2">
     <EntitySetMapping Name="bayisatisTable">
       <EntityTypeMapping TypeName="LiftSepetiModel.bayisatisTable">
         <MappingFragment StoreEntitySet="bayisatisTable">
@@ -22,6 +22,7 @@
           <ScalarProperty Name="sehir" ColumnName="sehir" />
           <ScalarProperty Name="bayiad" ColumnName="bayiad" />
           <ScalarProperty Name="sifre" ColumnName="sifre" />
+          <ScalarProperty Name="adres" ColumnName="adres" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
