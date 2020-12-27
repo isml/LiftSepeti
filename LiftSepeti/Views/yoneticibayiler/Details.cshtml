@@ -12,16 +12,53 @@
     <title>Bayi Detayı</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <style>
         h4 {
             text-align: center;
         }
     </style>
 </head>
+<nav class="navbar navbar-expand-sm  justify-content-center">
+
+</nav>
 <body>
+    
+    <div class="container">
+        <h2 style="margin-left:400px">DETAYLI BAYİ BİLGİSİ</h2>
+        <br />
+        <br />
+        
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th>Ülke </th>
+                    <th>Şehir</th>
+                    <th>Bayi adı</th>
+                    <th>Bayi şifre</th>
+                    <th>Bayi Adresi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td> @Html.DisplayFor(model => model.ulke)</td>
+                    <td>@Html.DisplayFor(model => model.sehir)</td>
+                    <td>@Html.DisplayFor(model => model.bayiad)</td>
+                    <td>@Html.DisplayFor(model => model.sifre)</td>
+                    <td>@Html.DisplayFor(model=>model.adres)</td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+
+<!-- <body>
     <div>
         <h4>Bayi Detayı</h4>
         <hr />
@@ -29,35 +66,35 @@
             <dt>
                 @Html.DisplayNameFor(model => model.ulke)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.ulke)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.sehir)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.sehir)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.bayiad)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.bayiad)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.sifre)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.sifre)
             </dd>
-    
+
         </dl>
     </div>
     <p>
@@ -65,4 +102,5 @@
         <a href="/yoneticibayiler/Index" class="btn btn-info">Listeye Geri Dön</a>
     </p>
 </body>
+    -->
 </html>

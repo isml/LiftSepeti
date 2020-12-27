@@ -123,5 +123,13 @@ namespace LiftSepeti.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult Anasayfa()
+        {
+            ViewData["icerik"] = "İçerik değerimizi ViewData ile string olarak taşıyoruz.";
+            return View();
+        }
+
+
     }
 }

@@ -77,7 +77,35 @@
                 <a href="/yoneticibayiler/Details/@item.id" class="btn btn-info btn-block btn-toolbar">Detay</a>|
             </td>
             <td>
-                <a href="/yoneticibayiler/Delete/@item.id" class="btn btn-danger btn-block btn-toolbar">Sil</a>
+                <!--<a href="/yoneticibayiler/Delete/@item.id" class="btn btn-danger btn-block btn-toolbar">Sil</a>-->
+                <button type="button" class="btn btn-danger btn-block btn-toolbar" data-toggle="modal" data-target="#myModal">Sil</button>
+                <!-- The Modal -->
+                <div class="modal fade" id="myModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">BAYİYİ SİLMEK İSTEDİĞİNE EMİN MİSİN</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                           
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">İPTAL</button>
+                                <button type="submit" class="btn btn-danger" data-dismiss="modal">Silme denemeleri</button>
+                                <input type="submit" onclick="" value="Silİnput" class="btn btn-danger" /> |
+                                <a href="" class="btn btn-danger  btn-toolbar">SİL</a>
+                                <!--<a href="/yoneticibayiler/Delete/@item.id" class="btn btn-danger  btn-toolbar">SİL</a>-->
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
             </td>
             </tbody>
         }
@@ -87,3 +115,4 @@
     <a href="/yoneticibayiler/Create" class="btn btn-success btn-block btn-toolbar btn-lg"> <div style="margin-left:650px"><i>BAYİ EKLE</i></div> </a>
 </body>
     </html>
+
