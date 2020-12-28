@@ -18,7 +18,8 @@ namespace LiftSepeti.Controllers
         public ActionResult Index()
         {
             var siparisTable = db.siparisTable.Include(s => s.bayiTable).Include(s => s.durumTable).Include(s => s.liftTable).Include(s => s.odemeyontemiTable);
-            return View(siparisTable.ToList());
+
+            return View(siparisTable.Where(x => x.durumid == 2).ToList());
         }
 
         // GET: yoneticisiparisler/Details/5

@@ -48,6 +48,14 @@
             background-size: cover;
         }
     </style>
+    <script type="text/javascript">
+        function MyFunction() {
+            alert('Message');
+            return;
+        }
+
+
+    </script>
 
 </head>
 <div>
@@ -59,13 +67,13 @@
                     <a class="navbar-brand" href="#">Lift Sepeti</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Ana Sayfa</a></li>
-                    <li><a href="#">Sepet</a></li>
-                    <li><a href="#">Mağazam</a></li>
+                    <li class="active"><a href="/bayianasayfa/Index?bayiid=@ViewBag.bayiid">Ana Sayfa</a></li>
+                    <li><a href="/bayisepet/getIndex?bayiid=@ViewBag.bayiid">Sepet</a></li>
+                    <li><a href="/bayimagaza/Index?bayiid=@ViewBag.bayiid">Mağazam</a></li>
 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="	glyphicon glyphicon-user"></span> SEPET</a></li>
+                    <li><a href="#"><span class="	glyphicon glyphicon-user"></span> @ViewBag.bayiid</a></li>
                 </ul>
             </div>
         </nav>
@@ -88,7 +96,7 @@
                             <p>Model Ebatı : @lft.liftTable.modelTable.ebat</p>
                             <p>Lift Fiyatı : @lft.liftTable.fiyat TL</p>
                             <p>Bakım Periyodu : @lft.liftTable.bakimperiyot ay </p>
-                            <a href="/bayisepet/delete/@lft.id" class="btn btn-info">Sepetten Çıkar</a>
+                            <a href="/bayisepet/sil?bayiid=@lft.bayiTable.id&liftid=@lft.id" class="btn btn-info">Sepetten Çıkar</a>
 
                         </div>
 
@@ -123,24 +131,29 @@
                         *
                         @{
                             string odemeyontemi = "";
+
                         }
                         <p class="card-text">Toplam  ===========>@toplamtutar TL </p>
 
-                        <form action="/bayisepet/ode">
 
+                        <form method="post" action="@Url.Action("ode", "bayisepet", new {bayiid = @ViewBag.bayiid})">
 
+                            <label for="odeme">Ödeme yöntemi</label><br>
+                            <select class="form-control" id="odemeyontemi" name="odemeyontemi">
 
-                            <label for="odemeyontemi">Ödeme Yöntemi Seçiniz:</label>
-                            <select id="odemeyontemi" name="odemeyontemi">
-
-                                <option value="KrediKartı">Kredi Kartı</option>
-                                <option value="Nakit">Nakit</option>
-                                <option value="Çek">Çek</option>
+                                <option value=1>Nakit</option>
+                                <option value=2>Kredi Kartı</option>
+                                <option value=3>Çek</option>
                             </select>
-                            <input type="submit" value="Ödeme Yap">
+                            <br />
+                            <br />
+
+                            <input class="btn-success" type="submit" value="Ödeme Yap">
+                            <br />
+                            <br />
+
                         </form>
 
-                        <div style="padding-left:60%"><a href="/bayisepet/ode?bayiid=@ViewBag.bayiid&odemeyontemi=@odemeyontemi" class="btn btn-success">Ödeme Yap</a></div>
                     </div>
                 </div>
             </div>

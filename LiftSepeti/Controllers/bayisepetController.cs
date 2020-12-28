@@ -12,11 +12,12 @@ namespace LiftSepeti.Controllers
 {
     public class bayisepetController : Controller
     {
-        private LiftSepetiEntities1 db = new LiftSepetiEntities1();
-
+        private LiftSepetiEntities2 db = new LiftSepetiEntities2();
+        int genelbayiid;
         // GET: bayisepet
         public ActionResult Index(int bayiid, int liftid)
         {
+
             ViewBag.bayiid = bayiid;
             ViewBag.liftid = liftid;
             siparisTable siparis = new siparisTable();
@@ -29,20 +30,42 @@ namespace LiftSepeti.Controllers
             db.siparisTable.Add(siparis);
             db.SaveChanges();
             var siparisTable = db.siparisTable.Include(s => s.bayiTable).Include(s => s.durumTable).Include(s => s.liftTable).Include(s => s.odemeyontemiTable);
-            return View(siparisTable.ToList());
+            return RedirectToAction("getIndex", "bayisepet", new { bayiid = bayiid });
         }
         public ActionResult getIndex(int bayiid)
         {
+
             ViewBag.bayiid = bayiid;
 
             var siparisTable = db.siparisTable.Include(s => s.bayiTable).Include(s => s.durumTable).Include(s => s.liftTable).Include(s => s.odemeyontemiTable);
-            return View(siparisTable.ToList());
+
+            return View(siparisTable.Where(x => x.bayiid == bayiid && x.durumid == 1).ToList());
         }
-        public ActionResult ode(int bayiid, string odemeyontemi)
+        public ActionResult ode(int bayiid, int odemeyontemi)
         {
+            ViewBag.bayiid = bayiid;
+            ViewBag.odemeyontemi = odemeyontemi;
+
+            var bayisipariler = db.siparisTable.Where(x => x.bayiid == bayiid);
+            bayisipariler.ToList();
+            foreach (var x in bayisipariler.ToList())
+            {
+                x.durumid = 2;
+                x.odemeyontemiid = odemeyontemi;
+                db.SaveChanges();
+            }
 
             var siparisTable = db.siparisTable.Include(s => s.bayiTable).Include(s => s.durumTable).Include(s => s.liftTable).Include(s => s.odemeyontemiTable);
-            return View(siparisTable.ToList());
+
+
+            return RedirectToAction("Index", "bayianasayfa", new { bayiid = bayiid });
+        }
+        public ActionResult sil(int bayiid, int liftid)
+        {
+            siparisTable siparisTable = db.siparisTable.Find(liftid);
+            db.siparisTable.Remove(siparisTable);
+            db.SaveChanges();
+            return RedirectToAction("getIndex", "bayisepet", new { bayiid = bayiid });
         }
 
         // GET: bayisepet/Details/5
