@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using LiftSepeti.Models.Entity;
+using System.Net.Mail;
+using System.Net;
 
 namespace LiftSepeti.Controllers
 {
@@ -34,16 +36,37 @@ namespace LiftSepeti.Controllers
         }
         public ActionResult getIndex(int bayiid)
         {
+            var bayiad = db.bayiTable.Find(bayiid).bayiad;
+            var sepeturunler = db.siparisTable.Where(x => x.bayiid == bayiid).Where(z => z.durumid == 1);
 
+            if (sepeturunler.ToList().Count != 0)
+            {
+                ViewBag.bayiid = bayiid;
+                ViewBag.bayiad = bayiad;
+                var siparisTable = db.siparisTable.Include(s => s.bayiTable).Include(s => s.durumTable).Include(s => s.liftTable).Include(s => s.odemeyontemiTable);
+
+                return View(siparisTable.Where(x => x.bayiid == bayiid && x.durumid == 1).ToList());
+            }
+            else
+            {
+                ViewBag.bayiid = bayiid;
+                ViewBag.bayiad = bayiad;
+                return RedirectToAction("sepetbos", "bayisepet", new { bayiid = bayiid });
+            }
+
+        }
+        public ActionResult sepetbos(int bayiid)
+        {
+            var bayiad = db.bayiTable.Find(bayiid).bayiad;
             ViewBag.bayiid = bayiid;
-
-            var siparisTable = db.siparisTable.Include(s => s.bayiTable).Include(s => s.durumTable).Include(s => s.liftTable).Include(s => s.odemeyontemiTable);
-
-            return View(siparisTable.Where(x => x.bayiid == bayiid && x.durumid == 1).ToList());
+            ViewBag.bayiad = bayiad;
+            return View();
         }
         public ActionResult ode(int bayiid, int odemeyontemi)
         {
+            var bayiad = db.bayiTable.Find(bayiid).bayiad;
             ViewBag.bayiid = bayiid;
+            ViewBag.bayiad = bayiad;
             ViewBag.odemeyontemi = odemeyontemi;
 
             var bayisipariler = db.siparisTable.Where(x => x.bayiid == bayiid);
@@ -52,6 +75,39 @@ namespace LiftSepeti.Controllers
             {
                 x.durumid = 2;
                 x.odemeyontemiid = odemeyontemi;
+
+                int modelid = x.liftTable.modelid;
+                var recetemodellist = db.receteTable.Where(a => a.modelid == modelid);
+                foreach (var i in recetemodellist)
+                {
+                    db.depoTable.Find(i.depoid).stok -= i.kullanimmiktari;
+
+                    if (db.depoTable.Find(i.depoid).stok < 20)
+                    {
+                        //email notification
+                        MailMessage mail = new MailMessage(); //yeni bir mail nesnesi Oluşturuldu.
+                        mail.IsBodyHtml = true; //mail içeriğinde html etiketleri kullanılsın mı?
+                        mail.To.Add("liftsepeti@gmail.com"); //Kime mail gönderilecek.
+
+                        //mail kimden geliyor, hangi ifade görünsün?
+                        mail.From = new MailAddress("liftsepeti@gmail.com", "Stok Bildirimi", System.Text.Encoding.UTF8);
+                        mail.Subject = "Stok Eşik Değerine Ulaştı " + "Stok Eşik Değeri";//mailin konusu
+
+                        //mailin içeriği.. Bu alan isteğe göre genişletilip daraltılabilir.
+                        mail.Body = "E-Posta:" + "liftsepeti@gmail.com" + "Konu:" + "Stok uyarısı" + "Içerik:" + "Hammadde Eşik Değerinin Altına Düştü";
+                        mail.IsBodyHtml = true;
+                        SmtpClient smp = new SmtpClient();
+
+                        //mailin gönderileceği adres ve şifresi
+                        smp.Credentials = new NetworkCredential("liftsepeti@gmail.com", "LiftSepeti.");
+                        smp.Port = 587;
+                        smp.Host = "smtp.gmail.com";//gmail üzerinden gönderiliyor.
+                        smp.EnableSsl = true;
+                        smp.Send(mail);//mail isimli mail gönderiliyor.
+
+                    }
+                }
+
                 db.SaveChanges();
             }
 

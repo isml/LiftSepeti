@@ -423,6 +423,7 @@
     <Content Include="Views\bayisepet\Edit.cshtml" />
     <Content Include="Views\bayisepet\Index.cshtml" />
     <Content Include="Views\bayisepet\getIndex.cshtml" />
+    <Content Include="Views\bayisepet\sepetbos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
