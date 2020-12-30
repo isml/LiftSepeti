@@ -95,6 +95,7 @@ namespace LiftSepeti.Controllers
         }
 
         // GET: yoneticiliftler/Delete/5
+
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -107,6 +108,13 @@ namespace LiftSepeti.Controllers
                 return HttpNotFound();
             }
             return View(liftTable);
+        }
+        public ActionResult Sil(int? id)
+        {
+            liftTable liftTable = db.liftTable.Find(id);
+            db.liftTable.Remove(liftTable);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         // POST: yoneticiliftler/Delete/5

@@ -27,7 +27,7 @@
             float: left;
             display: inline-block;
             height: 400px;
-            width: 400px;
+            width: 300px;
             margin: 100px;
             color: #000;
         }
@@ -64,9 +64,33 @@
                             Fiyat: @Html.DisplayFor(modelItem => item.fiyat)<br>
                             Bakım Periyodu: @Html.DisplayFor(modelItem => item.bakimperiyot)
                         </p>
-                        <!-- <a href="/yoneticiliftler/Details/@item.id" class="btn btn-primary">Detay</a> Detay Butonu-->
                         <a href="/yoneticiliftler/Edit/@item.id" class="btn btn-warning">Düzenle</a>
-                        <a href="/yoneticiliftler/Delete/@item.id" class="btn btn-danger">Sil</a>
+
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Sil</button>
+                        <div class="modal fade" id="myModal">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+
+
+                                    <div class="modal-header">
+                                        <h4 class="modal-title"> @Html.DisplayFor(modelItem => item.id) Bu lift modelini silmek istediğinize emin misiniz?</h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        
+                                    </div>
+
+
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal">İptal</button>
+                                        <a href="/yoneticiliftler/Sil/@item.id" class="btn btn-danger">Sil</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        
                     </div>
                 </div>
 
@@ -75,6 +99,7 @@
             </div>
 
         </div>
+
 
     }
 
