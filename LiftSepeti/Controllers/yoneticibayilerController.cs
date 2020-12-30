@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using LiftSepeti.Models.Entity;
@@ -46,13 +48,19 @@ namespace LiftSepeti.Controllers
         // Daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,ulke,sehir,bayiad,sifre")] bayiTable bayiTable)
+        public ActionResult Create([Bind(Include = "id,ulke,sehir,bayiad,sifre,adres")] bayiTable bayiTable)
         {
             if (ModelState.IsValid)
             {
+                try { 
                 db.bayiTable.Add(bayiTable);
                 db.SaveChanges();
                 return RedirectToAction("Index");
+                }
+                catch(DbEntityValidationException dbValEx)
+                {
+                    
+                }
             }
 
             return View(bayiTable);
@@ -78,7 +86,7 @@ namespace LiftSepeti.Controllers
         // Daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,ulke,sehir,bayiad,sifre")] bayiTable bayiTable)
+        public ActionResult Edit([Bind(Include = "id,ulke,sehir,bayiad,sifre,adres")] bayiTable bayiTable)
         {
             if (ModelState.IsValid)
             {
@@ -102,6 +110,14 @@ namespace LiftSepeti.Controllers
                 return HttpNotFound();
             }
             return View(bayiTable);
+        }
+
+        public ActionResult Sil(int? id)
+        {
+            bayiTable bayiTable = db.bayiTable.Find(id);
+            db.bayiTable.Remove(bayiTable);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         // POST: yoneticibayiler/Delete/5

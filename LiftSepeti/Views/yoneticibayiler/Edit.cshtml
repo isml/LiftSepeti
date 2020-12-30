@@ -28,10 +28,11 @@
         @Html.AntiForgeryToken()
         
     <div class="form-check">
-        <h4>Bayi Düzenleme</h4>
+        <h2 style="margin-left:600px">BAYİ DÜZENLEME</h2>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.id)
+        
 
         <div class="form-group">
 
