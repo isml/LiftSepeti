@@ -9,12 +9,13 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Siparişi Düzenler</title>
+    <title>Siparişi Düzenle</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <style>
         h4 {
             text-align: center;
@@ -26,70 +27,78 @@
     {
         @Html.AntiForgeryToken()
         
-        <div class="form-horizontal">
-            <h4>siparisTable</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @Html.HiddenFor(model => model.id)
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.bayiid, "bayiid", htmlAttributes: new { @class = "control-label col-md-1" })
-                <div class="col-md-10">
-                    @Html.DropDownList("bayiid", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.bayiid, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.liftid, "liftid", htmlAttributes: new { @class = "control-label col-md-1" })
-                <div class="col-md-10">
-                    @Html.DropDownList("liftid", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.liftid, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.durumid, "durumid", htmlAttributes: new { @class = "control-label col-md-1" })
-                <div class="col-md-10">
-                    @Html.DropDownList("durumid", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.durumid, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.tarih, htmlAttributes: new { @class = "control-label col-md-1" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.tarih, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.tarih, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.adet, htmlAttributes: new { @class = "control-label col-md-1" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.adet, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.adet, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.odemeyontemiid, "odemeyontemiid", htmlAttributes: new { @class = "control-label col-md-1" })
-                <div class="col-md-10">
-                    @Html.DropDownList("odemeyontemiid", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.odemeyontemiid, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                <div class="col-md-offset-10 col-md-10">
-                    <input type="submit" value="Kaydet" class="btn btn-success" />
-                </div>
+    <div class="form-check">
+        <br />
+        <h2 style="margin-left:600px">SİPARİŞİ DÜZENLE</h2>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.id)
+
+    <div class="form-group">
+        <div style="margin-left:20px"> <b>BAYİ ADI</b></div>
+        <p></p>
+        <div class="col-md-10">
+            <input type="text" value="@Html.DisplayFor(model=>model.bayiTable.bayiad)" readonly class="form-control" id=@Html.DisplayFor(model=>model.bayiTable.bayiad)  name="@Html.DisplayFor(model=>model.bayiTable.bayiad)">
+            <!--@Html.DropDownList("bayiid", null, htmlAttributes: new { @class = "form-control" })--> <!--YARIN DEVAM ET BURAYA. ÜSTTEKİ DURUNCA KAYDA BASTIĞINDA 0 oluyor o da hataya düşürüyor.-->
+        </div>
+    </div>
+        
+
+    <div class="form-group">
+        <div style="margin-left:20px"> <b>LİFT KODU</b></div>
+        <p></p>
+        <div class="col-md-10">
+          
+            @Html.DropDownList("liftid", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.liftid, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div style="margin-left:20px"> <b>DURUM</b></div>
+        <p></p>
+        <div class="col-md-10">
+            @Html.DropDownList("durumid", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.durumid, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+        <div class="form-group">
+            <div style="margin-left:20px"> <b>TARİH</b></div>
+            <p></p>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.tarih, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.tarih, "", new { @class = "text-danger" })
             </div>
         </div>
+
+        <div class="form-group">
+            <div style="margin-left:20px"> <b>ALIM MİKTARI</b></div>
+            <p></p>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.adet, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.adet, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div style="margin-left:20px"> <b>ÖDEME YÖNTEMİ</b></div>
+            <p></p>
+            <div class="col-md-10">
+                @Html.DropDownList("odemeyontemiid", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.odemeyontemiid, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-left:600px">
+            <div class="col-md-offset-10 col-md-10">
+                <input type="submit" value="Kaydet" class="btn btn-success" />
+                <a href="/yoneticisiparisler/Index" class="btn btn-info">Listeye Geri Dön</a>
+            </div>
+        </div>
+    </div>
     }
     
-    <div>
-        <a href="/yoneticisiparisler/Index" class="btn btn-info">Listeye Geri Dön</a>
-    </div>
+    
 </body>
 </html>

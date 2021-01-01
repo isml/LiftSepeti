@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<LiftSepeti.Models.Entity.siparisTable>
-
+    
 @{
     Layout = null;
 }
@@ -10,15 +10,69 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Siparişler</title>
-    <link href="~/CSS/table.css" rel="stylesheet" />
+    <link href="~/CSS/table.css" rel="stylesheet" /
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <form class="form-inline" action="/action_page.php">
+        <input class="form-control mr-sm-2" type="text" placeholder="Ara">
+        <button class="btn btn-success" type="submit">Ara</button>
+    </form>
+</nav>
+<br>
 <body>
-   
+    <div class="container">
+        <h2 style="margin-left:500px">SİPARİŞLER</h2>
+        <br />
+        <br />
+       
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th>Sipariş Kodu </th>
+                    <th>Bayi Adı</th>
+                    <th>Lift Kodu</th>
+                    <th>Durumu</th>
+                    <th>Alınan miktar</th>
+                    <th>Ödeme Yöntemi</th>
+                    <th>Tarih</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+           
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td> @Html.DisplayFor(modelItem => item.id)</td>
+                        <td> @Html.DisplayFor(modelItem => item.bayiTable.bayiad)</td>
+                        <td> @Html.DisplayFor(modelItem => item.liftid)</td>
+                        <td> @Html.DisplayFor(modelItem => item.durumTable.durum) verildi</td>
+                        <td> @Html.DisplayFor(modelItem => item.adet)</td>
+                        <td> @Html.DisplayFor(modelItem => item.odemeyontemiTable.tip)</td>
+                        <td> @Html.DisplayFor(modelItem => item.tarih)</td>
+                        <td><a href="/yoneticisiparisler/Edit/@item.id" class="btn btn-warning">Düzenle</a></td>
+                        <td><a href="/yoneticisiparisler/Sil/@item.id" class="btn btn-danger">Sil</a></td>
+
+
+                    </tr>
+                }
+                </tbody>
+                
+            </table>
+        
+        </div>
+
+</body>
+<!--<body>
+
     <table class="styled-table">
         <thead>
         <th>
@@ -74,4 +128,5 @@
     </table>
     <a href="/yoneticisiparisler/Create" class="btn btn-success">Sipariş Ekle</a>
 </body>
+    -->
 </html>

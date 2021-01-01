@@ -80,9 +80,9 @@ namespace LiftSepeti.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.bayiid = new SelectList(db.bayiTable, "id", "ulke", siparisTable.bayiid);
+            ViewBag.bayiid = new SelectList(db.bayiTable, "id", "bayiad", siparisTable.bayiid);
             ViewBag.durumid = new SelectList(db.durumTable, "id", "durum", siparisTable.durumid);
-            ViewBag.liftid = new SelectList(db.liftTable, "id", "resim", siparisTable.liftid);
+            ViewBag.liftid = new SelectList(db.liftTable, "id", "id", siparisTable.liftid);
             ViewBag.odemeyontemiid = new SelectList(db.odemeyontemiTable, "id", "tip", siparisTable.odemeyontemiid);
             return View(siparisTable);
         }
@@ -100,7 +100,7 @@ namespace LiftSepeti.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.bayiid = new SelectList(db.bayiTable, "id", "ulke", siparisTable.bayiid);
+            ViewBag.bayiid = new SelectList(db.bayiTable, "id", "bayiad", siparisTable.bayiid);
             ViewBag.durumid = new SelectList(db.durumTable, "id", "durum", siparisTable.durumid);
             ViewBag.liftid = new SelectList(db.liftTable, "id", "resim", siparisTable.liftid);
             ViewBag.odemeyontemiid = new SelectList(db.odemeyontemiTable, "id", "tip", siparisTable.odemeyontemiid);
@@ -120,6 +120,13 @@ namespace LiftSepeti.Controllers
                 return HttpNotFound();
             }
             return View(siparisTable);
+        }
+        public ActionResult Sil(int? id)
+        {
+            siparisTable siparisTable = db.siparisTable.Find(id);
+            db.siparisTable.Remove(siparisTable);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         // POST: yoneticisiparisler/Delete/5
