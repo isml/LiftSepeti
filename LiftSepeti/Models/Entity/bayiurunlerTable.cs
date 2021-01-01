@@ -22,13 +22,13 @@ namespace LiftSepeti.Models.Entity
     
         public int id { get; set; }
         public int bayiid { get; set; }
-        public int modelid { get; set; }
+        public int liftid { get; set; }
         public int stok { get; set; }
         public double fiyat { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<bayisatisTable> bayisatisTable { get; set; }
         public virtual bayiTable bayiTable { get; set; }
-        public virtual modelTable modelTable { get; set; }
+        public virtual liftTable liftTable { get; set; }
     }
 }

@@ -13,7 +13,7 @@ namespace LiftSepeti.Controllers
     {
         public ActionResult Index()
         {
-            LiftSepetiEntities2 db = new LiftSepetiEntities2();
+            LiftSepetiEntities4 db = new LiftSepetiEntities4();
           
 
             var liftTable = db.liftTable.Include(l =>l.modelTable);

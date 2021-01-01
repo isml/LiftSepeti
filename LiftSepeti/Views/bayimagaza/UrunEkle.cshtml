@@ -1,6 +1,5 @@
 ﻿@using LiftSepeti.Models.Entity
-@model IEnumerable<LiftSepeti.Models.Entity.bayiurunlerTable>
-
+@model IEnumerable<LiftSepeti.Models.Entity.siparisTable>
 @{
     Layout = null;
 }
@@ -71,10 +70,8 @@
     <br />
     <br />
     <br />
-    <a href="/bayimagaza/UrunEkle?bayiid=@ViewBag.bayiid" class="btn btn-info">Ürün Ekle</a>
     @foreach (var mdl in Model)
     {
-
         <div class="w3-container">
 
 
@@ -84,11 +81,21 @@
                 <div class="paragraf_d">
                     <p>Model Türü : @mdl.liftTable.modelTable.ad</p>
                     <p>Model Ebatı : @mdl.liftTable.modelTable.ebat</p>
-                    <p>Stok Adedi : @mdl.stok</p>
-                    <p>Lift Fiyatı : @mdl.fiyat TL</p>
+                    <p>Stok Adedi : @mdl.liftTable.adet</p>
+                    <p>Lift Fiyatı : @mdl.liftTable.fiyat TL</p>
                     <p>Bakım Periyodu : @mdl.liftTable.bakimperiyot ay </p>
-                    <a href="/urunrecete/Index/@mdl.liftTable.modelTable.id" class="btn btn-info">Ürün Detay</a>
+                    <a href="/urunrecete/Index/@mdl.liftTable.modelid" class="btn btn-info">Ürün Detay</a>
+                    <form method="post" action="@Url.Action("bayiurunler", "bayimagaza", new {bayiid = @ViewBag.bayiid,liftid=@mdl.liftTable.id})">
 
+                        <label for="satılacakfiyat">Satış Fiyatı :</label><br>
+                        <input type="number" id="satisfiyat" name="satisfiyat" value="@mdl.liftTable.fiyat"><br>
+                        <br />
+                   
+
+                        <input class="btn-success" type="submit" value="Ürün Ekle">
+                        
+
+                    </form>
                 </div>
 
 

@@ -12,29 +12,38 @@ namespace LiftSepeti.Controllers
 {
     public class bayimagazaController : Controller
     {
-        private LiftSepetiEntities2 db = new LiftSepetiEntities2();
+        private LiftSepetiEntities4 db = new LiftSepetiEntities4();
          
 
         // GET: bayimagaza
         public ActionResult Index(int bayiid)
         {
-            var bayiurunlerTable = db.bayiurunlerTable.Include(b => b.bayiTable).Include(b => b.modelTable);
-            return View(bayiurunlerTable.ToList());
+            ViewBag.bayiid = bayiid;           
+            var bayiurunler = db.bayiurunlerTable.Where(x => x.bayiid == bayiid).ToList();       
+            return View(bayiurunler);
         }
 
-        // GET: bayimagaza/Details/5
-        public ActionResult Details(int? id)
+       
+        public ActionResult UrunEkle(int bayiid)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            bayiurunlerTable bayiurunlerTable = db.bayiurunlerTable.Find(id);
-            if (bayiurunlerTable == null)
-            {
-                return HttpNotFound();
-            }
-            return View(bayiurunlerTable);
+            ViewBag.bayiid = bayiid;
+            var bayiStok =  db.siparisTable.Where(x => x.bayiid == bayiid&&x.durumid==2).ToList();
+            return View(bayiStok);
+        }
+        public ActionResult bayiurunler(int bayiid,int liftid,float satisfiyat)
+        {
+            ViewBag.bayiid = bayiid;
+            bayiurunlerTable bayiurun = new bayiurunlerTable();
+            bayiurun.bayiid = bayiid;
+            bayiurun.liftid = liftid;
+            bayiurun.fiyat = satisfiyat;
+            bayiurun.stok = 1;
+            db.bayiurunlerTable.Add(bayiurun);
+            db.SaveChanges();
+           
+            var bayiurunler = db.bayiurunlerTable.Where(x => x.bayiid == bayiid).ToList();
+            return RedirectToAction("Index", "bayimagaza", new { bayiid = bayiid });
+
         }
 
         // GET: bayimagaza/Create
@@ -48,56 +57,15 @@ namespace LiftSepeti.Controllers
         // POST: bayimagaza/Create
         // Aşırı gönderim saldırılarından korunmak için bağlamak istediğiniz belirli özellikleri etkinleştirin. 
         // Daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,bayiid,modelid,stok,fiyat")] bayiurunlerTable bayiurunlerTable)
-        {
-            if (ModelState.IsValid)
-            {
-                db.bayiurunlerTable.Add(bayiurunlerTable);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.bayiid = new SelectList(db.bayiTable, "id", "ulke", bayiurunlerTable.bayiid);
-            ViewBag.modelid = new SelectList(db.modelTable, "id", "ad", bayiurunlerTable.modelid);
-            return View(bayiurunlerTable);
-        }
+       
 
         // GET: bayimagaza/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            bayiurunlerTable bayiurunlerTable = db.bayiurunlerTable.Find(id);
-            if (bayiurunlerTable == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.bayiid = new SelectList(db.bayiTable, "id", "ulke", bayiurunlerTable.bayiid);
-            ViewBag.modelid = new SelectList(db.modelTable, "id", "ad", bayiurunlerTable.modelid);
-            return View(bayiurunlerTable);
-        }
+       
 
         // POST: bayimagaza/Edit/5
         // Aşırı gönderim saldırılarından korunmak için bağlamak istediğiniz belirli özellikleri etkinleştirin. 
         // Daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,bayiid,modelid,stok,fiyat")] bayiurunlerTable bayiurunlerTable)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(bayiurunlerTable).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.bayiid = new SelectList(db.bayiTable, "id", "ulke", bayiurunlerTable.bayiid);
-            ViewBag.modelid = new SelectList(db.modelTable, "id", "ad", bayiurunlerTable.modelid);
-            return View(bayiurunlerTable);
-        }
+      
 
         // GET: bayimagaza/Delete/5
         public ActionResult Delete(int? id)

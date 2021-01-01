@@ -17,6 +17,7 @@ namespace LiftSepeti.Models.Entity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public liftTable()
         {
+            this.bayiurunlerTable = new HashSet<bayiurunlerTable>();
             this.siparisTable = new HashSet<siparisTable>();
         }
     
@@ -27,6 +28,8 @@ namespace LiftSepeti.Models.Entity
         public int bakimperiyot { get; set; }
         public string resim { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<bayiurunlerTable> bayiurunlerTable { get; set; }
         public virtual modelTable modelTable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<siparisTable> siparisTable { get; set; }

@@ -35,12 +35,12 @@
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="bayiid" Type="Int32" Nullable="false" />
-    <Property Name="modelid" Type="Int32" Nullable="false" />
+    <Property Name="liftid" Type="Int32" Nullable="false" />
     <Property Name="stok" Type="Int32" Nullable="false" />
     <Property Name="fiyat" Type="Double" Nullable="false" />
     <NavigationProperty Name="bayisatisTable" Relationship="Self.FK_bayisatisTable_bayiurunlerTable" FromRole="bayiurunlerTable" ToRole="bayisatisTable" />
     <NavigationProperty Name="bayiTable" Relationship="Self.FK_bayiurunlerTable_bayiTable" FromRole="bayiurunlerTable" ToRole="bayiTable" />
-    <NavigationProperty Name="modelTable" Relationship="Self.FK_bayiurunlerTable_modelTable" FromRole="bayiurunlerTable" ToRole="modelTable" />
+    <NavigationProperty Name="liftTable" Relationship="Self.FK_bayiurunlerTable_liftTable" FromRole="bayiurunlerTable" ToRole="liftTable" />
   </EntityType>
   <EntityType Name="depoTable">
     <Key>
@@ -70,6 +70,7 @@
     <Property Name="fiyat" Type="Double" Nullable="false" />
     <Property Name="bakimperiyot" Type="Int32" Nullable="false" />
     <Property Name="resim" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="bayiurunlerTable" Relationship="Self.FK_bayiurunlerTable_liftTable" FromRole="liftTable" ToRole="bayiurunlerTable" />
     <NavigationProperty Name="modelTable" Relationship="Self.FK_liftTable_modelTable" FromRole="liftTable" ToRole="modelTable" />
     <NavigationProperty Name="siparisTable" Relationship="Self.FK_siparisTable_liftTable" FromRole="liftTable" ToRole="siparisTable" />
   </EntityType>
@@ -80,7 +81,6 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="ebat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="bayiurunlerTable" Relationship="Self.FK_bayiurunlerTable_modelTable" FromRole="modelTable" ToRole="bayiurunlerTable" />
     <NavigationProperty Name="liftTable" Relationship="Self.FK_liftTable_modelTable" FromRole="modelTable" ToRole="liftTable" />
     <NavigationProperty Name="receteTable" Relationship="Self.FK_receteTable_modelTable" FromRole="modelTable" ToRole="receteTable" />
   </EntityType>
@@ -210,15 +210,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_bayiurunlerTable_modelTable">
-    <End Role="modelTable" Type="Self.modelTable" Multiplicity="1" />
+  <Association Name="FK_bayiurunlerTable_liftTable">
+    <End Role="liftTable" Type="Self.liftTable" Multiplicity="1" />
     <End Role="bayiurunlerTable" Type="Self.bayiurunlerTable" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="modelTable">
+      <Principal Role="liftTable">
         <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="bayiurunlerTable">
-        <PropertyRef Name="modelid" />
+        <PropertyRef Name="liftid" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -294,7 +294,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="LiftSepetiEntities2" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="LiftSepetiEntities4" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="bayisatisTable" EntityType="Self.bayisatisTable" />
     <EntitySet Name="bayiTable" EntityType="Self.bayiTable" />
     <EntitySet Name="bayiurunlerTable" EntityType="Self.bayiurunlerTable" />
@@ -328,8 +328,8 @@
       <End Role="bayiTable" EntitySet="bayiTable" />
       <End Role="siparisTable" EntitySet="siparisTable" />
     </AssociationSet>
-    <AssociationSet Name="FK_bayiurunlerTable_modelTable" Association="Self.FK_bayiurunlerTable_modelTable">
-      <End Role="modelTable" EntitySet="modelTable" />
+    <AssociationSet Name="FK_bayiurunlerTable_liftTable" Association="Self.FK_bayiurunlerTable_liftTable">
+      <End Role="liftTable" EntitySet="liftTable" />
       <End Role="bayiurunlerTable" EntitySet="bayiurunlerTable" />
     </AssociationSet>
     <AssociationSet Name="FK_receteTable_depoTable" Association="Self.FK_receteTable_depoTable">

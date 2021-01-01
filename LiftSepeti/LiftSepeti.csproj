@@ -412,9 +412,6 @@
     <Content Include="Views\yoneticidepo\Edit.cshtml" />
     <Content Include="Views\yoneticidepo\Index.cshtml" />
     <Content Include="Views\urunrecete\Index.cshtml" />
-    <Content Include="Views\bayimagaza\Create.cshtml" />
-    <Content Include="Views\bayimagaza\Delete.cshtml" />
-    <Content Include="Views\bayimagaza\Details.cshtml" />
     <Content Include="Views\bayimagaza\Edit.cshtml" />
     <Content Include="Views\bayimagaza\Index.cshtml" />
     <Content Include="Views\bayisepet\Create.cshtml" />
@@ -424,6 +421,8 @@
     <Content Include="Views\bayisepet\Index.cshtml" />
     <Content Include="Views\bayisepet\getIndex.cshtml" />
     <Content Include="Views\bayisepet\sepetbos.cshtml" />
+    <Content Include="Views\bayimagaza\UrunEkle.cshtml" />
+    <Content Include="Views\bayimagaza\bayiurunler.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

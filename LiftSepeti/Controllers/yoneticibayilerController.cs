@@ -14,7 +14,7 @@ namespace LiftSepeti.Controllers
 {
     public class yoneticibayilerController : Controller
     {
-        private LiftSepetiEntities2 db = new LiftSepetiEntities2();
+        private LiftSepetiEntities4 db = new LiftSepetiEntities4();
 
         // GET: yoneticibayiler
         public ActionResult Index()

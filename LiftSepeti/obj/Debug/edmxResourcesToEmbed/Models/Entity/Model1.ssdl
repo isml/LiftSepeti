@@ -29,7 +29,7 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="bayiid" Type="int" Nullable="false" />
-    <Property Name="modelid" Type="int" Nullable="false" />
+    <Property Name="liftid" Type="int" Nullable="false" />
     <Property Name="stok" Type="int" Nullable="false" />
     <Property Name="fiyat" Type="float" Nullable="false" />
   </EntityType>
@@ -174,15 +174,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_bayiurunlerTable_modelTable">
-    <End Role="modelTable" Type="Self.modelTable" Multiplicity="1" />
+  <Association Name="FK_bayiurunlerTable_liftTable">
+    <End Role="liftTable" Type="Self.liftTable" Multiplicity="1" />
     <End Role="bayiurunlerTable" Type="Self.bayiurunlerTable" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="modelTable">
+      <Principal Role="liftTable">
         <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="bayiurunlerTable">
-        <PropertyRef Name="modelid" />
+        <PropertyRef Name="liftid" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -300,8 +300,8 @@
       <End Role="bayiTable" EntitySet="bayiTable" />
       <End Role="bayiurunlerTable" EntitySet="bayiurunlerTable" />
     </AssociationSet>
-    <AssociationSet Name="FK_bayiurunlerTable_modelTable" Association="Self.FK_bayiurunlerTable_modelTable">
-      <End Role="modelTable" EntitySet="modelTable" />
+    <AssociationSet Name="FK_bayiurunlerTable_liftTable" Association="Self.FK_bayiurunlerTable_liftTable">
+      <End Role="liftTable" EntitySet="liftTable" />
       <End Role="bayiurunlerTable" EntitySet="bayiurunlerTable" />
     </AssociationSet>
     <AssociationSet Name="FK_liftTable_modelTable" Association="Self.FK_liftTable_modelTable">

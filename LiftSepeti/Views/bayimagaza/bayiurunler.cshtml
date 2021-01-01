@@ -71,10 +71,9 @@
     <br />
     <br />
     <br />
-    <a href="/bayimagaza/UrunEkle?bayiid=@ViewBag.bayiid" class="btn btn-info">Ürün Ekle</a>
     @foreach (var mdl in Model)
     {
-
+     
         <div class="w3-container">
 
 
@@ -88,7 +87,7 @@
                     <p>Lift Fiyatı : @mdl.fiyat TL</p>
                     <p>Bakım Periyodu : @mdl.liftTable.bakimperiyot ay </p>
                     <a href="/urunrecete/Index/@mdl.liftTable.modelTable.id" class="btn btn-info">Ürün Detay</a>
-
+                  
                 </div>
 
 

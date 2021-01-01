@@ -23,7 +23,7 @@ namespace LiftSepeti.Controllers
         [HttpPost]
         public ActionResult Login(String bayiad,String sifre)
         {
-            LiftSepetiEntities2 db = new LiftSepetiEntities2();
+            LiftSepetiEntities4 db = new LiftSepetiEntities4();
             bayiTable bayi = db.bayiTable.Where(x => x.bayiad.Equals(bayiad) && x.sifre.Equals(sifre)).FirstOrDefault();
             if(bayi != null)
             {

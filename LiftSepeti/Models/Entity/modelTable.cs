@@ -17,7 +17,6 @@ namespace LiftSepeti.Models.Entity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public modelTable()
         {
-            this.bayiurunlerTable = new HashSet<bayiurunlerTable>();
             this.liftTable = new HashSet<liftTable>();
             this.receteTable = new HashSet<receteTable>();
         }
@@ -26,8 +25,6 @@ namespace LiftSepeti.Models.Entity
         public string ad { get; set; }
         public string ebat { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<bayiurunlerTable> bayiurunlerTable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<liftTable> liftTable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="LiftSepetiModelStoreContainer" CdmEntityContainer="LiftSepetiEntities2">
+  <EntityContainerMapping StorageEntityContainer="LiftSepetiModelStoreContainer" CdmEntityContainer="LiftSepetiEntities4">
     <EntitySetMapping Name="bayisatisTable">
       <EntityTypeMapping TypeName="LiftSepetiModel.bayisatisTable">
         <MappingFragment StoreEntitySet="bayisatisTable">
@@ -31,7 +31,7 @@
         <MappingFragment StoreEntitySet="bayiurunlerTable">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="bayiid" ColumnName="bayiid" />
-          <ScalarProperty Name="modelid" ColumnName="modelid" />
+          <ScalarProperty Name="liftid" ColumnName="liftid" />
           <ScalarProperty Name="stok" ColumnName="stok" />
           <ScalarProperty Name="fiyat" ColumnName="fiyat" />
         </MappingFragment>

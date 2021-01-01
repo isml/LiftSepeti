@@ -13,10 +13,10 @@ namespace LiftSepeti.Models.Entity
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class LiftSepetiEntities2 : DbContext
+    public partial class LiftSepetiEntities4 : DbContext
     {
-        public LiftSepetiEntities2()
-            : base("name=LiftSepetiEntities2")
+        public LiftSepetiEntities4()
+            : base("name=LiftSepetiEntities4")
         {
         }
     

@@ -14,7 +14,7 @@ namespace LiftSepeti.Controllers
 {
     public class bayisepetController : Controller
     {
-        private LiftSepetiEntities2 db = new LiftSepetiEntities2();
+        private LiftSepetiEntities4 db = new LiftSepetiEntities4();
         int genelbayiid;
         // GET: bayisepet
         public ActionResult Index(int bayiid, int liftid)

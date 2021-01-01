@@ -12,7 +12,7 @@ namespace LiftSepeti.Controllers
 {
     public class durumTablesController : Controller
     {
-        private LiftSepetiEntities2 db = new LiftSepetiEntities2();
+        private LiftSepetiEntities4 db = new LiftSepetiEntities4();
 
         // GET: durumTables
         public ActionResult Index()
