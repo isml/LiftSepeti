@@ -14,8 +14,42 @@ namespace LiftSepeti.Controllers
         LiftSepetiEntities4 db = new LiftSepetiEntities4();
         public ActionResult Index()
         {
-            var degerler = db.musteriTable.ToList();
-            return View(degerler);
+            
+            return View();
         }
+
+        [HttpPost]
+        public ActionResult Login(String musterinumara)
+        {
+           
+            var musteriler =  db.musteriTable.ToList();
+            foreach(var mus in musteriler)
+            {
+                if (mus.telefon == musterinumara)
+                {
+                    
+                    return RedirectToAction("musterianasayfa", "Musteri", new { musteriid = mus.id });
+                    //musteri home page
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Musteri");
+                }
+            }
+            return RedirectToAction("Index", "Musteri");
+        }
+
+        public ActionResult musterianasayfa(int musteriid)
+        {
+            ViewBag.musteriid = musteriid;
+            var bayiurunler= db.bayiurunlerTable.ToList();
+            return View(bayiurunler);
+        }
+        public ActionResult siparis(int liftid,int musteriid)
+        {
+
+            return RedirectToAction("musterianasayfa", "Musteri", new { musteriid = musteriid });
+        }
+
     }
 }

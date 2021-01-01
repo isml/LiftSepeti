@@ -250,6 +250,7 @@
     <Content Include="CSS\login\vendor\select2\select2.js" />
     <Content Include="CSS\login\vendor\select2\select2.min.css" />
     <Content Include="CSS\login\vendor\select2\select2.min.js" />
+    <Content Include="CSS\musterilogin.css" />
     <Content Include="CSS\recete.css" />
     <Content Include="CSS\table.css" />
     <Content Include="favicon.ico" />
@@ -423,6 +424,7 @@
     <Content Include="Views\bayisepet\sepetbos.cshtml" />
     <Content Include="Views\bayimagaza\UrunEkle.cshtml" />
     <Content Include="Views\bayimagaza\bayiurunler.cshtml" />
+    <Content Include="Views\Musteri\musterianasayfa.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
