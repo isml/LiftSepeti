@@ -65,32 +65,11 @@
                             Bakım Periyodu: @Html.DisplayFor(modelItem => item.bakimperiyot)
                         </p>
                         <a href="/yoneticiliftler/Edit/@item.id" class="btn btn-warning">Düzenle</a>
-
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Sil</button>
-                        <div class="modal fade" id="myModal">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-
-
-                                    <div class="modal-header">
-                                        <h4 class="modal-title"> @Html.DisplayFor(modelItem => item.id) Bu lift modelini silmek istediğinize emin misiniz?</h4>
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        
-                                    </div>
+                        <a href="/yoneticiliftler/Sil/@item.id" class="btn btn-danger">Sil</a>
 
 
 
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal">İptal</button>
-                                        <a href="/yoneticiliftler/Sil/@item.id" class="btn btn-danger">Sil</a>
-                                    </div>
 
-                                </div>
-                            </div>
-                        </div>
-
-
-                        
                     </div>
                 </div>
 
