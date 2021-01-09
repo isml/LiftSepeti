@@ -16,6 +16,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
+
+        .a {
+            padding-left: 0px;
+        }
+
+
+
+
         div.w3-container {
             width: 1200px;
             height: 450px;
@@ -28,7 +36,7 @@
 
         .sola-kaydir {
             float: left;
-            padding: 0 0 10px 10px;
+            padding: 0 0 0 0;
         }
 
         .paragraf_d {
@@ -85,18 +93,20 @@
         <div class="w3-container">
 
 
-            <div class="w3-panel w3-card w3-white">
-                <img src="@lft.resim" alt="Card image cap" width="900px" height="350px" class="sola-kaydir">
-                <br />
-                <div class="paragraf_d">
-                    <p>Model Türü : @lft.modelTable.ad</p>
-                    <p>Model Ebatı : @lft.modelTable.ebat</p>
-                    <p>Stok Adedi : @lft.adet</p>
-                    <p>Lift Fiyatı : @lft.fiyat</p>
-                    <p>Bakım Periyodu : @lft.bakimperiyot ay </p>
+            <div class="a">
+                <div class="w3-panel w3-card w3-white">
+                    <img src="@lft.resim" alt="Card image cap" width="900px" height="350px" class="sola-kaydir">
+                    <br />
+                    <div class="paragraf_d">
+                        <p>Model Türü : @lft.modelTable.ad</p>
+                        <p>Model Ebatı : @lft.modelTable.ebat</p>
+                        <p>Stok Adedi : @lft.adet</p>
+                        <p>Lift Fiyatı : @lft.fiyat</p>
+                        <p>Bakım Periyodu : @lft.bakimperiyot ay </p>
+                    </div>
+
+
                 </div>
-
-
             </div>
         </div>
     }

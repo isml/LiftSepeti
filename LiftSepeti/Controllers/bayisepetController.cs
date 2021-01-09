@@ -107,6 +107,25 @@ namespace LiftSepeti.Controllers
 
                     }
                 }
+                MailMessage mail2 = new MailMessage(); //yeni bir mail nesnesi Oluşturuldu.
+                mail2.IsBodyHtml = true; //mail içeriğinde html etiketleri kullanılsın mı?
+                mail2.To.Add("liftsepeti@gmail.com"); //Kime mail gönderilecek.
+
+                //mail kimden geliyor, hangi ifade görünsün?
+                mail2.From = new MailAddress("liftsepeti@gmail.com", "Yeni Sipariş Var", System.Text.Encoding.UTF8);
+                mail2.Subject = "Yeni Sipariş Var " + "Yeni Sipariş Var";//mailin konusu
+
+                //mailin içeriği.. Bu alan isteğe göre genişletilip daraltılabilir.
+                mail2.Body = "E-Posta:" + "liftsepeti@gmail.com" + "Konu:" + "Stok uyarısı" + "Içerik:" + "Yeni Sipariş Var";
+                mail2.IsBodyHtml = true;
+                SmtpClient smp1 = new SmtpClient();
+
+                //mailin gönderileceği adres ve şifresi
+                smp1.Credentials = new NetworkCredential("liftsepeti@gmail.com", "LiftSepeti.");
+                smp1.Port = 587;
+                smp1.Host = "smtp.gmail.com";//gmail üzerinden gönderiliyor.
+                smp1.EnableSsl = true;
+                smp1.Send(mail2);//mail isimli mail gönderiliyor.
 
                 db.SaveChanges();
             }
