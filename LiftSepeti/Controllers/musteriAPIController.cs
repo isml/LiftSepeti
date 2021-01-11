@@ -43,5 +43,41 @@ namespace LiftSepeti.Controllers
 
 
         }
+        public ActionResult SiparisEkle(int musteriid, int bayiid, int liftid, int modelid, string resim, string bayiad, string liftad, double fiyat, int bakimperiyot)
+        {
+            musterisiparisModel musterisiparis = new musterisiparisModel();
+            musterisiparis.id = musteriid;
+            musterisiparis.bayiid = bayiid;
+            musterisiparis.liftid = liftid;
+            musterisiparis.modelid = modelid;
+            musterisiparis.resim = resim;
+            musterisiparis.bayiad = bayiad;
+            musterisiparis.liftad = liftad;
+            musterisiparis.fiyat = fiyat;
+            musterisiparis.bakimperiyot = bakimperiyot;
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://5ff8af7517386d0017b5172b.mockapi.io/musterisiparis");
+                var postJob = client.PostAsJsonAsync<musterisiparisModel>("musterisiparis", musterisiparis);
+                postJob.Wait();
+
+                var result = postJob.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    //musterisiparismodel = (IEnumerable<yoneticiTable>)Enumerable.Empty<musteriAPIController>();
+                    //ModelState.AddModelError(string.Empty, "hataaaaaa");
+                    return RedirectToAction("Index");
+                }
+
+            }
+
+
+
+        }
     }
 }

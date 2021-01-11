@@ -899,3 +899,12 @@ C:\Users\Soner\source\repos\LiftSepeti\LiftSepeti\bin\roslyn\vbc.exe.config
 C:\Users\Soner\source\repos\LiftSepeti\LiftSepeti\bin\roslyn\vbc.rsp
 C:\Users\Soner\source\repos\LiftSepeti\LiftSepeti\bin\roslyn\VBCSCompiler.exe
 C:\Users\Soner\source\repos\LiftSepeti\LiftSepeti\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\cagat\Source\Repos\LiftSepeti\LiftSepeti\bin\System.Net.Http.Formatting.dll
+C:\Users\cagat\Source\Repos\LiftSepeti\LiftSepeti\bin\System.Web.Http.dll
+C:\Users\cagat\Source\Repos\LiftSepeti\LiftSepeti\bin\System.Web.Http.WebHost.dll
+C:\Users\cagat\Source\Repos\LiftSepeti\LiftSepeti\bin\System.Net.Http.Formatting.xml
+C:\Users\cagat\Source\Repos\LiftSepeti\LiftSepeti\bin\System.Web.Http.xml
+C:\Users\cagat\Source\Repos\LiftSepeti\LiftSepeti\bin\System.Web.Http.WebHost.xml
+C:\Users\cagat\Source\Repos\LiftSepeti\LiftSepeti\bin\tr\System.Net.Http.Formatting.resources.dll
+C:\Users\cagat\Source\Repos\LiftSepeti\LiftSepeti\bin\tr\System.Web.Http.resources.dll
+C:\Users\cagat\Source\Repos\LiftSepeti\LiftSepeti\bin\tr\System.Web.Http.WebHost.resources.dll

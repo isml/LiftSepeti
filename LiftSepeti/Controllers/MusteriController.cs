@@ -31,10 +31,7 @@ namespace LiftSepeti.Controllers
                     return RedirectToAction("musterianasayfa", "Musteri", new { musteriid = mus.id });
                     //musteri home page
                 }
-                else
-                {
-                    return RedirectToAction("Index", "Musteri");
-                }
+                
             }
             return RedirectToAction("Index", "Musteri");
         }
