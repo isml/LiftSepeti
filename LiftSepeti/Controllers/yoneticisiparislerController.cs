@@ -148,5 +148,11 @@ namespace LiftSepeti.Controllers
             }
             base.Dispose(disposing);
         }
+
+        protected void btn_search(object sender,EventArgs e)
+        {
+            //var model=db.siparisTable.Where(x=>x.bayiTable.bayiad.Contains(text)) 
+
+        }
     }
 }

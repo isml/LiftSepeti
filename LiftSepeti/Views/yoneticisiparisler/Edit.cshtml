@@ -38,8 +38,9 @@
         <div style="margin-left:20px"> <b>BAYİ ADI</b></div>
         <p></p>
         <div class="col-md-10">
-            <input type="text" value="@Html.DisplayFor(model=>model.bayiTable.bayiad)" readonly class="form-control" id=@Html.DisplayFor(model=>model.bayiTable.bayiad)  name="@Html.DisplayFor(model=>model.bayiTable.bayiad)">
-            <!--@Html.DropDownList("bayiid", null, htmlAttributes: new { @class = "form-control" })--> <!--YARIN DEVAM ET BURAYA. ÜSTTEKİ DURUNCA KAYDA BASTIĞINDA 0 oluyor o da hataya düşürüyor.-->
+            <!-- <input type="text" value="@Html.DisplayFor(model=>model.bayiTable.bayiad)" readonly class="form-control" id=@Html.DisplayFor(model=>model.bayiTable.bayiad)  name="@Html.DisplayFor(model=>model.bayiTable.bayiad)">-->
+            @Html.DropDownList("bayiid", null, htmlAttributes: new { @class = "form-control" })
+            <!--YARIN DEVAM ET BURAYA. ÜSTTEKİ DURUNCA KAYDA BASTIĞINDA 0 oluyor o da hataya düşürüyor.-->
         </div>
     </div>
         
