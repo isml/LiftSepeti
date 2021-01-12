@@ -18,22 +18,29 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <form  class ="form-inline"  >
-        <input class="form-control mr-sm-2" type="text" placeholder="Ara" id="textsearch" >
-        <a href="#" id="btnara" class="btn btn-success" type="submit">Ara</a>
-    </form>
-</nav>
+
 <br>
 <body>
+    
     <div class="container">
         <h2 style="margin-left:500px">SİPARİŞLER</h2>
+        <br />
+        <br />
+        <form runat="server">
+    <div style="float:right">
+        <label>Bayi Adı: </label>
+        <td>@Html.TextBox("ara")</td>
+
+        <button  class="btn btn-success">Ara</button>
+    </div>
+</form>
         <br />
         <br />
        
         <table class="table table-dark table-striped">
             <thead>
                 <tr>
+                    <th>Sıra</th>
                     <th>Sipariş Kodu </th>
                     <th>Bayi Adı</th>
                     <th>Lift Kodu</th>
@@ -47,10 +54,13 @@
             </thead>
            
             <tbody>
+                @{int sira = 1; }
                 @foreach (var item in Model)
                 {
-                    <tr>
 
+                    <tr>
+                        <td>@sira</td>
+                        @{ sira++;}
                         <td> @Html.DisplayFor(modelItem => item.id)</td>
                         <td> @Html.DisplayFor(modelItem => item.bayiTable.bayiad)</td>
                         <td> @Html.DisplayFor(modelItem => item.liftid)</td>
@@ -64,7 +74,7 @@
 
                     </tr>
                 }
-                </tbody>
+            </tbody>
                 
             </table>
         

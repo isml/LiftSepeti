@@ -13,11 +13,81 @@
     <link href="~/CSS/table.css" rel="stylesheet" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
+    <table class="styled-table" border align="center" width="100%">
+        <thead>
+
+        <th>
+            Id
+        </th>
+        <th>
+            Hammadde Adı
+        </th>
+        <th>
+            Stok Miktarı
+            
+        </th>
+        <th>
+          Temin Süresi(AY)
+           
+        </th>
+        
+        <th></th>
+        <th></th>
+        
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tbody>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.stok)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.teminsuresi)
+            </td>
+            
+            <td>
+                <a href="/yoneticidepo/Edit/@item.id" class="btn btn-warning btn-block btn-toolbar ">Düzenle</a>
+            </td>
+            
+            <td>
+                <a href="/yoneticidepo/Sil/@item.id" class="btn btn-danger btn-block btn-toolbar">Sil</a>
+               
+            </td>
+            </tbody>
+        }
+
+    </table>
+    <div class="form-group" style="margin-left:600px">
+        <div class="col-md-offset-2 col-md-10 ">
+
+            <a href="/yoneticidepo/Create" class="btn btn-success  " style="margin-left:50px"> <i>HAMMADDE EKLE</i> </a>
+            <br />
+            <br />
+            
+            <a href="/yoneticianasayfa/index" class="btn btn-dark " style="margin-left:50px"> <i>ANASAYFAYA DÖN</i> </a>
+        </div>
+    </div>
+
+</body>
+
+<!--<body>
+    <nav class="navbar navbar-expand-sm  justify-content-center">
+
+    </nav>
+
 
     <table class="styled-table">
         <thead>
@@ -56,4 +126,5 @@
     </table>
     <a href="/yoneticidepo/Create" class="btn btn-success">Hammadde Ekle</a>
 </body>
+    -->
 </html>

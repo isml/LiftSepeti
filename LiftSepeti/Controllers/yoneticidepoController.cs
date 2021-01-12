@@ -103,7 +103,13 @@ namespace LiftSepeti.Controllers
             }
             return View(depoTable);
         }
-
+        public ActionResult Sil(int? id)
+        {
+            depoTable depoTable = db.depoTable.Find(id);
+            db.depoTable.Remove(depoTable);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
         // POST: yoneticidepo/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

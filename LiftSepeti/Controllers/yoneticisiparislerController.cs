@@ -15,11 +15,34 @@ namespace LiftSepeti.Controllers
         private LiftSepetiEntities4 db = new LiftSepetiEntities4();
 
         // GET: yoneticisiparisler
-        public ActionResult Index()
+        public ActionResult Index(string ara)
         {
             var siparisTable = db.siparisTable.Include(s => s.bayiTable).Include(s => s.durumTable).Include(s => s.liftTable).Include(s => s.odemeyontemiTable);
 
-            return View(siparisTable.Where(x => x.durumid == 2).ToList());
+            // return View(siparisTable.Where(x => x.durumid == 2).ToList());
+            // return View(siparisTable.Where(x=>x.bayiid);
+            //return View(siparisTable.ToList());
+            //return View(siparisTable.Where(x => x.durumTable.id == 2).ToList());
+            //return View(siparisTable.Where(x => x.bayiTable.bayiad.Contains(ara) || ara == null ).ToList());
+            //return View(siparisTable.Where(x => x.bayiTable.bayiad.Contains(ara) || x.durumid == 2).ToList()); //enyakın
+            //return View(siparisTable.Where(x => x.durumTable.id == 2 || ara==null).ToList());
+            // var durumkontrol = siparisTable.Where(x => x.durumTable.id == 2).ToList();
+            var durumkontrol = siparisTable.Where(x => x.durumTable.id == 2);
+            
+            var ifadekontroladasdas = siparisTable.Where(x => x.bayiTable.bayiad.Contains(ara));
+            var ifadekontrol = siparisTable.Where(x => x.bayiTable.bayiad.Contains(ara)|| ara==null);
+            var deneme = siparisTable.Where((x => x.durumTable.id == 2 && x.bayiTable.bayiad.Contains(ara)));
+           
+            if (ara == null)
+            {
+                return View(siparisTable.Where(x => x.durumTable.id == 2).ToList());
+            }
+            else
+            {
+                return View(siparisTable.Where(x => x.bayiTable.bayiad.Contains(ara) && x.durumid == 2).ToList());
+            }
+
+
         }
 
         // GET: yoneticisiparisler/Details/5
@@ -151,7 +174,8 @@ namespace LiftSepeti.Controllers
 
         protected void btn_search(object sender,EventArgs e)
         {
-            //var model=db.siparisTable.Where(x=>x.bayiTable.bayiad.Contains(text)) 
+            //var model=db.siparisTable.Where(x=>x.bayiTable.bayiad.Contains(txtsrch)) 
+              //var model= db.siparisTable.Where(x=>x.bayiTable.bayiad.Contains(txtsrch)) 
 
         }
     }
