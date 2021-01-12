@@ -16,8 +16,9 @@ namespace LiftSepeti.Controllers
     public class musteriAPIController : Controller
     {
         // GET: musteriAPI
-        public ActionResult Index()
+        public ActionResult Index(int musteriid)
         {
+            ViewBag.musteriid = musteriid;
             IEnumerable<musterisiparisModel> musterisiparismodel = null;
             using (var client = new HttpClient())
             {
@@ -45,6 +46,11 @@ namespace LiftSepeti.Controllers
         }
         public ActionResult SiparisEkle(int musteriid, int bayiid, int liftid, int modelid, string resim, string bayiad, string liftad, double fiyat, int bakimperiyot)
         {
+            ViewBag.musteriid = musteriid;
+               LiftSepetiEntities4 db = new LiftSepetiEntities4();
+           var alisFiyat = db.siparisTable.Where(x => x.bayiid == bayiid && x.liftid == liftid).FirstOrDefault().liftTable.fiyat;
+
+            var kar = fiyat - alisFiyat;
             musterisiparisModel musterisiparis = new musterisiparisModel();
             musterisiparis.id = musteriid;
             musterisiparis.bayiid = bayiid;
@@ -55,6 +61,7 @@ namespace LiftSepeti.Controllers
             musterisiparis.liftad = liftad;
             musterisiparis.fiyat = fiyat;
             musterisiparis.bakimperiyot = bakimperiyot;
+            musterisiparis.kar = kar;
 
             using (var client = new HttpClient())
             {
@@ -65,7 +72,7 @@ namespace LiftSepeti.Controllers
                 var result = postJob.Result;
                 if (result.IsSuccessStatusCode)
                 {
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", new { musteriid = musteriid });
                 }
                 else
                 {

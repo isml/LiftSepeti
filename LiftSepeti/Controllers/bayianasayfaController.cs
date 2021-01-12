@@ -24,5 +24,16 @@ namespace LiftSepeti.Controllers
             return View(liftTable.ToList());
         
         }
+        
+
+            public ActionResult bayisiparisler(int bayiid)
+        {
+            ViewBag.bayiid = bayiid;
+            LiftSepetiEntities4 db = new LiftSepetiEntities4();
+            var bayisiparisler= db.siparisTable.Where(x => x.bayiid == bayiid).ToList();
+            
+            return View(bayisiparisler);
+
+        }
     }
 }

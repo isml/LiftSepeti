@@ -16,6 +16,7 @@ namespace LiftSepeti.Models
         public string liftad { get; set; }
         public double fiyat { get; set; }
         public int bakimperiyot { get; set; }
+        public double kar { get; set; }
 
 
 

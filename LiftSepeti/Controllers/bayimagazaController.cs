@@ -1,12 +1,15 @@
 ﻿using System;
+using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
-using System.Net;
+using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
+using LiftSepeti.Models;
 using LiftSepeti.Models.Entity;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
 
 namespace LiftSepeti.Controllers
 {
@@ -46,60 +49,41 @@ namespace LiftSepeti.Controllers
 
         }
 
-        // GET: bayimagaza/Create
-        public ActionResult Create()
+        public ActionResult satislar(int bayiid)
         {
-            ViewBag.bayiid = new SelectList(db.bayiTable, "id", "ulke");
-            ViewBag.modelid = new SelectList(db.modelTable, "id", "ad");
-            return View();
-        }
-
-        // POST: bayimagaza/Create
-        // Aşırı gönderim saldırılarından korunmak için bağlamak istediğiniz belirli özellikleri etkinleştirin. 
-        // Daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
-       
-
-        // GET: bayimagaza/Edit/5
-       
-
-        // POST: bayimagaza/Edit/5
-        // Aşırı gönderim saldırılarından korunmak için bağlamak istediğiniz belirli özellikleri etkinleştirin. 
-        // Daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
-      
-
-        // GET: bayimagaza/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
+            IEnumerable<musterisiparisModel> musterisiparismodel = null;
+            using (var client = new HttpClient())
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                client.BaseAddress = new Uri("https://5ff8af7517386d0017b5172b.mockapi.io/");
+                var responseTask = client.GetAsync("musterisiparis");
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readjob = result.Content.ReadAsAsync<IList<musterisiparisModel>>();
+                    readjob.Wait();
+                    musterisiparismodel = readjob.Result;
+                }
+                else
+                {
+                    //musterisiparismodel = (IEnumerable<yoneticiTable>)Enumerable.Empty<musteriAPIController>();
+                    //ModelState.AddModelError(string.Empty, "hataaaaaa");
+                }
+
+
+
+                ViewBag.bayiid = bayiid;
+                return View(musterisiparismodel);
             }
-            bayiurunlerTable bayiurunlerTable = db.bayiurunlerTable.Find(id);
-            if (bayiurunlerTable == null)
-            {
-                return HttpNotFound();
-            }
-            return View(bayiurunlerTable);
+
+          
+
         }
 
-        // POST: bayimagaza/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            bayiurunlerTable bayiurunlerTable = db.bayiurunlerTable.Find(id);
-            db.bayiurunlerTable.Remove(bayiurunlerTable);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+
+
+
     }
 }
