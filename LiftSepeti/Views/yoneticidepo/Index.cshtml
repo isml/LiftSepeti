@@ -23,18 +23,31 @@
     <h2 style="margin-left:500px">SİPARİŞLER</h2>
     <br />
     <br />
-    <form runat="server">
-        <div style="float:right">
-            <label>Bayi Adı: </label>
-            <td>@Html.TextBox("ara")</td>
-
-            <button class="btn btn-success">Ara</button>
+    <div>
+        <div style="float:left">
+            <a href="/yoneticidepo/Create" class="btn btn-success  " style="margin-left:10px"> <i>HAMMADDE EKLE</i> </a>
+            <a href="/yoneticianasayfa/index" class="btn btn-dark " style="margin-left:50px"> <i>ANASAYFAYA DÖN</i> </a>
         </div>
+        <form runat="server">
+
+            <div style="float:right">
+                <label>Hammadde Adı: </label>
+                <td>@Html.TextBox("ara")</td>
+
+                <button class="btn btn-success">Ara</button>
+            </div>
+
+        </form>
+    </div>
+    <br />
+    <br />
+
         <body>
             <table class="table table-dark table-striped">
                 <thead>
                     <tr>
-                        <th>Id</th>
+                        <th>Sıra</th>
+                        <th>Kod</th>
                         <th> Hammadde Adı </th>
                         <th>Stok Miktarı</th>
                         <th>Temin Süresi(AY)</th>
@@ -52,133 +65,32 @@
                     @foreach (var item in Model)
                     {
 
-                        <tr>
-                            <td>@sira</td>
-                            @{ sira++;}
-                            <td>  @Html.DisplayFor(modelItem => item.id)</td>
-                            <td>  @Html.DisplayFor(modelItem => item.ad)</td>
-                            <td> @Html.DisplayFor(modelItem => item.stok)</td>
-                            <td> @Html.DisplayFor(modelItem => item.teminsuresi)</td>
+                    <tr>
+                        <td>@sira</td>
+                        @{ sira++;}
+                        <td>  @Html.DisplayFor(modelItem => item.id)</td>
+                        <td>  @Html.DisplayFor(modelItem => item.ad)</td>
+                        <td> @Html.DisplayFor(modelItem => item.stok)</td>
+                        <td> @Html.DisplayFor(modelItem => item.teminsuresi)</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><a href="/yoneticidepo/Edit/@item.id" class="btn btn-warning">Düzenle</a></td>
+                        <td><a href="/yoneticidepo/Sil/@item.id" class="btn btn-danger">Sil</a></td>
 
-                            <td><a href="/yoneticidepo/Edit/@item.id" class="btn btn-warning">Düzenle</a></td>
-                            <td><a href="/yoneticidepo/Sil/@item.id" class="btn btn-danger">Sil</a></td>
 
-
-                        </tr>
+                    </tr>
                     }
                 </tbody>
 
             </table>
 
 
-            <!--
-                <table class="styled-table" border align="center" width="100%">
-                    <thead>
-
-                    <th>
-                        Id
-                    </th>
-                    <th>
-                        Hammadde Adı
-                    </th>
-                    <th>
-                        Stok Miktarı
-
-                    </th>
-                    <th>
-                        Temin Süresi(AY)
-
-                    </th>
-
-                    <th></th>
-                    <th></th>
-
-                    </thead>
-
-                    @foreach (var item in Model)
-                    {
-                        <tbody>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.id)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ad)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.stok)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.teminsuresi)
-                        </td>
-
-                        <td>
-                            <a href="/yoneticidepo/Edit/@item.id" class="btn btn-warning btn-block btn-toolbar ">Düzenle</a>
-                        </td>
-
-                        <td>
-                            <a href="/yoneticidepo/Sil/@item.id" class="btn btn-danger btn-block btn-toolbar">Sil</a>
-
-                        </td>
-                        </tbody>
-                    }
-
-                </table>
-                 -->
-            <div class="form-group" style="margin-left:400px">
-                <div class="col-md-offset-2 col-md-10 ">
-
-                    <a href="/yoneticidepo/Create" class="btn btn-success  " style="margin-left:50px"> <i>HAMMADDE EKLE</i> </a>
-                    <br />
-                    <br />
-
-                    <a href="/yoneticianasayfa/index" class="btn btn-dark " style="margin-left:50px"> <i>ANASAYFAYA DÖN</i> </a>
-                </div>
-            </div>
+           
+            
 
         </body>
 
-        <!--<body>
-            <nav class="navbar navbar-expand-sm  justify-content-center">
-
-            </nav>
-
-
-            <table class="styled-table">
-                <thead>
-                <th>
-                    @Html.DisplayNameFor(model => model.ad)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.stok)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.teminsuresi)
-                </th>
-                <th></th>
-                </thead>
-
-                @foreach (var item in Model)
-                {
-                    <tbody>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ad)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.stok)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.teminsuresi)
-                    </td>
-                    <td>
-                        <a href="/yoneticidepo/Edit/@item.id" class="btn btn-warning">Düzenle</a>|
-                        <a href="/yoneticidepo/Details/@item.id" class="btn btn-info">Detay</a>|
-                        <a href="/yoneticidepo/Delete/@item.id" class="btn btn-danger">Sil</a>
-                    </td>
-                    </tbody>
-                }
-
-            </table>
-            <a href="/yoneticidepo/Create" class="btn btn-success">Hammadde Ekle</a>
-        </body>
-            -->
+      
 </html>

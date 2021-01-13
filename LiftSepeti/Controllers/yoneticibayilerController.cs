@@ -17,9 +17,10 @@ namespace LiftSepeti.Controllers
         private LiftSepetiEntities4 db = new LiftSepetiEntities4();
 
         // GET: yoneticibayiler
-        public ActionResult Index()
+        public ActionResult Index(string ara)
         {
-            return View(db.bayiTable.ToList());
+            //return View(db.bayiTable.ToList());
+            return View(db.bayiTable.Where(x=>x.bayiad.Contains(ara)||ara==null).ToList());
         }
 
         // GET: yoneticibayiler/Details/5

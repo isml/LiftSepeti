@@ -43,7 +43,7 @@
                     <th>Sıra</th>
                     <th>Sipariş Kodu </th>
                     <th>Bayi Adı</th>
-                    <th>Lift Kodu</th>
+                    <th>Lift Adı</th>
                     <th>Durumu</th>
                     <th>Alınan miktar</th>
                     <th>Ödeme Yöntemi</th>
@@ -63,7 +63,7 @@
                         @{ sira++;}
                         <td> @Html.DisplayFor(modelItem => item.id)</td>
                         <td> @Html.DisplayFor(modelItem => item.bayiTable.bayiad)</td>
-                        <td> @Html.DisplayFor(modelItem => item.liftid)</td>
+                        <td> @Html.DisplayFor(modelItem => item.liftTable.modelTable.ad)</td>
                         <td> @Html.DisplayFor(modelItem => item.durumTable.durum) verildi</td>
                         <td> @Html.DisplayFor(modelItem => item.adet)</td>
                         <td> @Html.DisplayFor(modelItem => item.odemeyontemiTable.tip)</td>

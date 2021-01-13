@@ -25,19 +25,31 @@
 
 <body>
     <div class="container">
+
         <h2 style="margin-left:500px">SİPARİŞLER</h2>
         <br />
         <br />
-        <form runat="server">
-            <div style="float:right">
-                <label>Bayi Adı: </label>
-                <td>@Html.TextBox("ara")</td>
+        <div>
+            <div style="float:left">
+                <a href="/yoneticibayiler/Create" class="btn btn-success  " style="margin-left:10px"> <i>BAYİ EKLE</i> </a>
 
-                <button class="btn btn-success">Ara</button>
+                <a href="/yoneticianasayfa/index" class="btn btn-dark " style="margin-left:50px"> <i>ANASAYFAYA DÖN</i> </a>
             </div>
-        </form>
+
+            <form runat="server">
+
+                <div style="float:right">
+                    <label>Bayi Adı: </label>
+                    <td>@Html.TextBox("ara")</td>
+
+                    <button class="btn btn-success">Ara</button>
+                </div>
+
+            </form>
+        </div>
         <br />
         <br />
+
 
         <table class="table table-dark table-striped">
             <thead>
@@ -56,35 +68,23 @@
                 @foreach (var item in Model)
                 {
 
-                <tr>
-                    <td>@sira</td>
-                    @{ sira++;}
-                    <td> @Html.DisplayFor(modelItem => item.id)</td>
-                    <td> @Html.DisplayFor(modelItem => item.ulke)</td>
-                    <td> @Html.DisplayFor(modelItem => item.sehir)</td>
-                    <td> @Html.DisplayFor(modelItem => item.bayiad)</td>
-                    <td>  @Html.DisplayFor(modelItem => item.sifre)</td>
+                    <tr>
+                        <td>@sira</td>
+                        @{ sira++;}
+                        <td> @Html.DisplayFor(modelItem => item.id)</td>
+                        <td> @Html.DisplayFor(modelItem => item.ulke)</td>
+                        <td> @Html.DisplayFor(modelItem => item.sehir)</td>
+                        <td> @Html.DisplayFor(modelItem => item.bayiad)</td>
+                        <td>  @Html.DisplayFor(modelItem => item.sifre)</td>
 
-                    <td><a href="/yoneticibayiler/Edit/@item.id" class="btn btn-warning">Düzenle</a></td>
-                    <td><a href="/yoneticibayiler/Details/@item.id" class="btn btn-warning">Detay</a></td>
-                    <td><a href="/yoneticibayiler/Sil/@item.id" class="btn btn-danger">Sil</a></td>
+                        <td><a href="/yoneticibayiler/Edit/@item.id" class="btn btn-warning">Düzenle</a></td>
+                        <td><a href="/yoneticibayiler/Details/@item.id" class="btn btn-light">Detay</a></td>
+                        <td><a href="/yoneticibayiler/Sil/@item.id" class="btn btn-danger">Sil</a></td>
 
 
-                </tr>
+                    </tr>
                 }
             </tbody>
-
-        
-        <div class="form-group" style="margin-left:400px">
-            <div class="col-md-offset-2 col-md-10 ">
-
-                <a href="/yoneticibayiler/Create" class="btn btn-success  " style="margin-left:80px"> <i>BAYİ EKLE</i> </a>
-                <br />
-                <br />
-                <a href="/yoneticianasayfa/index" class="btn btn-dark " style="margin-left:50px"> <i>ANASAYFAYA DÖN</i> </a>
-            </div>
-        </div>
-
 
 
 

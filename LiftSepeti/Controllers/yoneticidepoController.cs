@@ -15,9 +15,10 @@ namespace LiftSepeti.Controllers
         private LiftSepetiEntities4 db = new LiftSepetiEntities4();
 
         // GET: yoneticidepo
-        public ActionResult Index()
+        public ActionResult Index(string ara)
         {
-            return View(db.depoTable.ToList());
+            
+            return View(db.depoTable.Where(x=>x.ad.Contains(ara)||ara==null).ToList());
         }
 
         // GET: yoneticidepo/Details/5
