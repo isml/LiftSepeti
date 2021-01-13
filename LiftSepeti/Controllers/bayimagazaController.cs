@@ -80,6 +80,44 @@ namespace LiftSepeti.Controllers
           
 
         }
+        public ActionResult tariharalik(int tariharaligi, int bayiid)
+        {
+            if(tariharaligi == 5)
+            {
+                return RedirectToAction("satislar", "bayimagaza", new { bayiid = bayiid });
+            }
+            DateTime tarih = DateTime.Now;
+            
+
+            IEnumerable<musterisiparisModel> musterisiparismodel = null;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://5ff8af7517386d0017b5172b.mockapi.io/");
+                var responseTask = client.GetAsync("musterisiparis");
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readjob = result.Content.ReadAsAsync<IList<musterisiparisModel>>();
+                    readjob.Wait();
+                    musterisiparismodel = readjob.Result;
+                }
+                else
+                {
+                    //musterisiparismodel = (IEnumerable<yoneticiTable>)Enumerable.Empty<musteriAPIController>();
+                    //ModelState.AddModelError(string.Empty, "hataaaaaa");
+                }
+
+                ViewBag.aralik = tariharaligi;
+                ViewBag.ay = tarih.Month;
+                ViewBag.gun = tarih.Day;
+               
+                ViewBag.bayiid = bayiid;
+                return View(musterisiparismodel);
+            }
+
+        }
 
 
 

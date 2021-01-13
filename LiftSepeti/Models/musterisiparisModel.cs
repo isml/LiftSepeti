@@ -17,6 +17,7 @@ namespace LiftSepeti.Models
         public double fiyat { get; set; }
         public int bakimperiyot { get; set; }
         public double kar { get; set; }
+        public DateTime tarih { get; set; }
 
 
 

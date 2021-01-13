@@ -48,7 +48,7 @@ namespace LiftSepeti.Controllers
         {
             ViewBag.musteriid = musteriid;
                LiftSepetiEntities4 db = new LiftSepetiEntities4();
-           var alisFiyat = db.siparisTable.Where(x => x.bayiid == bayiid && x.liftid == liftid).FirstOrDefault().liftTable.fiyat;
+            var alisFiyat = db.siparisTable.Where(x => x.bayiid == bayiid && x.liftid == liftid).FirstOrDefault().liftTable.fiyat;
 
             var kar = fiyat - alisFiyat;
             musterisiparisModel musterisiparis = new musterisiparisModel();
@@ -62,6 +62,7 @@ namespace LiftSepeti.Controllers
             musterisiparis.fiyat = fiyat;
             musterisiparis.bakimperiyot = bakimperiyot;
             musterisiparis.kar = kar;
+            musterisiparis.tarih = DateTime.Now;
 
             using (var client = new HttpClient())
             {

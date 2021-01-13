@@ -439,6 +439,7 @@
     <Content Include="Views\musteriAPI\Index.cshtml" />
     <Content Include="Views\bayianasayfa\bayisiparisler.cshtml" />
     <Content Include="Views\bayimagaza\satislar.cshtml" />
+    <Content Include="Views\bayimagaza\tariharalik.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
