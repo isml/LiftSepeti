@@ -42,10 +42,10 @@
 
 
         body {
-            background-image: url('https://cutewallpaper.org/21/truck-wallpaper-hd/Volvo-Truck-Wallpaper-67+-Group-Wallpapers.jpg');
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
+            background-color: whitesmoke;
         }
     </style>
     <script type="text/javascript">
@@ -70,6 +70,7 @@
                     <li class="active"><a href="/bayianasayfa/Index?bayiid=@ViewBag.bayiid">Ana Sayfa</a></li>
                     <li><a href="/bayisepet/getIndex?bayiid=@ViewBag.bayiid">Sepet</a></li>
                     <li><a href="/bayimagaza/Index?bayiid=@ViewBag.bayiid">Mağazam</a></li>
+                    <li><a href="/bayianasayfa/bayisiparisler?bayiid=@ViewBag.bayiid">Siparişlerim</a></li>
 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -88,8 +89,8 @@
                 <div class="w3-container">
 
 
-                    <div class="w3-panel w3-card w3-white">
-                        <img src="@lft.liftTable.resim" alt="Card image cap" width="700px" height="250px" class="sola-kaydir">
+                    <div class="w3-panel w3-card w3-white" style="border-radius:25px;">
+                        <img src="@lft.liftTable.resim" alt="Card image cap" width="700px" height="250px" class="sola-kaydir" style="padding: 20px;">
                         <br />
                         <div class="paragraf_d">
                             <p>Model Türü : @lft.liftTable.modelTable.ad</p>
@@ -108,44 +109,45 @@
         <div style="float:left">
 
             <div>
-                <div class="w3-panel w3-card w3-white">
+                <div class="w3-panel w3-card w3-white" style="border-radius:25px;">
                     <div class="card-body">
                         <h4 class="card-title">Sepet Tutarı</h4>
                         @{
                             double toplamtutar = 0.0;
                         }
+                        @{int sira = 1; }
                         @foreach (var lft in Model)
                         {
 
 
-                            <p class="card-text">1x @lft.liftTable.modelTable.ad ===========>@lft.liftTable.fiyat TL</p>
+                            <p class="card-text"><h4>@sira) @lft.liftTable.modelTable.ad: @lft.liftTable.fiyat ₺</h4>@{ sira++;} </p>
 
 
                             toplamtutar += lft.liftTable.fiyat;
 
                         }
-                        *
+
                         <br />
-                        *
-                        <br />
-                        *
+
+
+
                         @{
                             string odemeyontemi = "";
 
                         }
-                        <p class="card-text">Toplam  ===========>@toplamtutar TL </p>
+                        <p class="card-text"><h4>Toplam: @toplamtutar ₺</h4>  </p>
 
 
                         <form method="post" action="@Url.Action("ode", "bayisepet", new {bayiid = @ViewBag.bayiid})">
 
-                            <label for="odeme">Ödeme yöntemi</label><br>
+                            <label for="odeme"><h4><b>Ödeme Yöntemi</b></h4></label><br>
+
                             <select class="form-control" id="odemeyontemi" name="odemeyontemi">
 
                                 <option value=1>Nakit</option>
                                 <option value=2>Kredi Kartı</option>
                                 <option value=3>Çek</option>
                             </select>
-                            <br />
                             <br />
 
                             <input class="btn-success" type="submit" value="Ödeme Yap">
