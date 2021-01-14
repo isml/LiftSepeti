@@ -23,7 +23,7 @@
 
     
         body {
-            background-color: lightblue;
+            background-color: whitesmoke;
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
@@ -31,15 +31,62 @@
     
     </style>
 </head>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark ">
+
+    <a class="navbar-brand" href="#">Lift Sepeti</a>
+
+
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="/yoneticianasayfa">Ana Sayfa</a>
+        </li>
+        <div>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle 	" href="/yoneticiliftler/Index" id="navbardrop" data-toggle="dropdown">
+                    Liftler
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/yoneticiliftler/Index">Liftleri Görüntüle</a>
+                    <a class="dropdown-item" href="/yoneticiliftler/Create">Lift Modeli Ekle</a>
+                </div>
+
+            </li>
+        </div>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/yoneticibayiler/Index">Bayiler</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/yoneticisiparisler/Index">Siparişler</a>
+        </li>
+
+
+        <li class="nav-item">
+            <a class="nav-link" href="/yoneticidepo/Index">Depo</a>
+        </li>
+
+        <div>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle 	" href="#" id="navbardrop" data-toggle="dropdown">
+                    Yönetici
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/login/Index">Oturumu Kapat</a>
+                </div>
+            </li>
+        </div>
+
+    </ul>
+</nav>
 <body>
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
         
-    <div class="form-check">
+    <div class="form-check" style="padding-left:400px; padding-right: 400px;">
         <br />
-        <h2 style="margin-left:600px">SİPARİŞİ DÜZENLE</h2>
-        <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.id)
 
@@ -100,10 +147,9 @@
             </div>
         </div>
 
-        <div class="form-group" style="margin-left:600px">
+        <div class="form-group" style="margin-left:500px">
             <div class="col-md-offset-10 col-md-10">
                 <input type="submit" value="Kaydet" class="btn btn-success" />
-                <a href="/yoneticisiparisler/Index" class="btn btn-info">Listeye Geri Dön</a>
             </div>
         </div>
     </div>

@@ -23,7 +23,7 @@
 
        
         body {
-            background-color: lightblue;
+            background-color: whitesmoke;
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
@@ -31,19 +31,68 @@
     
     </style>
 </head>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark ">
+
+    <a class="navbar-brand" href="#">Lift Sepeti</a>
+
+
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="/yoneticianasayfa">Ana Sayfa</a>
+        </li>
+        <div>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle 	" href="/yoneticiliftler/Index" id="navbardrop" data-toggle="dropdown">
+                    Liftler
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/yoneticiliftler/Index">Liftleri Görüntüle</a>
+                    <a class="dropdown-item" href="/yoneticiliftler/Create">Lift Modeli Ekle</a>
+                </div>
+
+            </li>
+        </div>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/yoneticibayiler/Index">Bayiler</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/yoneticisiparisler/Index">Siparişler</a>
+        </li>
+
+
+        <li class="nav-item">
+            <a class="nav-link" href="/yoneticidepo/Index">Depo</a>
+        </li>
+
+        <div>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle 	" href="#" id="navbardrop" data-toggle="dropdown">
+                    Yönetici
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/login/Index">Oturumu Kapat</a>
+                </div>
+            </li>
+        </div>
+
+    </ul>
+</nav>
+<br />
 <body>
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
 
-        <div class="form-horizontal">
-            <h4>Lift Düzenleme</h4>
-            <hr />
+        <div class="form-horizontal" style="padding-left:400px; padding-right: 400px;">
+ 
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.HiddenFor(model => model.id)
 
             <div class="form-group">
-                @Html.LabelFor(model => model.modelid, "Model ID", htmlAttributes: new { @class = "control-label col-md-1" })
+                @Html.LabelFor(model => model.modelid, "Model ID", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.DropDownList("modelid", null, htmlAttributes: new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.modelid, "", new { @class = "text-danger" })
@@ -51,7 +100,7 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.adet, "Adet", htmlAttributes: new { @class = "control-label col-md-1" })
+                @Html.LabelFor(model => model.adet, "Adet", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.adet, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.adet, "", new { @class = "text-danger" })
@@ -59,7 +108,7 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.fiyat, "Fiyat", htmlAttributes: new { @class = "control-label col-md-1" })
+                @Html.LabelFor(model => model.fiyat, "Fiyat", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.fiyat, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.fiyat, "", new { @class = "text-danger" })
@@ -67,7 +116,7 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.bakimperiyot, "Bakım Periyot", htmlAttributes: new { @class = "control-label col-md-1" })
+                @Html.LabelFor(model => model.bakimperiyot, "Bakım Periyot", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.bakimperiyot, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.bakimperiyot, "", new { @class = "text-danger" })
@@ -75,7 +124,7 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.resim, "Resim", htmlAttributes: new { @class = "control-label col-md-1" })
+                @Html.LabelFor(model => model.resim, "Resim", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.resim, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.resim, "", new { @class = "text-danger" })
@@ -90,10 +139,5 @@
             </div>
         </div>
     }
-
-    <div>
-        <a href="/yoneticiliftler/Index" class="btn btn-info">Listeye Geri Dön</a>
-
-    </div>
 </body>
 </html>
