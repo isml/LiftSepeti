@@ -139,6 +139,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\bayianasayfaController.cs" />
     <Compile Include="Controllers\bayimagazaController.cs" />
+    <Compile Include="Controllers\bayisatisTablesController.cs" />
     <Compile Include="Controllers\bayisepetController.cs" />
     <Compile Include="Controllers\durumTablesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -440,6 +441,11 @@
     <Content Include="Views\bayianasayfa\bayisiparisler.cshtml" />
     <Content Include="Views\bayimagaza\satislar.cshtml" />
     <Content Include="Views\bayimagaza\tariharalik.cshtml" />
+    <Content Include="Views\bayisatisTables\Create.cshtml" />
+    <Content Include="Views\bayisatisTables\Delete.cshtml" />
+    <Content Include="Views\bayisatisTables\Details.cshtml" />
+    <Content Include="Views\bayisatisTables\Edit.cshtml" />
+    <Content Include="Views\bayisatisTables\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

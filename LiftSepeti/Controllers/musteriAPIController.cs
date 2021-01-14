@@ -46,13 +46,23 @@ namespace LiftSepeti.Controllers
         }
         public ActionResult SiparisEkle(int musteriid, int bayiid, int liftid, int modelid, string resim, string bayiad, string liftad, double fiyat, int bakimperiyot)
         {
+            LiftSepetiEntities4 db = new LiftSepetiEntities4();
+            if (modelid == 0)
+            {
+                modelid= db.liftTable.Find(liftid).modelid;
+                resim = db.liftTable.Find(liftid).resim;
+                //bayiad = db.bayiTable.Find(bayiid).bayiad;
+                liftad = db.liftTable.Find(liftid).modelTable.ad;
+                bakimperiyot = db.liftTable.Find(liftid).bakimperiyot;
+
+            }
             ViewBag.musteriid = musteriid;
-               LiftSepetiEntities4 db = new LiftSepetiEntities4();
+               
             var alisFiyat = db.siparisTable.Where(x => x.bayiid == bayiid && x.liftid == liftid).FirstOrDefault().liftTable.fiyat;
 
             var kar = fiyat - alisFiyat;
             musterisiparisModel musterisiparis = new musterisiparisModel();
-            musterisiparis.id = musteriid;
+            musterisiparis.musteriid = musteriid;
             musterisiparis.bayiid = bayiid;
             musterisiparis.liftid = liftid;
             musterisiparis.modelid = modelid;

@@ -1,0 +1,78 @@
+﻿@model LiftSepeti.Models.Entity.bayisatisTable
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    @{
+        int musteriid=0, bayiid, liftid=0, modelid=0, bakimperiyot=0;
+        string resim="", bayiad, liftad="";
+        double fiyat;
+
+        bayiid = ViewBag.bayiid;
+        bayiad = ViewBag.bayiad;
+    }
+    <form method="post" action="@Url.Action("SiparisEkle", "musteriAPI", new { bayiid = bayiid, modelid = modelid, bakimperiyot = bakimperiyot, resim = resim,bayiad=bayiad,liftad=liftad})">
+        <div class="form-horizontal">
+            <h4>bayisatisTable</h4>
+           
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Müşteriler</label>
+                <div class="col-md-10">
+                    <select class="form-control" name="musteriid" >
+                        @foreach (var i in ViewBag.musteriler)
+                        {
+                         <h4>AD:</h4>@i.ad <option>@i.id</option>
+                        }
+
+
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Ürünler</label>
+                <div class="col-md-10">
+                    <select class="form-control" name="liftid" >
+                        @foreach (var i in ViewBag.isimler)
+                        {
+                            <option>@i.id</option>
+                        }
+
+
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <label for="usr">Fiyat</label>
+                    <input type="number" class="form-control" id="fiyat" name="fiyat">
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input  type="submit" value="Create" class="btn btn-success" />
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

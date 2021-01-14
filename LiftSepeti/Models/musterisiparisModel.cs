@@ -8,6 +8,7 @@ namespace LiftSepeti.Models
     public class musterisiparisModel
     {
         public int id { get; set; }
+        public int musteriid { get; set; }
         public int bayiid { get; set; }
         public int liftid { get; set; }
         public int modelid { get; set; }
