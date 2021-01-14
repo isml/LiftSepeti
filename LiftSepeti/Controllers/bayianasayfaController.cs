@@ -22,16 +22,20 @@ namespace LiftSepeti.Controllers
             ViewBag.bayibilgiler = bayi;
             var liftTable = db.liftTable.Include(l => l.modelTable);
             return View(liftTable.ToList());
-        
-        }
-        
 
-            public ActionResult bayisiparisler(int bayiid)
+        }
+
+
+        public ActionResult bayisiparisler(int bayiid)
         {
+
             ViewBag.bayiid = bayiid;
             LiftSepetiEntities4 db = new LiftSepetiEntities4();
-            var bayisiparisler= db.siparisTable.Where(x => x.bayiid == bayiid).ToList();
-            
+            var bayisiparisler = db.siparisTable.Where(x => x.bayiid == bayiid).ToList();
+
+            bayiTable bayi = db.bayiTable.Where(x => x.id == bayiid).SingleOrDefault();
+            ViewBag.bayibilgiler = bayi;
+
             return View(bayisiparisler);
 
         }

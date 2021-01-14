@@ -16,24 +16,39 @@ namespace LiftSepeti.Controllers
     public class bayimagazaController : Controller
     {
         private LiftSepetiEntities4 db = new LiftSepetiEntities4();
-         
+
 
         // GET: bayimagaza
         public ActionResult Index(int bayiid)
         {
-            ViewBag.bayiid = bayiid;           
-            var bayiurunler = db.bayiurunlerTable.Where(x => x.bayiid == bayiid).ToList();       
+            bayiTable bayi = db.bayiTable.Where(x => x.id == bayiid).SingleOrDefault();
+            ViewBag.bayibilgiler = bayi;
+
+
+            ViewBag.bayiid = bayiid;
+            var bayiurunler = db.bayiurunlerTable.Where(x => x.bayiid == bayiid).ToList();
+
+
+
+
             return View(bayiurunler);
         }
 
-       
+
         public ActionResult UrunEkle(int bayiid)
         {
             ViewBag.bayiid = bayiid;
-            var bayiStok =  db.siparisTable.Where(x => x.bayiid == bayiid&&x.durumid==2).ToList();
+            var bayiStok = db.siparisTable.Where(x => x.bayiid == bayiid && x.durumid == 2).ToList();
+
+
+            bayiTable bayi = db.bayiTable.Where(x => x.id == bayiid).SingleOrDefault();
+            ViewBag.bayibilgiler = bayi;
+
+
+
             return View(bayiStok);
         }
-        public ActionResult bayiurunler(int bayiid,int liftid,float satisfiyat)
+        public ActionResult bayiurunler(int bayiid, int liftid, float satisfiyat)
         {
             ViewBag.bayiid = bayiid;
             bayiurunlerTable bayiurun = new bayiurunlerTable();
@@ -43,8 +58,10 @@ namespace LiftSepeti.Controllers
             bayiurun.stok = 1;
             db.bayiurunlerTable.Add(bayiurun);
             db.SaveChanges();
-           
+
             var bayiurunler = db.bayiurunlerTable.Where(x => x.bayiid == bayiid).ToList();
+
+
             return RedirectToAction("Index", "bayimagaza", new { bayiid = bayiid });
 
         }
@@ -74,20 +91,23 @@ namespace LiftSepeti.Controllers
 
 
                 ViewBag.bayiid = bayiid;
+                bayiTable bayi = db.bayiTable.Where(x => x.id == bayiid).SingleOrDefault();
+                ViewBag.bayibilgiler = bayi;
+
                 return View(musterisiparismodel);
             }
 
-          
+
 
         }
         public ActionResult tariharalik(int tariharaligi, int bayiid)
         {
-            if(tariharaligi == 5)
+            if (tariharaligi == 5)
             {
                 return RedirectToAction("satislar", "bayimagaza", new { bayiid = bayiid });
             }
             DateTime tarih = DateTime.Now;
-            
+
 
             IEnumerable<musterisiparisModel> musterisiparismodel = null;
             using (var client = new HttpClient())
@@ -112,14 +132,19 @@ namespace LiftSepeti.Controllers
                 ViewBag.aralik = tariharaligi;
                 ViewBag.ay = tarih.Month;
                 ViewBag.gun = tarih.Day;
-               
+
                 ViewBag.bayiid = bayiid;
                 return View(musterisiparismodel);
             }
 
         }
 
-
+        public ActionResult urunSec(int bayiid)
+        {
+            var urunler = db.bayiurunlerTable.ToList();
+            ViewBag.bayiid = bayiid;
+            return View(urunler);
+        }
 
 
 

@@ -446,6 +446,8 @@
     <Content Include="Views\bayisatisTables\Details.cshtml" />
     <Content Include="Views\bayisatisTables\Edit.cshtml" />
     <Content Include="Views\bayisatisTables\Index.cshtml" />
+    <Content Include="Views\bayimagaza\urunSec.cshtml" />
+    <Content Include="Views\Musteri\Goruntule.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

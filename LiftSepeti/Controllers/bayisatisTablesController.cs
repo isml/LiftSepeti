@@ -15,10 +15,19 @@ namespace LiftSepeti.Controllers
         private LiftSepetiEntities4 db = new LiftSepetiEntities4();
 
         // GET: bayisatisTables
-        public ActionResult Index()
+        public ActionResult Index(int? bayiid)
         {
             var bayisatisTable = db.bayisatisTable.Include(b => b.bayiTable).Include(b => b.bayiurunlerTable).Include(b => b.musteriTable);
-            return View(bayisatisTable.ToList());
+
+            var musteriTable = db.musteriTable.ToList();
+            musteriTable musteritbl = db.musteriTable.Find(bayiid);
+
+            bayiTable bayi = db.bayiTable.Where(x => x.id == bayiid).SingleOrDefault();
+            ViewBag.bayibilgiler = bayi;
+
+            return View(bayisatisTable.ToList()); //oluyo
+            //return View(musteriTable);
+
         }
 
         // GET: bayisatisTables/Details/5
@@ -39,7 +48,7 @@ namespace LiftSepeti.Controllers
         // GET: bayisatisTables/Create
         public ActionResult Create(int bayiid)
         {
-            ViewBag.bayiad= db.bayiTable.Find(bayiid).bayiad;
+            ViewBag.bayiad = db.bayiTable.Find(bayiid).bayiad;
 
             var musterilerlist = db.musteriTable.ToList();
             List<musteriTable> musteriler = new List<musteriTable>();
@@ -52,16 +61,22 @@ namespace LiftSepeti.Controllers
 
             var bayiurunler = db.bayiurunlerTable.Where(x => x.bayiid == bayiid).ToList();
             List<liftTable> isimler = new List<liftTable>();
-            foreach (var i in bayiurunler){
-              isimler.Add(i.liftTable);
+            foreach (var i in bayiurunler)
+            {
+                isimler.Add(i.liftTable);
             }
             ViewBag.isimler = isimler;
             ViewBag.bayiid = bayiid;
             ViewBag.bayiurunleriid = new SelectList(db.bayiurunlerTable, "id", "liftid");
             ViewBag.musteriid = new SelectList(db.musteriTable, "id", "ad");
+
+            bayiTable bayi = db.bayiTable.Where(x => x.id == bayiid).SingleOrDefault();
+            ViewBag.bayibilgiler = bayi;
+
+
             return View();
         }
-       
+
 
         // POST: bayisatisTables/Create
         // Aşırı gönderim saldırılarından korunmak için bağlamak istediğiniz belirli özellikleri etkinleştirin. 

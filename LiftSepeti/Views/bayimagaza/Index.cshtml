@@ -15,9 +15,10 @@
     <title>Bootstrap Example</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <style>
         div.w3-container {
             width: 1200px;
@@ -51,7 +52,58 @@
     </style>
 </head>
 <body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <a class="navbar-brand" href="#">Lift Sepeti</a>
+        <ul class=" navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/bayianasayfa/Index?bayiid=@ViewBag.bayiid">Ana Sayfa</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/bayisepet/getIndex?bayiid=@ViewBag.bayiid">Sepet</a>
+            </li>
 
+            <li class="nav-item">
+                <a class="nav-link" href="/bayianasayfa/bayisiparisler?bayiid=@ViewBag.bayiid">Siparişlerim</a>
+            </li>
+
+            <div>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle 	" href="#" id="navbardrop" data-toggle="dropdown">
+                        Satışlarım
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/Musteri/Goruntule?bayiid=@ViewBag.bayiid">Satış yap</a>
+
+                        <a class="dropdown-item" href="/bayimagaza/satislar?bayiid=@ViewBag.bayiid">Satışlarım</a>
+                    </div>
+
+                </li>
+            </div>
+            <div>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle 	" href="#" id="navbardrop" data-toggle="dropdown">
+                        Mağazam
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/bayimagaza/Index?bayiid=@ViewBag.bayibilgiler.id">Ürünlerim</a>
+                        <a class="dropdown-item" href="/bayimagaza/UrunEkle?bayiid=@ViewBag.bayiid">Ürün Ekle</a>
+                    </div>
+
+                </li>
+            </div>
+            <div>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle 	" href="#" id="navbardrop" data-toggle="dropdown">
+                        @ViewBag.bayibilgiler.bayiad
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Oturumu Kapat</a>
+                    </div>
+                </li>
+            </div>
+        </ul>
+    </nav>
+    <!--
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -69,7 +121,7 @@
                 <li><a href="#"><span class="	glyphicon glyphicon-user"></span> @ViewBag.bayiid</a></li>
             </ul>
         </div>
-    </nav>
+    </nav>-->
     <br />
     <br />
     <br />
@@ -84,8 +136,8 @@
                 <img src="@mdl.liftTable.resim" alt="Card image cap" width="900px" height="350px" class="sola-kaydir" style="padding: 20px;">
                 <br />
                 <div class="paragraf_d" style="white-space: nowrap; text-overflow: ellipsis; width: 200px; overflow: visible; ">
-                    <h4><p><b>Model Türü : </b>@mdl.liftTable.modelTable.ad</p></h4>
-                    <h4><p><b>Model Ebatı :</b> @mdl.liftTable.modelTable.ebat</p></h4>
+                    <h4><p><b>odel Türü : </b>@mdl.liftTable.modelTable.ad</p></h4>
+                    <h4><p><b>batı :</b> @mdl.liftTable.modelTable.ebat</p></h4>
                     <h4><p><b>Stok Adedi :</b> @mdl.stok</p></h4>
                     <h4><p><b>Lift Fiyatı :</b> @mdl.fiyat TL</p></h4>
                     <h4><p><b>Bakım Periyodu :</b> @mdl.liftTable.bakimperiyot ay </p></h4>

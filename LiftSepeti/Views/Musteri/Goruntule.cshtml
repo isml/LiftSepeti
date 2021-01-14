@@ -1,4 +1,5 @@
-﻿@model IEnumerable<LiftSepeti.Models.Entity.bayisatisTable>
+﻿@using LiftSepeti.Models.Entity
+@model IEnumerable<LiftSepeti.Models.Entity.musteriTable>
 
 @{
     Layout = null;
@@ -7,80 +8,53 @@
 <!DOCTYPE html>
 
 <html>
-<title>Satış</title>
+<title>Ana Sayfa</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
 <head>
+    <title>Bootstrap Example</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-</head>
-<!--
-<body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.tarih)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.kar)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.satisadet)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.bayiTable.ulke)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.bayiurunlerTable.id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.musteriTable.ad)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.tarih)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.kar)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.satisadet)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.bayiTable.ulke)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.bayiurunlerTable.id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.musteriTable.ad)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
-                </td>
-            </tr>
+    <style>
+        div.w3-container {
+            width: 1200px;
+            height: 450px;
         }
 
-    </table>
-</body>
-    -->
+        .w3-panel w3-card w3-white {
+            width: 900px;
+            margin: auto;
+        }
 
+        .sola-kaydir {
+            float: left;
+            padding: 0 0 0 0;
+        }
+
+        .paragraf_d {
+            padding-top: 50px;
+            padding-right: 30px;
+            padding-bottom: 50px;
+            padding-left: 80px;
+        }
+
+
+        body {
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            background-color: whitesmoke;
+        }
+
+        ridge {
+            border-style: ridge;
+        }
+    </style>
+</head>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark ">
 
     <a class="navbar-brand" href="#">Lift Sepeti</a>
@@ -103,7 +77,8 @@
                     Satışlarım
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="/bayisatisTables/Index?bayiid=@ViewBag.bayiid">Satış yap</a>
+                    <a class="dropdown-item" href="/Musteri/Goruntule?bayiid=@ViewBag.bayiid">Satış yap</a>
+                    <!--<a class="dropdown-item" href="/bayisatisTables/Index?bayiid=@ViewBag.bayiid">Satış yap</a>-->
                     <a class="dropdown-item" href="/bayimagaza/satislar?bayiid=@ViewBag.bayiid">Satışlarım</a>
                 </div>
 
@@ -116,7 +91,7 @@
                 </a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="/bayimagaza/Index?bayiid=@ViewBag.bayibilgiler.id">Ürünlerim</a>
-                    <a class="dropdown-item" href="/bayimagaza/UrunEkle?bayiid=@ViewBag.bayibilgiler.id">Ürün Ekle</a>
+                    <a class="dropdown-item" href="/bayimagaza/UrunEkle?bayiid=@ViewBag.bayiid">Ürün Ekle</a>
                 </div>
 
             </li>
@@ -138,9 +113,9 @@
     </ul>
 </nav>
 
+
 <body>
     <div class="container">
-
 
         <br />
         <br />
@@ -152,11 +127,12 @@
         <table class="table table-dark table-striped">
             <thead>
                 <tr>
+                    <th>Sıra</th>
                     <th>Id</th>
                     <th>Müşteri Adı </th>
                     <th>Müşteri Soyadı</th>
-                    <th>Telefon Numarası</th>
-                    <th>Adres</th>
+                    <th>Müşteri Telefon</th>
+                    <th>Müşteri Adres</th>
                 </tr>
             </thead>
 
@@ -169,8 +145,12 @@
                         <td>@sira</td>
                         @{ sira++;}
                         <td> @Html.DisplayFor(modelItem => item.id)</td>
+                        <td> @Html.DisplayFor(modelItem => item.ad)</td>
+                        <td> @Html.DisplayFor(modelItem => item.soyad)</td>
+                        <td> @Html.DisplayFor(modelItem => item.telefon)</td>
+                        <td> @Html.DisplayFor(modelItem => item.adres)</td>
 
-
+                        <td><a href="/bayimagaza/urunSec?bayiid=@ViewBag.bayiid" class="btn btn-success">Seç</a></td>
 
 
 
