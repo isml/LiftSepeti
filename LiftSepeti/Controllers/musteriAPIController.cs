@@ -97,5 +97,59 @@ namespace LiftSepeti.Controllers
 
 
         }
+
+        public ActionResult BayiSiparisEkle(int musteriid, int bayiid, int liftid, int modelid, string resim, string bayiad, string liftad, double fiyat, int bakimperiyot)
+        {
+            LiftSepetiEntities4 db = new LiftSepetiEntities4();
+            if (modelid == 0)
+            {
+                modelid = db.liftTable.Find(liftid).modelid;
+                resim = db.liftTable.Find(liftid).resim;
+                //bayiad = db.bayiTable.Find(bayiid).bayiad;
+                liftad = db.liftTable.Find(liftid).modelTable.ad;
+                bakimperiyot = db.liftTable.Find(liftid).bakimperiyot;
+
+            }
+            ViewBag.musteriid = musteriid;
+
+            var alisFiyat = db.siparisTable.Where(x => x.bayiid == bayiid && x.liftid == liftid).FirstOrDefault().liftTable.fiyat;
+
+            var kar = fiyat - alisFiyat;
+            musterisiparisModel musterisiparis = new musterisiparisModel();
+            musterisiparis.musteriid = musteriid;
+            musterisiparis.bayiid = bayiid;
+            musterisiparis.liftid = liftid;
+            musterisiparis.modelid = modelid;
+            musterisiparis.resim = resim;
+            musterisiparis.bayiad = bayiad;
+            musterisiparis.liftad = liftad;
+            musterisiparis.fiyat = fiyat;
+            musterisiparis.bakimperiyot = bakimperiyot;
+            musterisiparis.kar = kar;
+            musterisiparis.tarih = DateTime.Now;
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://5ff8af7517386d0017b5172b.mockapi.io/musterisiparis");
+                var postJob = client.PostAsJsonAsync<musterisiparisModel>("musterisiparis", musterisiparis);
+                postJob.Wait();
+
+                var result = postJob.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("satislar", "bayimagaza", new {bayiid = bayiid });
+                }
+                else
+                {
+                    //musterisiparismodel = (IEnumerable<yoneticiTable>)Enumerable.Empty<musteriAPIController>();
+                    //ModelState.AddModelError(string.Empty, "hataaaaaa");
+                    return RedirectToAction("satislar", "bayimagaza");
+                }
+
+            }
+
+
+
+        }
     }
 }

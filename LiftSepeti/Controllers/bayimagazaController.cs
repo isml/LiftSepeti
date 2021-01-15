@@ -139,12 +139,17 @@ namespace LiftSepeti.Controllers
 
         }
 
-        public ActionResult urunSec(int bayiid)
+        public ActionResult urunSec(int musteriid,int bayiid)
         {
+            ViewBag.musteriid = musteriid;
+            ViewBag.musteriad = db.musteriTable.Find(musteriid).ad;
+            ViewBag.bayiad = db.bayiTable.Find(bayiid).bayiad;
+            ViewBag.bayiid = bayiid;
             var urunler = db.bayiurunlerTable.ToList();
             ViewBag.bayiid = bayiid;
             return View(urunler);
         }
+        
 
 
 
