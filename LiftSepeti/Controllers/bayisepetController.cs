@@ -69,7 +69,7 @@ namespace LiftSepeti.Controllers
             ViewBag.bayiad = bayiad;
             ViewBag.odemeyontemi = odemeyontemi;
 
-            var bayisipariler = db.siparisTable.Where(x => x.bayiid == bayiid);
+            var bayisipariler = db.siparisTable.Where(x => x.bayiid == bayiid && x.durumid==1);
             bayisipariler.ToList();
             foreach (var x in bayisipariler.ToList())
             {
