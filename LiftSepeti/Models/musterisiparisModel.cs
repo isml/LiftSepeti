@@ -19,6 +19,7 @@ namespace LiftSepeti.Models
         public int bakimperiyot { get; set; }
         public double kar { get; set; }
         public DateTime tarih { get; set; }
+        public int bakim { get; set; }
 
 
 

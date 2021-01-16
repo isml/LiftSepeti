@@ -149,7 +149,76 @@ namespace LiftSepeti.Controllers
             ViewBag.bayiid = bayiid;
             return View(urunler);
         }
-        
+
+        public ActionResult bakim( int bayiid)
+        {
+
+            ViewBag.bayiid = bayiid;
+            IEnumerable<musterisiparisModel> musterisiparismodel = null;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://5ff8af7517386d0017b5172b.mockapi.io/");
+                var responseTask = client.GetAsync("musterisiparis");
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readjob = result.Content.ReadAsAsync<IList<musterisiparisModel>>();
+                    readjob.Wait();
+                    musterisiparismodel = readjob.Result;
+                }
+                else
+                {
+                    //musterisiparismodel = (IEnumerable<yoneticiTable>)Enumerable.Empty<musteriAPIController>();
+                    //ModelState.AddModelError(string.Empty, "hataaaaaa");
+                }
+                return View(musterisiparismodel);
+            }
+        }
+        public ActionResult bakimaAl(int id, int bayiid, int liftid, string bayiad,string liftad,string resim,double fiyat,double kar,int musteriid,int modelid,int bakimperiyot)
+        {
+
+            ViewBag.bayiid = bayiid;
+
+            var alisFiyat = db.siparisTable.Where(x => x.bayiid == bayiid && x.liftid == liftid).FirstOrDefault().liftTable.fiyat;
+
+          
+            musterisiparisModel musterisiparis = new musterisiparisModel();
+            //musterisiparis.id = id;
+            musterisiparis.musteriid = musteriid;
+            musterisiparis.bayiid = bayiid;
+            musterisiparis.liftid = liftid;
+            musterisiparis.modelid = modelid;
+            musterisiparis.resim = resim;
+            musterisiparis.bayiad = bayiad;
+            musterisiparis.liftad = liftad;
+            musterisiparis.fiyat = fiyat;
+            musterisiparis.bakimperiyot = bakimperiyot;
+            musterisiparis.kar = kar;
+            musterisiparis.tarih = DateTime.Now;
+            musterisiparis.bakim = 1;
+
+            IEnumerable<musterisiparisModel> musterisiparismodel = null;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://5ff8af7517386d0017b5172b.mockapi.io/musterisiparis/"+id.ToString());
+                var postJob = client.PutAsJsonAsync<musterisiparisModel>(client.BaseAddress, musterisiparis);
+                postJob.Wait();
+
+                var result = postJob.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("bakim", "bayimagaza", new { bayiid = bayiid });
+                }
+                else
+                {
+                    //musterisiparismodel = (IEnumerable<yoneticiTable>)Enumerable.Empty<musteriAPIController>();
+                    //ModelState.AddModelError(string.Empty, "hataaaaaa");
+                    return RedirectToAction("Index", "login");
+                }
+            }
+        }
 
 
 

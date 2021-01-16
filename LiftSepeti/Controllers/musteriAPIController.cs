@@ -73,6 +73,7 @@ namespace LiftSepeti.Controllers
             musterisiparis.bakimperiyot = bakimperiyot;
             musterisiparis.kar = kar;
             musterisiparis.tarih = DateTime.Now;
+            musterisiparis.bakim = 0;
 
             using (var client = new HttpClient())
             {
@@ -127,6 +128,7 @@ namespace LiftSepeti.Controllers
             musterisiparis.bakimperiyot = bakimperiyot;
             musterisiparis.kar = kar;
             musterisiparis.tarih = DateTime.Now;
+            musterisiparis.bakim = 0;
 
             using (var client = new HttpClient())
             {
