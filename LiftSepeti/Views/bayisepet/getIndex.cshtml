@@ -113,6 +113,7 @@
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="/bayimagaza/Index?bayiid=@ViewBag.bayiid">Ürünlerim</a>
                             <a class="dropdown-item" href="/bayimagaza/UrunEkle?bayiid=@ViewBag.bayiid">Ürün Ekle</a>
+                            <a class="dropdown-item" href="/bayimagaza/bakim?bayiid=@ViewBag.bayiid">Bakıma Al</a>
                         </div>
 
                     </li>
@@ -156,62 +157,61 @@
                 </div>
             }
         </div>
+            <div style="float:left">
 
-        <div style="float:left">
+                <div>
+                    <div class="w3-panel w3-card w3-white" style="border-radius:25px;">
+                        <div class="card-body">
+                            <h4 class="card-title">Sepet Tutarı</h4>
+                            @{
+                                double toplamtutar = 0.0;
+                            }
+                            @{int sira = 1; }
 
-            <div>
-                <div class="w3-panel w3-card w3-white" style="border-radius:25px;">
-                    <div class="card-body">
-                        <h4 class="card-title">Sepet Tutarı</h4>
-                        @{
-                            double toplamtutar = 0.0;
-                        }
-                        @{int sira = 1; }
-                        @foreach (var lft in Model)
-                        {
-
-
-                            <p class="card-text"><h4>@sira) @lft.liftTable.modelTable.ad: @lft.liftTable.fiyat ₺</h4>@{ sira++;} </p>
+                            @foreach (var lft in Model)
+                            {
 
 
-                            toplamtutar += lft.liftTable.fiyat;
-
-                        }
-
-                        <br />
+                                <p class="card-text"><h4>@sira) @lft.liftTable.modelTable.ad: @lft.liftTable.fiyat ₺</h4>@{ sira++;} </p>
 
 
+                                toplamtutar += lft.liftTable.fiyat;
 
-                        @{
-                            string odemeyontemi = "";
+                            }
 
-                        }
-                        <p class="card-text"><h4>Toplam: @toplamtutar ₺</h4>  </p>
-
-
-                        <form method="post" action="@Url.Action("ode", "bayisepet", new {bayiid = @ViewBag.bayiid})">
-
-                            <label for="odeme"><h4><b>Ödeme Yöntemi</b></h4></label><br>
-
-                            <select class="form-control" id="odemeyontemi" name="odemeyontemi">
-
-                                <option value=1>Nakit</option>
-                                <option value=2>Kredi Kartı</option>
-                                <option value=3>Çek</option>
-                            </select>
                             <br />
 
-                            <input class="btn-success" type="submit" value="Ödeme Yap">
-                            <br />
-                            <br />
 
-                        </form>
 
+                            @{
+                                string odemeyontemi = "";
+
+                            }
+                            <p class="card-text"><h4>Toplam: @toplamtutar ₺</h4>  </p>
+
+
+                            <form method="post" action="@Url.Action("ode", "bayisepet", new {bayiid = @ViewBag.bayiid})">
+
+                                <label for="odeme"><h4><b>Ödeme Yöntemi</b></h4></label><br>
+
+                                <select class="form-control" id="odemeyontemi" name="odemeyontemi">
+
+                                    <option value=1>Nakit</option>
+                                    <option value=2>Kredi Kartı</option>
+                                    <option value=3>Çek</option>
+                                </select>
+                                <br />
+
+                                <input class="btn-success" type="submit" value="Ödeme Yap">
+                                <br />
+                                <br />
+
+                            </form>
+
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
 
     </body>
 </div>

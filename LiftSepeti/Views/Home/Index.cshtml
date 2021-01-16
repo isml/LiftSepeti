@@ -25,7 +25,7 @@
 
 
         div.w3-container {
-            width: 1200px;
+            width: 1250px;
             height: 450px;
         }
 
@@ -49,31 +49,34 @@
 
 
         body {
-            background-image: url('https://cutewallpaper.org/21/truck-wallpaper-hd/Volvo-Truck-Wallpaper-67+-Group-Wallpapers.jpg');
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
+            background-color: whitesmoke;
         }
     </style>
 </head>
+<nav class="navbar navbar-expand-sm bg-dark navbar-inverse">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                <img src="https://media.discordapp.net/attachments/771476524489506823/793852742547537930/2.png?width=1424&height=669" alt="Logo" style="width:100px;">
+            </a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="/Home/Index">AnaSayfa</a></li>
+            <li><a href="/Home/About">Hakkımızda</a></li>
+            <li><a href="/Home/Contact">İletişim</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/login/Index"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+    </div>
+
+</nav>
 <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">Lift Sepeti</a>
-            </div>
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">AnaSayfa</a></li>
-                <li><a href="#">Hakkımızda</a></li>
-                <li><a href="#">İletişim</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="/login/Index"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-            </ul>
-        </div>
-    </nav>
 
     <br />
     <br />
@@ -84,10 +87,10 @@
 
 
             <div class="a">
-                <div class="w3-panel w3-card w3-white">
-                    <img src="@lft.resim" alt="Card image cap" width="900px" height="350px" class="sola-kaydir">
+                <div class="w3-panel w3-card w3-white" style="  border-bottom-right-radius: 25px; border-top-right-radius: 25px; border-bottom-left-radius:25px; border-top-left-radius:25px; ">
+                    <img src="@lft.resim" alt="Card image cap" width="900px" height="350px" class="sola-kaydir" style="padding: 20px;">
                     <br />
-                    <div class="paragraf_d">
+                    <div class="paragraf_d" style="white-space: nowrap; text-overflow: ellipsis; width: 200px; overflow: visible; ">
                         <h4><p><b>Model Türü :</b> @lft.modelTable.ad</p></h4>
                         <h4> <p><b>Model Ebatı : </b>@lft.modelTable.ebat</p></h4>
                         <h4><p><b>Stok Adedi : </b>@lft.adet</p></h4>
@@ -99,6 +102,8 @@
                 </div>
             </div>
         </div>
+       
+
     }
 </body>
 </html>

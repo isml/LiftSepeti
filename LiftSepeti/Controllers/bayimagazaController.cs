@@ -108,6 +108,7 @@ namespace LiftSepeti.Controllers
             }
             DateTime tarih = DateTime.Now;
 
+           ViewBag.bayiad=  db.bayiTable.Find(bayiid).bayiad;
 
             IEnumerable<musterisiparisModel> musterisiparismodel = null;
             using (var client = new HttpClient())
