@@ -25,8 +25,8 @@ namespace LiftSepeti.Controllers
             bayiTable bayi = db.bayiTable.Where(x => x.id == bayiid).SingleOrDefault();
             ViewBag.bayibilgiler = bayi;
 
-            return View(bayisatisTable.ToList()); //oluyo
-            //return View(musteriTable);
+            return View(bayisatisTable.ToList());  
+             
 
         }
 

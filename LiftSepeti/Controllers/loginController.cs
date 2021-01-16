@@ -44,8 +44,14 @@ namespace LiftSepeti.Controllers
                 
             }
 
-            
+               
 
+        }
+        public ActionResult LogOut()
+        {
+            
+            return RedirectToAction("Index", "Home");
+            
         }
     }
 }

@@ -20,66 +20,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </head>
-<!--
-<body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.tarih)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.kar)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.satisadet)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.bayiTable.ulke)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.bayiurunlerTable.id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.musteriTable.ad)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.tarih)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.kar)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.satisadet)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.bayiTable.ulke)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.bayiurunlerTable.id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.musteriTable.ad)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
-                </td>
-            </tr>
-        }
-
-    </table>
-</body>
-    -->
+ 
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark ">
 
@@ -131,7 +72,7 @@
                     @ViewBag.bayibilgiler.bayiad
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Oturumu Kapat</a>
+                    <a class="dropdown-item" href="/login/LogOut">Oturumu Kapat</a>
                 </div>
             </li>
         </div>

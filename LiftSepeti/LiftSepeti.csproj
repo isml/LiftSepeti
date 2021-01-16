@@ -450,6 +450,7 @@
     <Content Include="Views\bayimagaza\urunSec.cshtml" />
     <Content Include="Views\Musteri\Goruntule.cshtml" />
     <Content Include="Views\bayimagaza\bakim.cshtml" />
+    <Content Include="Views\bayimagaza\satisYok.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

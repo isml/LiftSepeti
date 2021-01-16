@@ -62,24 +62,7 @@
 <div>
     <body>
 
-        <!-- <nav class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Lift Sepeti</a>
-                </div>
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="/bayianasayfa/Index?bayiid=@ViewBag.bayiid">Ana Sayfa</a></li>
-                    <li><a href="/bayisepet/getIndex?bayiid=@ViewBag.bayiid">Sepet</a></li>
-                    <li><a href="/bayimagaza/Index?bayiid=@ViewBag.bayiid">Mağazam</a></li>
-                    <li><a href="/bayianasayfa/bayisiparisler?bayiid=@ViewBag.bayiid">Siparişlerim</a></li>
-
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="	glyphicon glyphicon-user"></span> @ViewBag.bayiad</a></li>
-                </ul>
-            </div>
-        </nav>
-           -->
+        
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             <a class="navbar-brand" href="#">Lift Sepeti</a>
             <ul class=" navbar-nav">
@@ -124,7 +107,7 @@
                             @ViewBag.bayiad
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Oturumu Kapat</a>
+                            <a class="dropdown-item" href="/login/LogOut">Oturumu Kapat</a>
                         </div>
                     </li>
                 </div>

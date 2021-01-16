@@ -92,33 +92,16 @@
             <div>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle 	" href="#" id="navbardrop" data-toggle="dropdown">
-                        @ViewBag.bayiid
+                        @ViewBag.bayibilgiler.bayiad
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Oturumu Kapat</a>
+                        <a class="dropdown-item" href="/login/LogOut">Oturumu Kapat</a>
                     </div>
                 </li>
             </div>
         </ul>
     </nav>
-    <!--
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">Lift Sepeti</a>
-            </div>
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="/bayianasayfa/Index?bayiid=@ViewBag.bayiid">Ana Sayfa</a></li>
-                <li><a href="/bayisepet/getIndex?bayiid=@ViewBag.bayiid">Sepet</a></li>
-                <li><a href="/bayimagaza/Index?bayiid=@ViewBag.bayiid">Mağazam</a></li>
-                <li><a href="/bayianasayfa/bayisiparisler?bayiid=@ViewBag.bayiid">Siparişlerim</a></li>
-
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="	glyphicon glyphicon-user"></span> @ViewBag.bayiid</a></li>
-            </ul>
-        </div>
-    </nav>-->
+     
     <br />
     <br />
     <br />
@@ -132,7 +115,7 @@
                 <img src="@mdl.liftTable.resim" alt="Card image cap" width="900px" height="350px" class="sola-kaydir" style="padding: 20px;">
                 <br />
                 <div class="paragraf_d" style="white-space: nowrap; text-overflow: ellipsis; width: 200px; overflow: visible; ">
-                    <h4><p><b>:</b> @mdl.liftTable.modelTable.ad</p></h4>
+                    <h4><p><b> Model :</b> @mdl.liftTable.modelTable.ad</p></h4>
                     <h4><p><b>Model Ebatı :</b>@mdl.liftTable.modelTable.ebat</p></h4>
                     <h4><p><b>Bakım Periyodu :</b> @mdl.liftTable.bakimperiyot ay </p></h4>
                     <a href="/musteriAPI/BayiSiparisEkle?musteriid=@ViewBag.musteriid&bayiid=@ViewBag.bayiid&liftid=@mdl.liftid&modelid=@mdl.liftTable.modelTable.id&resim=@mdl.liftTable.resim&bayiad=@ViewBag.bayiad&liftad=@mdl.liftTable.modelTable.ad&fiyat=@mdl.fiyat&bakimperiyot=@mdl.liftTable.bakimperiyot" class="btn btn-info">Seç</a>

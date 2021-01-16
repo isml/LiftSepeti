@@ -21,8 +21,12 @@
         }
 
         .w3-panel w3-card w3-white {
-            width: 900px;
-            margin: auto;
+            width: 100px;
+            margin: 10px;
+        }
+        test {
+            width: 100px;
+            margin: 10px;
         }
 
         .sola-kaydir {
@@ -97,89 +101,86 @@
 
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Oturumu Kapat</a>
+                        <a class="dropdown-item" href="/login/LogOut">Oturumu Kapat</a>
                     </div>
                 </li>
             </div>
         </ul>
     </nav>
-    <!--
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">Lift Sepeti</a>
-            </div>
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="/bayianasayfa/Index?bayiid=@ViewBag.bayiid">Ana Sayfa</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="	glyphicon glyphicon-user"></span> </a></li>
-            </ul>
-        </div>
-    </nav>-->
+
     <br />
     <br />
     <br />
-    <div style="float:left">
-        @foreach (var lft in Model)
-        {
-            if (lft.bayiid == ViewBag.bayiid)
-            {
-
-                <div class="w3-container">
-
-                    <div class="w3-panel w3-card w3-white" style="  border-bottom-right-radius: 25px; border-top-right-radius: 25px; border-bottom-left-radius:25px; border-top-left-radius:25px; ">
-                        <img src="@lft.resim" alt="Card image cap" width="900px" height="350px" class="sola-kaydir" style="padding: 20px;">
-                        <br />
-                        <div class="paragraf_d" style="white-space: nowrap; text-overflow: ellipsis; width: 200px; overflow: visible; ">
-
-                            <h4><p><b>Model Türü :</b> @lft.liftad</p></h4>
-                            <h4><p><b>Lift Fiyatı :</b> @lft.fiyat TL</p></h4>
-                            <h4><p><b>Bakım Periyodu :</b> @lft.bakimperiyot ay </p></h4>
-                            <h4><p><b>Kar Tutarı:</b> @lft.kar TL </p></h4>
-                            <h4><p><b>Tarih:</b> @lft.tarih.Day .@lft.tarih.Month .@lft.tarih.Year </p></h4>
-                            <a href="/urunrecete/Index/@lft.modelid" class="btn btn-info">Ürün Detay</a>
-                        </div>
-
-
-                    </div>
-                </div>
-            }
-
-        }
-    </div>
-
-    <div style="float:left">
+    <div>
 
         <div>
-            <div class="w3-panel w3-card w3-white" style="border-radius:25px;">
-                <div class="card-body">
+            <center>
+                <div class="container" style="padding-left:300px;padding-right:300px">
+                    <div class="w3-panel w3-card w3-white" style="border-radius:25px;">
+                        <div class="card-body">
 
 
-                    <form method="post" action="@Url.Action("tariharalik", "bayimagaza", new {bayiid = @ViewBag.bayiid})">
+                            <form method="post" action="@Url.Action("tariharalik", "bayimagaza", new {bayiid = @ViewBag.bayiid})">
 
-                        <label for="odeme"><h4><b>Tarih Aralığı</b></h4></label><br>
+                                <label for="odeme"><h4><b>Tarih Aralığı</b></h4></label><br>
 
-                        <select class="form-control" id="tariharaligi" name="tariharaligi">
+                                <select class="form-control" id="tariharaligi" name="tariharaligi">
 
-                            <option value=1>1 Günlük</option>
-                            <option value=2>1 Haftalık</option>
-                            <option value=3>1 Aylık</option>
-                            <option value=4>6 Aylık</option>
-                            <option value=5>Tüm Zamanlar</option>
-                        </select>
-                        <br />
+                                    <option value=1>1 Günlük</option>
+                                    <option value=2>1 Haftalık</option>
+                                    <option value=3>1 Aylık</option>
+                                    <option value=4>6 Aylık</option>
+                                    <option value=5>Tüm Zamanlar</option>
+                                </select>
+                                <br />
 
-                        <input class="btn-success" type="submit" value="Listele">
-                        <br />
-                        <br />
+                                <input class="btn-success" type="submit" value="Listele">
+                                <br />
+                                <br />
 
-                    </form>
+                            </form>
 
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </center>
         </div>
     </div>
+
+
+    <center>
+        <div>
+            @foreach (var lft in Model)
+            {
+                if (lft.bayiid == ViewBag.bayiid)
+                {
+
+                    <div class="w3-container">
+
+                        <div class="w3-panel w3-card w3-white" style="  border-bottom-right-radius: 25px; border-top-right-radius: 25px; border-bottom-left-radius:25px; border-top-left-radius:25px; ">
+                            <img src="@lft.resim" alt="Card image cap" width="900px" height="350px" class="sola-kaydir" style="padding: 20px;">
+                            <br />
+                            <div class="paragraf_d" style="white-space: nowrap; text-overflow: ellipsis; width: 200px; overflow: visible; ">
+
+                                <h4><p><b>Model Türü :</b> @lft.liftad</p></h4>
+                                <h4><p><b>Lift Fiyatı :</b> @lft.fiyat TL</p></h4>
+                                <h4><p><b>Bakım Periyodu :</b> @lft.bakimperiyot ay </p></h4>
+                                <h4><p><b>Kar Tutarı:</b> @lft.kar TL </p></h4>
+                                <h4><p><b>Tarih:</b> @lft.tarih.Day .@lft.tarih.Month .@lft.tarih.Year </p></h4>
+                                <a href="/urunrecete/Index/@lft.modelid" class="btn btn-info">Ürün Detay</a>
+                            </div>
+
+
+                        </div>
+                    </div>
+                }
+
+            }
+        </div>
+    </center>
+
+
+
 
 </body>
 </html>

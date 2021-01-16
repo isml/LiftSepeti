@@ -19,14 +19,14 @@ namespace LiftSepeti.Controllers
 
 
         // GET: bayimagaza
-        public ActionResult Index(int bayiid)
+        public ActionResult Index(int? bayiid)
         {
             bayiTable bayi = db.bayiTable.Where(x => x.id == bayiid).SingleOrDefault();
             ViewBag.bayibilgiler = bayi;
 
-
             ViewBag.bayiid = bayiid;
             var bayiurunler = db.bayiurunlerTable.Where(x => x.bayiid == bayiid).ToList();
+            
 
 
 
@@ -93,13 +93,14 @@ namespace LiftSepeti.Controllers
                 ViewBag.bayiid = bayiid;
                 bayiTable bayi = db.bayiTable.Where(x => x.id == bayiid).SingleOrDefault();
                 ViewBag.bayibilgiler = bayi;
-
+                 
+                
                 return View(musterisiparismodel);
-            }
-
-
+                 
+            }           
 
         }
+         
         public ActionResult tariharalik(int tariharaligi, int bayiid)
         {
             if (tariharaligi == 5)
@@ -142,6 +143,9 @@ namespace LiftSepeti.Controllers
 
         public ActionResult urunSec(int musteriid,int bayiid)
         {
+            bayiTable bayi = db.bayiTable.Where(x => x.id == bayiid).SingleOrDefault();
+            ViewBag.bayibilgiler = bayi;
+
             ViewBag.musteriid = musteriid;
             ViewBag.musteriad = db.musteriTable.Find(musteriid).ad;
             ViewBag.bayiad = db.bayiTable.Find(bayiid).bayiad;
@@ -153,6 +157,8 @@ namespace LiftSepeti.Controllers
 
         public ActionResult bakim( int bayiid)
         {
+            bayiTable bayi = db.bayiTable.Where(x => x.id == bayiid).SingleOrDefault();
+            ViewBag.bayibilgiler = bayi;
 
             ViewBag.bayiid = bayiid;
             IEnumerable<musterisiparisModel> musterisiparismodel = null;
