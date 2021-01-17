@@ -21,9 +21,5 @@ namespace LiftSepeti.Models
         public DateTime tarih { get; set; }
         public int bakim { get; set; }
         public string musterinumara { get; set; }
-
-
-
-
     }
 }

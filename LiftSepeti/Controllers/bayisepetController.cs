@@ -19,7 +19,6 @@ namespace LiftSepeti.Controllers
         // GET: bayisepet
         public ActionResult Index(int bayiid, int liftid)
         {
-
             ViewBag.bayiid = bayiid;
             ViewBag.liftid = liftid;
             siparisTable siparis = new siparisTable();
@@ -44,7 +43,6 @@ namespace LiftSepeti.Controllers
                 ViewBag.bayiid = bayiid;
                 ViewBag.bayiad = bayiad;
                 var siparisTable = db.siparisTable.Include(s => s.bayiTable).Include(s => s.durumTable).Include(s => s.liftTable).Include(s => s.odemeyontemiTable);
-
                 return View(siparisTable.Where(x => x.bayiid == bayiid && x.durumid == 1).ToList());
             }
             else
@@ -68,20 +66,17 @@ namespace LiftSepeti.Controllers
             ViewBag.bayiid = bayiid;
             ViewBag.bayiad = bayiad;
             ViewBag.odemeyontemi = odemeyontemi;
-
             var bayisipariler = db.siparisTable.Where(x => x.bayiid == bayiid && x.durumid==1);
             bayisipariler.ToList();
             foreach (var x in bayisipariler.ToList())
             {
                 x.durumid = 2;
                 x.odemeyontemiid = odemeyontemi;
-
                 int modelid = x.liftTable.modelid;
                 var recetemodellist = db.receteTable.Where(a => a.modelid == modelid);
                 foreach (var i in recetemodellist)
                 {
                     db.depoTable.Find(i.depoid).stok -= i.kullanimmiktari;
-
                     if (db.depoTable.Find(i.depoid).stok < 20)
                     {
                         //email notification
@@ -104,7 +99,6 @@ namespace LiftSepeti.Controllers
                         smp.Host = "smtp.gmail.com";//gmail üzerinden gönderiliyor.
                         smp.EnableSsl = true;
                         smp.Send(mail);//mail isimli mail gönderiliyor.
-
                     }
                 }
                 MailMessage mail2 = new MailMessage(); //yeni bir mail nesnesi Oluşturuldu.
@@ -126,13 +120,9 @@ namespace LiftSepeti.Controllers
                 smp1.Host = "smtp.gmail.com";//gmail üzerinden gönderiliyor.
                 smp1.EnableSsl = true;
                 smp1.Send(mail2);//mail isimli mail gönderiliyor.
-
                 db.SaveChanges();
             }
-
             var siparisTable = db.siparisTable.Include(s => s.bayiTable).Include(s => s.durumTable).Include(s => s.liftTable).Include(s => s.odemeyontemiTable);
-
-
             return RedirectToAction("Index", "bayianasayfa", new { bayiid = bayiid });
         }
         public ActionResult sil(int bayiid, int liftid)
@@ -142,7 +132,6 @@ namespace LiftSepeti.Controllers
             db.SaveChanges();
             return RedirectToAction("getIndex", "bayisepet", new { bayiid = bayiid });
         }
-
         // GET: bayisepet/Details/5
         public ActionResult Details(int? id)
         {
@@ -157,7 +146,6 @@ namespace LiftSepeti.Controllers
             }
             return View(siparisTable);
         }
-
         // GET: bayisepet/Create
         public ActionResult Create()
         {
@@ -169,8 +157,6 @@ namespace LiftSepeti.Controllers
         }
 
         // POST: bayisepet/Create
-        // Aşırı gönderim saldırılarından korunmak için bağlamak istediğiniz belirli özellikleri etkinleştirin. 
-        // Daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,bayiid,liftid,durumid,tarih,adet,odemeyontemiid")] siparisTable siparisTable)
@@ -181,14 +167,12 @@ namespace LiftSepeti.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             ViewBag.bayiid = new SelectList(db.bayiTable, "id", "ulke", siparisTable.bayiid);
             ViewBag.durumid = new SelectList(db.durumTable, "id", "durum", siparisTable.durumid);
             ViewBag.liftid = new SelectList(db.liftTable, "id", "resim", siparisTable.liftid);
             ViewBag.odemeyontemiid = new SelectList(db.odemeyontemiTable, "id", "tip", siparisTable.odemeyontemiid);
             return View(siparisTable);
         }
-
         // GET: bayisepet/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -209,8 +193,6 @@ namespace LiftSepeti.Controllers
         }
 
         // POST: bayisepet/Edit/5
-        // Aşırı gönderim saldırılarından korunmak için bağlamak istediğiniz belirli özellikleri etkinleştirin. 
-        // Daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,bayiid,liftid,durumid,tarih,adet,odemeyontemiid")] siparisTable siparisTable)
@@ -227,7 +209,6 @@ namespace LiftSepeti.Controllers
             ViewBag.odemeyontemiid = new SelectList(db.odemeyontemiTable, "id", "tip", siparisTable.odemeyontemiid);
             return View(siparisTable);
         }
-
         // GET: bayisepet/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -242,7 +223,6 @@ namespace LiftSepeti.Controllers
             }
             return View(siparisTable);
         }
-
         // POST: bayisepet/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -253,7 +233,6 @@ namespace LiftSepeti.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)

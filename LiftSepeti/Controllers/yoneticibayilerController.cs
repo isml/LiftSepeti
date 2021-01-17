@@ -15,14 +15,12 @@ namespace LiftSepeti.Controllers
     public class yoneticibayilerController : Controller
     {
         private LiftSepetiEntities4 db = new LiftSepetiEntities4();
-
         // GET: yoneticibayiler
         public ActionResult Index(string ara)
         {
             //return View(db.bayiTable.ToList());
             return View(db.bayiTable.Where(x=>x.bayiad.Contains(ara)||ara==null).ToList());
         }
-
         // GET: yoneticibayiler/Details/5
         public ActionResult Details(int? id)
         {
@@ -37,16 +35,12 @@ namespace LiftSepeti.Controllers
             }
             return View(bayiTable);
         }
-
         // GET: yoneticibayiler/Create
         public ActionResult Create()
         {
             return View();
         }
-
         // POST: yoneticibayiler/Create
-        // Aşırı gönderim saldırılarından korunmak için bağlamak istediğiniz belirli özellikleri etkinleştirin. 
-        // Daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,ulke,sehir,bayiad,sifre,adres")] bayiTable bayiTable)
@@ -63,10 +57,8 @@ namespace LiftSepeti.Controllers
                     
                 }
             }
-
             return View(bayiTable);
         }
-
         // GET: yoneticibayiler/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -81,10 +73,7 @@ namespace LiftSepeti.Controllers
             }
             return View(bayiTable);
         }
-
         // POST: yoneticibayiler/Edit/5
-        // Aşırı gönderim saldırılarından korunmak için bağlamak istediğiniz belirli özellikleri etkinleştirin. 
-        // Daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,ulke,sehir,bayiad,sifre,adres")] bayiTable bayiTable)
@@ -97,7 +86,6 @@ namespace LiftSepeti.Controllers
             }
             return View(bayiTable);
         }
-
         // GET: yoneticibayiler/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -112,7 +100,6 @@ namespace LiftSepeti.Controllers
             }
             return View(bayiTable);
         }
-
         public ActionResult Sil(int? id)
         {
             bayiTable bayiTable = db.bayiTable.Find(id);
@@ -120,7 +107,6 @@ namespace LiftSepeti.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
         // POST: yoneticibayiler/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -131,7 +117,6 @@ namespace LiftSepeti.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -140,13 +125,10 @@ namespace LiftSepeti.Controllers
             }
             base.Dispose(disposing);
         }
-
         public ActionResult Anasayfa()
         {
             ViewData["icerik"] = "İçerik değerimizi ViewData ile string olarak taşıyoruz.";
             return View();
         }
-
-
     }
 }

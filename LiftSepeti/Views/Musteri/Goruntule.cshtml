@@ -24,42 +24,33 @@
             width: 1200px;
             height: 450px;
         }
-
         .w3-panel w3-card w3-white {
             width: 900px;
             margin: auto;
         }
-
         .sola-kaydir {
             float: left;
             padding: 0 0 0 0;
         }
-
         .paragraf_d {
             padding-top: 50px;
             padding-right: 30px;
             padding-bottom: 50px;
             padding-left: 80px;
         }
-
-
         body {
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
             background-color: whitesmoke;
         }
-
         ridge {
             border-style: ridge;
         }
     </style>
 </head>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark ">
-
     <a class="navbar-brand" href="#">Lift Sepeti</a>
-
-
     <ul class="navbar-nav">
         <li class="nav-item">
             <a class="nav-link" href="/bayianasayfa/Index?bayiid=@ViewBag.bayibilgiler.id">Ana Sayfa</a>
@@ -67,7 +58,6 @@
         <li class="nav-item">
             <a class="nav-link" href="/bayisepet/getIndex?bayiid=@ViewBag.bayibilgiler.id">Sepet</a>
         </li>
-
         <li class="nav-item">
             <a class="nav-link" href="/bayianasayfa/bayisiparisler?bayiid=@ViewBag.bayibilgiler.id">Siparişlerim</a>
         </li>
@@ -78,10 +68,8 @@
                 </a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="/Musteri/Goruntule?bayiid=@ViewBag.bayiid">Satış yap</a>
-                    <!--<a class="dropdown-item" href="/bayisatisTables/Index?bayiid=@ViewBag.bayiid">Satış yap</a>-->
                     <a class="dropdown-item" href="/bayimagaza/satislar?bayiid=@ViewBag.bayiid">Satışlarım</a>
                 </div>
-
             </li>
         </div>
         <div>
@@ -94,13 +82,9 @@
                     <a class="dropdown-item" href="/bayimagaza/UrunEkle?bayiid=@ViewBag.bayiid">Ürün Ekle</a>
                     <a class="dropdown-item" href="/bayimagaza/bakim?bayiid=@ViewBag.bayiid">Bakıma Al</a>
                 </div>
-
             </li>
         </div>
-
-
         <div>
-
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle 	" href="#" id="navbardrop" data-toggle="dropdown">
                     @ViewBag.bayibilgiler.bayiad
@@ -110,21 +94,14 @@
                 </div>
             </li>
         </div>
-
     </ul>
 </nav>
-
-
 <body>
     <div class="container">
-
         <br />
         <br />
-
         <br />
         <br />
-
-
         <table class="table table-dark table-striped">
             <thead>
                 <tr>
@@ -136,12 +113,10 @@
                     <th>Müşteri Adres</th>
                 </tr>
             </thead>
-
             <tbody>
                 @{int sira = 1; }
                 @foreach (var item in Model)
                 {
-
                     <tr>
                         <td>@sira</td>
                         @{ sira++;}
@@ -150,16 +125,9 @@
                         <td> @Html.DisplayFor(modelItem => item.soyad)</td>
                         <td> @Html.DisplayFor(modelItem => item.telefon)</td>
                         <td> @Html.DisplayFor(modelItem => item.adres)</td>
-
                         <td><a href="/bayimagaza/urunSec?musteriid=@item.id&bayiid=@ViewBag.bayiid" class="btn btn-success">Seç</a></td>
-
-
-
                     </tr>
                 }
             </tbody>
-
-
-
 </body>
 </html>

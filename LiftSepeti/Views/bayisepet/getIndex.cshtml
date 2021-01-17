@@ -23,25 +23,20 @@
             width: 1000px;
             height: 300px;
         }
-
         .w3-panel w3-card w3-white {
             width: 900px;
             margin: auto;
         }
-
         .sola-kaydir {
             float: left;
             padding: 0 0 0 0;
         }
-
         .paragraf_d {
             padding-top: 50px;
             padding-right: 30px;
             padding-bottom: 50px;
             padding-left: 80px;
         }
-
-
         body {
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -54,15 +49,10 @@
             alert('Message');
             return;
         }
-
-
     </script>
-
 </head>
 <div>
     <body>
-
-        
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             <a class="navbar-brand" href="#">Lift Sepeti</a>
             <ul class=" navbar-nav">
@@ -72,7 +62,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/bayisepet/getIndex?bayiid=@ViewBag.bayiid">Sepet</a>
                 </li>
-
                 <li class="nav-item">
                     <a class="nav-link" href="/bayianasayfa/bayisiparisler?bayiid=@ViewBag.bayiid">Siparişlerim</a>
                 </li>
@@ -85,7 +74,6 @@
                             <a class="dropdown-item" href="/Musteri/Goruntule?bayiid=@ViewBag.bayiid">Satış yap</a>
                             <a class="dropdown-item" href="/bayimagaza/satislar?bayiid=@ViewBag.bayiid">Satışlarım</a>
                         </div>
-
                     </li>
                 </div>
                 <div>
@@ -98,7 +86,6 @@
                             <a class="dropdown-item" href="/bayimagaza/UrunEkle?bayiid=@ViewBag.bayiid">Ürün Ekle</a>
                             <a class="dropdown-item" href="/bayimagaza/bakim?bayiid=@ViewBag.bayiid">Bakıma Al</a>
                         </div>
-
                     </li>
                 </div>
                 <div>
@@ -116,14 +103,10 @@
         <br />
         <br />
         <br />
-
         <div style="float:left">
             @foreach (var lft in Model)
             {
-
                 <div class="w3-container">
-
-
                     <div class="w3-panel w3-card w3-white" style="border-radius:25px;">
                         <img src="@lft.liftTable.resim" alt="Card image cap" width="700px" height="250px" class="sola-kaydir" style="padding: 20px;">
                         <br />
@@ -133,15 +116,14 @@
                             <p>Lift Fiyatı : @lft.liftTable.fiyat TL</p>
                             <p>Bakım Periyodu : @lft.liftTable.bakimperiyot ay </p>
                             <a href="/bayisepet/sil?bayiid=@lft.bayiTable.id&liftid=@lft.id" class="btn btn-info">Sepetten Çıkar</a>
-
                         </div>
-
                     </div>
                 </div>
+                <br />
+                <br />
             }
         </div>
             <div style="float:left">
-
                 <div>
                     <div class="w3-panel w3-card w3-white" style="border-radius:25px;">
                         <div class="card-body">
@@ -153,49 +135,31 @@
 
                             @foreach (var lft in Model)
                             {
-
-
                                 <p class="card-text"><h4>@sira) @lft.liftTable.modelTable.ad: @lft.liftTable.fiyat ₺</h4>@{ sira++;} </p>
-
-
                                 toplamtutar += lft.liftTable.fiyat;
-
                             }
-
                             <br />
-
-
-
                             @{
                                 string odemeyontemi = "";
 
                             }
                             <p class="card-text"><h4>Toplam: @toplamtutar ₺</h4>  </p>
-
-
                             <form method="post" action="@Url.Action("ode", "bayisepet", new {bayiid = @ViewBag.bayiid})">
-
                                 <label for="odeme"><h4><b>Ödeme Yöntemi</b></h4></label><br>
-
                                 <select class="form-control" id="odemeyontemi" name="odemeyontemi">
-
                                     <option value=1>Nakit</option>
                                     <option value=2>Kredi Kartı</option>
                                     <option value=3>Çek</option>
                                 </select>
                                 <br />
-
                                 <input class="btn-success" type="submit" value="Ödeme Yap">
                                 <br />
                                 <br />
-
                             </form>
-
                         </div>
                     </div>
                 </div>
             </div>
-
     </body>
 </div>
 </html>

@@ -26,10 +26,7 @@ namespace LiftSepeti.Controllers
             {
                 return View(siparisTable.Where(x => x.bayiTable.bayiad.Contains(ara) && x.durumid == 2).ToList());
             }
-
-
         }
-
         // GET: yoneticisiparisler/Details/5
         public ActionResult Details(int? id)
         {
@@ -44,7 +41,6 @@ namespace LiftSepeti.Controllers
             }
             return View(siparisTable);
         }
-
         // GET: yoneticisiparisler/Create
         public ActionResult Create()
         {
@@ -54,10 +50,7 @@ namespace LiftSepeti.Controllers
             ViewBag.odemeyontemiid = new SelectList(db.odemeyontemiTable, "id", "tip");
             return View();
         }
-
         // POST: yoneticisiparisler/Create
-        // Aşırı gönderim saldırılarından korunmak için bağlamak istediğiniz belirli özellikleri etkinleştirin. 
-        // Daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,bayiid,liftid,durumid,tarih,adet,odemeyontemiid")] siparisTable siparisTable)
@@ -68,14 +61,12 @@ namespace LiftSepeti.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             ViewBag.bayiid = new SelectList(db.bayiTable, "id", "ulke", siparisTable.bayiid);
             ViewBag.durumid = new SelectList(db.durumTable, "id", "durum", siparisTable.durumid);
             ViewBag.liftid = new SelectList(db.liftTable, "id", "resim", siparisTable.liftid);
             ViewBag.odemeyontemiid = new SelectList(db.odemeyontemiTable, "id", "tip", siparisTable.odemeyontemiid);
             return View(siparisTable);
         }
-
         // GET: yoneticisiparisler/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -96,8 +87,6 @@ namespace LiftSepeti.Controllers
         }
 
         // POST: yoneticisiparisler/Edit/5
-        // Aşırı gönderim saldırılarından korunmak için bağlamak istediğiniz belirli özellikleri etkinleştirin. 
-        // Daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,bayiid,liftid,durumid,tarih,adet,odemeyontemiid")] siparisTable siparisTable)
@@ -114,7 +103,6 @@ namespace LiftSepeti.Controllers
             ViewBag.odemeyontemiid = new SelectList(db.odemeyontemiTable, "id", "tip", siparisTable.odemeyontemiid);
             return View(siparisTable);
         }
-
         // GET: yoneticisiparisler/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -147,7 +135,6 @@ namespace LiftSepeti.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -156,12 +143,8 @@ namespace LiftSepeti.Controllers
             }
             base.Dispose(disposing);
         }
-
         protected void btn_search(object sender,EventArgs e)
         {
-            //var model=db.siparisTable.Where(x=>x.bayiTable.bayiad.Contains(txtsrch)) 
-              //var model= db.siparisTable.Where(x=>x.bayiTable.bayiad.Contains(txtsrch)) 
-
         }
     }
 }

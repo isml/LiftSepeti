@@ -13,14 +13,11 @@ namespace LiftSepeti.Controllers
     public class yoneticidepoController : Controller
     {
         private LiftSepetiEntities4 db = new LiftSepetiEntities4();
-
         // GET: yoneticidepo
         public ActionResult Index(string ara)
         {
-            
             return View(db.depoTable.Where(x=>x.ad.Contains(ara)||ara==null).ToList());
         }
-
         // GET: yoneticidepo/Details/5
         public ActionResult Details(int? id)
         {
@@ -35,16 +32,12 @@ namespace LiftSepeti.Controllers
             }
             return View(depoTable);
         }
-
         // GET: yoneticidepo/Create
         public ActionResult Create()
         {
             return View();
         }
-
         // POST: yoneticidepo/Create
-        // Aşırı gönderim saldırılarından korunmak için bağlamak istediğiniz belirli özellikleri etkinleştirin. 
-        // Daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,ad,stok,teminsuresi")] depoTable depoTable)
@@ -55,10 +48,8 @@ namespace LiftSepeti.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             return View(depoTable);
         }
-
         // GET: yoneticidepo/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -73,10 +64,7 @@ namespace LiftSepeti.Controllers
             }
             return View(depoTable);
         }
-
         // POST: yoneticidepo/Edit/5
-        // Aşırı gönderim saldırılarından korunmak için bağlamak istediğiniz belirli özellikleri etkinleştirin. 
-        // Daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,ad,stok,teminsuresi")] depoTable depoTable)
@@ -89,7 +77,6 @@ namespace LiftSepeti.Controllers
             }
             return View(depoTable);
         }
-
         // GET: yoneticidepo/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -121,7 +108,6 @@ namespace LiftSepeti.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)

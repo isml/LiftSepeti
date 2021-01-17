@@ -23,25 +23,20 @@
             width: 1200px;
             height: 450px;
         }
-
         .w3-panel w3-card w3-white {
             width: 900px;
             margin: auto;
         }
-
         .sola-kaydir {
             float: left;
             padding: 0 0 10px 10px;
         }
-
         .paragraf_d {
             padding-top: 50px;
             padding-right: 30px;
             padding-bottom: 50px;
             padding-left: 80px;
         }
-
-
         body {
             background-image: url('https://cutewallpaper.org/21/truck-wallpaper-hd/Volvo-Truck-Wallpaper-67+-Group-Wallpapers.jpg');
             background-repeat: no-repeat;
@@ -51,7 +46,6 @@
     </style>
 </head>
 <body>
-
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -61,7 +55,6 @@
                 <li class="active"><a href="/bayianasayfa/Index?bayiid=@ViewBag.bayiid">Ana Sayfa</a></li>
                 <li><a href="/bayisepet/getIndex?bayiid=@ViewBag.bayiid">Sepet</a></li>
                 <li><a href="/bayimagaza/Index?bayiid=@ViewBag.bayiid">Mağazam</a></li>
-
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#"><span class="	glyphicon glyphicon-user"></span> @ViewBag.bayiid</a></li>
@@ -73,10 +66,7 @@
     <br />
     @foreach (var mdl in Model)
     {
-     
         <div class="w3-container">
-
-
             <div class="w3-panel w3-card w3-white">
                 <img src="@mdl.liftTable.resim" alt="Card image cap" width="900px" height="350px" class="sola-kaydir">
                 <br />
@@ -87,10 +77,7 @@
                     <p>Lift Fiyatı : @mdl.fiyat TL</p>
                     <p>Bakım Periyodu : @mdl.liftTable.bakimperiyot ay </p>
                     <a href="/urunrecete/Index/@mdl.liftTable.modelTable.id" class="btn btn-info">Ürün Detay</a>
-                  
                 </div>
-
-
             </div>
         </div>
     }

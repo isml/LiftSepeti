@@ -13,14 +13,12 @@ namespace LiftSepeti.Controllers
     public class yoneticiliftlerController : Controller
     {
         private LiftSepetiEntities4 db = new LiftSepetiEntities4();
-
         // GET: yoneticiliftler
         public ActionResult Index()
         {
             var liftTable = db.liftTable.Include(l => l.modelTable);
             return View(liftTable.ToList());
         }
-
         // GET: yoneticiliftler/Details/5
         public ActionResult Details(int? id)
         {
@@ -35,7 +33,6 @@ namespace LiftSepeti.Controllers
             }
             return View(liftTable);
         }
-
         // GET: yoneticiliftler/Create
         public ActionResult Create()
         {
@@ -44,8 +41,6 @@ namespace LiftSepeti.Controllers
         }
 
         // POST: yoneticiliftler/Create
-        // Aşırı gönderim saldırılarından korunmak için bağlamak istediğiniz belirli özellikleri etkinleştirin. 
-        // Daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,modelid,adet,fiyat,bakimperiyot,resim")] liftTable liftTable)
@@ -56,11 +51,9 @@ namespace LiftSepeti.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             ViewBag.modelid = new SelectList(db.modelTable, "id", "ad", liftTable.modelid);
             return View(liftTable);
         }
-
         // GET: yoneticiliftler/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -78,8 +71,6 @@ namespace LiftSepeti.Controllers
         }
 
         // POST: yoneticiliftler/Edit/5
-        // Aşırı gönderim saldırılarından korunmak için bağlamak istediğiniz belirli özellikleri etkinleştirin. 
-        // Daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,modelid,adet,fiyat,bakimperiyot,resim")] liftTable liftTable)
@@ -93,9 +84,7 @@ namespace LiftSepeti.Controllers
             ViewBag.modelid = new SelectList(db.modelTable, "id", "ad", liftTable.modelid);
             return View(liftTable);
         }
-
         // GET: yoneticiliftler/Delete/5
-
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -116,7 +105,6 @@ namespace LiftSepeti.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
         // POST: yoneticiliftler/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -127,7 +115,6 @@ namespace LiftSepeti.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)

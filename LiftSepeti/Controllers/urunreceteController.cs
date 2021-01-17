@@ -15,7 +15,6 @@ namespace LiftSepeti.Controllers
         // GET: urunrecete
         public ActionResult Index(int id)
         {
-
             LiftSepetiEntities4 db = new LiftSepetiEntities4();
             var ebat= db.receteTable.Find(id).modelTable.ebat;
             var ad = db.receteTable.Find(id).modelTable.ad;
@@ -28,16 +27,9 @@ namespace LiftSepeti.Controllers
             ViewBag.ebat = ebat;
             ViewBag.ad = ad;
             ViewBag.teminsuresi = teminsuresi;
-
-          
             ViewBag.modelid = id;
-
-
             var receteTable = db.receteTable.Include(r => r.depoTable).Include(r => r.modelTable);
             return View(receteTable.ToList());
-
-
-          
         }
     }
 }

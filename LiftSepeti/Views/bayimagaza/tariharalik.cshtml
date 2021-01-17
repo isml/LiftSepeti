@@ -19,39 +19,32 @@
             width: 1250px;
             height: 450px;
         }
-
         .w3-panel w3-card w3-white {
             width: 900px;
             margin: auto;
         }
-
         .sola-kaydir {
             float: left;
             padding: 0 0 0 0;
         }
-
         .paragraf_d {
             padding-top: 50px;
             padding-right: 30px;
             padding-bottom: 50px;
             padding-left: 80px;
         }
-
-
         body {
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
             background-color: whitesmoke;
         }
-
         ridge {
             border-style: ridge;
         }
     </style>
 </head>
 <body>
-
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <a class="navbar-brand" href="#">Lift Sepeti</a>
         <ul class=" navbar-nav">
@@ -61,7 +54,6 @@
             <li class="nav-item">
                 <a class="nav-link" href="/bayisepet/getIndex?bayiid=@ViewBag.bayiid">Sepet</a>
             </li>
-
             <li class="nav-item">
                 <a class="nav-link" href="/bayianasayfa/bayisiparisler?bayiid=@ViewBag.bayiid">Siparişlerim</a>
             </li>
@@ -74,7 +66,6 @@
                         <a class="dropdown-item" href="/Musteri/Goruntule?bayiid=@ViewBag.bayiid">Satış yap</a>
                         <a class="dropdown-item" href="/bayimagaza/satislar?bayiid=@ViewBag.bayiid">Satışlarım</a>
                     </div>
-
                 </li>
             </div>
             <div>
@@ -87,7 +78,6 @@
                         <a class="dropdown-item" href="/bayimagaza/UrunEkle?bayiid=@ViewBag.bayiid">Ürün Ekle</a>
                         <a class="dropdown-item" href="/bayimagaza/bakim?bayiid=@ViewBag.bayiid">Bakıma Al</a>
                     </div>
-
                 </li>
             </div>
             <div>
@@ -105,8 +95,6 @@
     <br />
     <br />
     <br />
-
-
     <div style="float:left">
         @foreach (var lft in Model)
         {
@@ -131,8 +119,6 @@
                                     <h4><p><b>Tarih:</b> @lft.tarih.Day .@lft.tarih.Month .@lft.tarih.Year </p></h4>
                                     <a href="/urunrecete/Index/@lft.modelid" class="btn btn-info">Ürün Detay</a>
                                 </div>
-
-
                             </div>
                         </div>
                     }
@@ -143,12 +129,10 @@
                     if (lft.tarih.Month == ViewBag.ay && (lft.tarih.Day - ViewBag.gun <= 7))
                     {
                         <div class="w3-container">
-
                             <div class="w3-panel w3-card w3-white" style="  border-bottom-right-radius: 25px; border-top-right-radius: 25px; border-bottom-left-radius:25px; border-top-left-radius:25px; ">
                                 <img src="@lft.resim" alt="Card image cap" width="900px" height="350px" class="sola-kaydir" style="padding: 20px;">
                                 <br />
                                 <div class="paragraf_d" style="white-space: nowrap; text-overflow: ellipsis; width: 200px; overflow: visible; ">
-
                                     <h4><p><b>Model Türü :</b> @lft.liftad</p></h4>
                                     <h4><p><b>Lift Fiyatı :</b> @lft.fiyat TL</p></h4>
                                     <h4><p><b>Bakım Periyodu :</b> @lft.bakimperiyot ay </p></h4>
@@ -156,8 +140,6 @@
                                     <h4><p><b>Tarih:</b> @lft.tarih.Day .@lft.tarih.Month .@lft.tarih.Year </p></h4>
                                     <a href="/urunrecete/Index/@lft.modelid" class="btn btn-info">Ürün Detay</a>
                                 </div>
-
-
                             </div>
                         </div>
                     }
@@ -173,7 +155,6 @@
                                 <img src="@lft.resim" alt="Card image cap" width="900px" height="350px" class="sola-kaydir" style="padding: 20px;">
                                 <br />
                                 <div class="paragraf_d" style="white-space: nowrap; text-overflow: ellipsis; width: 200px; overflow: visible; ">
-
                                     <h4><p><b>Model Türü :</b> @lft.liftad</p></h4>
                                     <h4><p><b>Lift Fiyatı :</b> @lft.fiyat TL</p></h4>
                                     <h4><p><b>Bakım Periyodu :</b> @lft.bakimperiyot ay </p></h4>
@@ -181,8 +162,6 @@
                                     <h4><p><b>Tarih:</b> @lft.tarih.Day .@lft.tarih.Month .@lft.tarih.Year </p></h4>
                                     <a href="/urunrecete/Index/@lft.modelid" class="btn btn-info">Ürün Detay</a>
                                 </div>
-
-
                             </div>
                         </div>
                     }
@@ -198,7 +177,6 @@
                                 <img src="@lft.resim" alt="Card image cap" width="900px" height="350px" class="sola-kaydir" style="padding: 20px;">
                                 <br />
                                 <div class="paragraf_d" style="white-space: nowrap; text-overflow: ellipsis; width: 200px; overflow: visible; ">
-
                                     <h4><p><b>Model Türü :</b> @lft.liftad</p></h4>
                                     <h4><p><b>Lift Fiyatı :</b> @lft.fiyat TL</p></h4>
                                     <h4><p><b>Bakım Periyodu :</b> @lft.bakimperiyot ay </p></h4>
@@ -206,34 +184,23 @@
                                     <h4><p><b>Tarih:</b> @lft.tarih.Day .@lft.tarih.Month .@lft.tarih.Year </p></h4>
                                     <a href="/urunrecete/Index/@lft.modelid" class="btn btn-info">Ürün Detay</a>
                                 </div>
-
-
                             </div>
                         </div>
                     }
-
                 }
                 else
                 {
-
                 }
             }
-
         }
         </div>
         <div style="float:left">
-
             <div>
                 <div class="w3-panel w3-card w3-white" style="border-radius:25px;">
                     <div class="card-body">
-
-
                         <form method="post" action="@Url.Action("tariharalik", "bayimagaza", new {bayiid = @ViewBag.bayiid})">
-
                             <label for="odeme"><h4><b>Tarih Aralığı</b></h4></label><br>
-
                             <select class="form-control" id="tariharaligi" name="tariharaligi">
-
                                 <option value=1>1 Günlük</option>
                                 <option value=2>1 Haftalık</option>
                                 <option value=3>1 Aylık</option>
@@ -241,13 +208,10 @@
                                 <option value=4>Tüm Zamanlar</option>
                             </select>
                             <br />
-
                             <input class="btn-success" type="submit" value="Listele">
                             <br />
                             <br />
-
                         </form>
-
                     </div>
                 </div>
             </div>

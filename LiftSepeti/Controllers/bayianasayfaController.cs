@@ -24,8 +24,6 @@ namespace LiftSepeti.Controllers
             return View(liftTable.ToList());
 
         }
-
-
         public ActionResult bayisiparisler(int bayiid)
         {
 

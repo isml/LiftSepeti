@@ -25,7 +25,6 @@ namespace LiftSepeti.Controllers
                 client.BaseAddress = new Uri("https://5ff8af7517386d0017b5172b.mockapi.io/");
                 var responseTask = client.GetAsync("musterisiparis");
                 responseTask.Wait();
-
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
@@ -35,14 +34,9 @@ namespace LiftSepeti.Controllers
                 }
                 else
                 {
-                    //musterisiparismodel = (IEnumerable<yoneticiTable>)Enumerable.Empty<musteriAPIController>();
-                    //ModelState.AddModelError(string.Empty, "hataaaaaa");
                 }
                 return View(musterisiparismodel);
             }
-
-
-
         }
         public ActionResult SiparisEkle(int musteriid, int bayiid, int liftid, int modelid, string resim, string bayiad, string liftad, double fiyat, int bakimperiyot)
         {
@@ -51,15 +45,11 @@ namespace LiftSepeti.Controllers
             {
                 modelid= db.liftTable.Find(liftid).modelid;
                 resim = db.liftTable.Find(liftid).resim;
-                //bayiad = db.bayiTable.Find(bayiid).bayiad;
                 liftad = db.liftTable.Find(liftid).modelTable.ad;
                 bakimperiyot = db.liftTable.Find(liftid).bakimperiyot;
-
             }
             ViewBag.musteriid = musteriid;
-               
             var alisFiyat = db.siparisTable.Where(x => x.bayiid == bayiid && x.liftid == liftid).FirstOrDefault().liftTable.fiyat;
-
             var kar = fiyat - alisFiyat;
             musterisiparisModel musterisiparis = new musterisiparisModel();
             musterisiparis.musteriid = musteriid;
@@ -75,13 +65,11 @@ namespace LiftSepeti.Controllers
             musterisiparis.tarih = DateTime.Now;
             musterisiparis.bakim = 0;
             musterisiparis.musterinumara = db.musteriTable.Find(musteriid).telefon;
-
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("https://5ff8af7517386d0017b5172b.mockapi.io/musterisiparis");
                 var postJob = client.PostAsJsonAsync<musterisiparisModel>("musterisiparis", musterisiparis);
                 postJob.Wait();
-
                 var result = postJob.Result;
                 if (result.IsSuccessStatusCode)
                 {
@@ -89,15 +77,10 @@ namespace LiftSepeti.Controllers
                 }
                 else
                 {
-                    //musterisiparismodel = (IEnumerable<yoneticiTable>)Enumerable.Empty<musteriAPIController>();
-                    //ModelState.AddModelError(string.Empty, "hataaaaaa");
                     return RedirectToAction("Index");
                 }
 
             }
-
-
-
         }
 
         public ActionResult BayiSiparisEkle(int musteriid, int bayiid, int liftid, int modelid, string resim, string bayiad, string liftad, double fiyat, int bakimperiyot)
@@ -107,15 +90,11 @@ namespace LiftSepeti.Controllers
             {
                 modelid = db.liftTable.Find(liftid).modelid;
                 resim = db.liftTable.Find(liftid).resim;
-                //bayiad = db.bayiTable.Find(bayiid).bayiad;
                 liftad = db.liftTable.Find(liftid).modelTable.ad;
                 bakimperiyot = db.liftTable.Find(liftid).bakimperiyot;
-
             }
             ViewBag.musteriid = musteriid;
-
             var alisFiyat = db.siparisTable.Where(x => x.bayiid == bayiid && x.liftid == liftid).FirstOrDefault().liftTable.fiyat;
-
             var kar = fiyat - alisFiyat;
             musterisiparisModel musterisiparis = new musterisiparisModel();
             musterisiparis.musteriid = musteriid;
@@ -131,13 +110,11 @@ namespace LiftSepeti.Controllers
             musterisiparis.tarih = DateTime.Now;
             musterisiparis.bakim = 0;
             musterisiparis.musterinumara = db.musteriTable.Find(musteriid).telefon;
-
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("https://5ff8af7517386d0017b5172b.mockapi.io/musterisiparis");
                 var postJob = client.PostAsJsonAsync<musterisiparisModel>("musterisiparis", musterisiparis);
                 postJob.Wait();
-
                 var result = postJob.Result;
                 if (result.IsSuccessStatusCode)
                 {
@@ -145,15 +122,10 @@ namespace LiftSepeti.Controllers
                 }
                 else
                 {
-                    //musterisiparismodel = (IEnumerable<yoneticiTable>)Enumerable.Empty<musteriAPIController>();
-                    //ModelState.AddModelError(string.Empty, "hataaaaaa");
                     return RedirectToAction("satislar", "bayimagaza");
                 }
 
             }
-
-
-
         }
     }
 }

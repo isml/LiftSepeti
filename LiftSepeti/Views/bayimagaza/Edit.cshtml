@@ -15,13 +15,11 @@
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-        
         <div class="form-horizontal">
             <h4>bayiurunlerTable</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.HiddenFor(model => model.id)
-    
             <div class="form-group">
                 @Html.LabelFor(model => model.bayiid, "bayiid", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -29,7 +27,6 @@
                     @Html.ValidationMessageFor(model => model.bayiid, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
             <div class="form-group">
                 @Html.LabelFor(model => model.modelid, "modelid", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -37,7 +34,6 @@
                     @Html.ValidationMessageFor(model => model.modelid, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
             <div class="form-group">
                 @Html.LabelFor(model => model.stok, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -45,7 +41,6 @@
                     @Html.ValidationMessageFor(model => model.stok, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
             <div class="form-group">
                 @Html.LabelFor(model => model.fiyat, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -53,7 +48,6 @@
                     @Html.ValidationMessageFor(model => model.fiyat, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" value="Save" class="btn btn-default" />
@@ -61,7 +55,6 @@
             </div>
         </div>
     }
-    
     <div>
         @Html.ActionLink("Back to List", "Index")
     </div>

@@ -13,13 +13,11 @@ namespace LiftSepeti.Controllers
     public class durumTablesController : Controller
     {
         private LiftSepetiEntities4 db = new LiftSepetiEntities4();
-
         // GET: durumTables
         public ActionResult Index()
         {
             return View(db.durumTable.ToList());
         }
-
         // GET: durumTables/Details/5
         public ActionResult Details(int? id)
         {
@@ -34,13 +32,11 @@ namespace LiftSepeti.Controllers
             }
             return View(durumTable);
         }
-
         // GET: durumTables/Create
         public ActionResult Create()
         {
             return View();
         }
-
         // POST: durumTables/Create
         // Aşırı gönderim saldırılarından korunmak için bağlamak istediğiniz belirli özellikleri etkinleştirin. 
         // Daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -57,7 +53,6 @@ namespace LiftSepeti.Controllers
 
             return View(durumTable);
         }
-
         // GET: durumTables/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -72,10 +67,7 @@ namespace LiftSepeti.Controllers
             }
             return View(durumTable);
         }
-
         // POST: durumTables/Edit/5
-        // Aşırı gönderim saldırılarından korunmak için bağlamak istediğiniz belirli özellikleri etkinleştirin. 
-        // Daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,durum")] durumTable durumTable)
@@ -88,7 +80,6 @@ namespace LiftSepeti.Controllers
             }
             return View(durumTable);
         }
-
         // GET: durumTables/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -103,7 +94,6 @@ namespace LiftSepeti.Controllers
             }
             return View(durumTable);
         }
-
         // POST: durumTables/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -114,7 +104,6 @@ namespace LiftSepeti.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -24,12 +24,8 @@ namespace LiftSepeti.Controllers
 
             bayiTable bayi = db.bayiTable.Where(x => x.id == bayiid).SingleOrDefault();
             ViewBag.bayibilgiler = bayi;
-
             return View(bayisatisTable.ToList());  
-             
-
         }
-
         // GET: bayisatisTables/Details/5
         public ActionResult Details(int? id)
         {
@@ -57,8 +53,6 @@ namespace LiftSepeti.Controllers
                 musteriler.Add(i);
             }
             ViewBag.musteriler = musteriler;
-
-
             var bayiurunler = db.bayiurunlerTable.Where(x => x.bayiid == bayiid).ToList();
             List<liftTable> isimler = new List<liftTable>();
             foreach (var i in bayiurunler)
@@ -69,18 +63,11 @@ namespace LiftSepeti.Controllers
             ViewBag.bayiid = bayiid;
             ViewBag.bayiurunleriid = new SelectList(db.bayiurunlerTable, "id", "liftid");
             ViewBag.musteriid = new SelectList(db.musteriTable, "id", "ad");
-
             bayiTable bayi = db.bayiTable.Where(x => x.id == bayiid).SingleOrDefault();
             ViewBag.bayibilgiler = bayi;
-
-
             return View();
         }
-
-
         // POST: bayisatisTables/Create
-        // Aşırı gönderim saldırılarından korunmak için bağlamak istediğiniz belirli özellikleri etkinleştirin. 
-        // Daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,bayiid,musteriid,bayiurunleriid,tarih,kar,satisadet")] bayisatisTable bayisatisTable)
@@ -97,7 +84,6 @@ namespace LiftSepeti.Controllers
             ViewBag.musteriid = new SelectList(db.musteriTable, "id", "ad", bayisatisTable.musteriid);
             return View(bayisatisTable);
         }
-
         // GET: bayisatisTables/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -117,8 +103,6 @@ namespace LiftSepeti.Controllers
         }
 
         // POST: bayisatisTables/Edit/5
-        // Aşırı gönderim saldırılarından korunmak için bağlamak istediğiniz belirli özellikleri etkinleştirin. 
-        // Daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,bayiid,musteriid,bayiurunleriid,tarih,kar,satisadet")] bayisatisTable bayisatisTable)
@@ -134,7 +118,6 @@ namespace LiftSepeti.Controllers
             ViewBag.musteriid = new SelectList(db.musteriTable, "id", "ad", bayisatisTable.musteriid);
             return View(bayisatisTable);
         }
-
         // GET: bayisatisTables/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -149,7 +132,6 @@ namespace LiftSepeti.Controllers
             }
             return View(bayisatisTable);
         }
-
         // POST: bayisatisTables/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -160,7 +142,6 @@ namespace LiftSepeti.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)

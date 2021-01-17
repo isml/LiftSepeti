@@ -17,35 +17,21 @@ namespace LiftSepeti.Controllers
     {
         private LiftSepetiEntities4 db = new LiftSepetiEntities4();
 
-
         // GET: bayimagaza
         public ActionResult Index(int? bayiid)
         {
             bayiTable bayi = db.bayiTable.Where(x => x.id == bayiid).SingleOrDefault();
             ViewBag.bayibilgiler = bayi;
-
             ViewBag.bayiid = bayiid;
             var bayiurunler = db.bayiurunlerTable.Where(x => x.bayiid == bayiid).ToList();
-            
-
-
-
-
             return View(bayiurunler);
         }
-
-
         public ActionResult UrunEkle(int bayiid)
         {
             ViewBag.bayiid = bayiid;
             var bayiStok = db.siparisTable.Where(x => x.bayiid == bayiid && x.durumid == 2).ToList();
-
-
             bayiTable bayi = db.bayiTable.Where(x => x.id == bayiid).SingleOrDefault();
             ViewBag.bayibilgiler = bayi;
-
-
-
             return View(bayiStok);
         }
         public ActionResult bayiurunler(int bayiid, int liftid, float satisfiyat)
@@ -58,12 +44,8 @@ namespace LiftSepeti.Controllers
             bayiurun.stok = 1;
             db.bayiurunlerTable.Add(bayiurun);
             db.SaveChanges();
-
             var bayiurunler = db.bayiurunlerTable.Where(x => x.bayiid == bayiid).ToList();
-
-
             return RedirectToAction("Index", "bayimagaza", new { bayiid = bayiid });
-
         }
 
         public ActionResult satislar(int bayiid)
@@ -74,7 +56,6 @@ namespace LiftSepeti.Controllers
                 client.BaseAddress = new Uri("https://5ff8af7517386d0017b5172b.mockapi.io/");
                 var responseTask = client.GetAsync("musterisiparis");
                 responseTask.Wait();
-
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
@@ -84,23 +65,13 @@ namespace LiftSepeti.Controllers
                 }
                 else
                 {
-                    //musterisiparismodel = (IEnumerable<yoneticiTable>)Enumerable.Empty<musteriAPIController>();
-                    //ModelState.AddModelError(string.Empty, "hataaaaaa");
                 }
-
-
-
                 ViewBag.bayiid = bayiid;
                 bayiTable bayi = db.bayiTable.Where(x => x.id == bayiid).SingleOrDefault();
                 ViewBag.bayibilgiler = bayi;
-                 
-                
                 return View(musterisiparismodel);
-                 
             }           
-
         }
-         
         public ActionResult tariharalik(int tariharaligi, int bayiid)
         {
             if (tariharaligi == 5)
@@ -108,16 +79,13 @@ namespace LiftSepeti.Controllers
                 return RedirectToAction("satislar", "bayimagaza", new { bayiid = bayiid });
             }
             DateTime tarih = DateTime.Now;
-
            ViewBag.bayiad=  db.bayiTable.Find(bayiid).bayiad;
-
             IEnumerable<musterisiparisModel> musterisiparismodel = null;
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("https://5ff8af7517386d0017b5172b.mockapi.io/");
                 var responseTask = client.GetAsync("musterisiparis");
                 responseTask.Wait();
-
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
@@ -127,25 +95,18 @@ namespace LiftSepeti.Controllers
                 }
                 else
                 {
-                    //musterisiparismodel = (IEnumerable<yoneticiTable>)Enumerable.Empty<musteriAPIController>();
-                    //ModelState.AddModelError(string.Empty, "hataaaaaa");
                 }
-
                 ViewBag.aralik = tariharaligi;
                 ViewBag.ay = tarih.Month;
                 ViewBag.gun = tarih.Day;
-
                 ViewBag.bayiid = bayiid;
                 return View(musterisiparismodel);
             }
-
         }
-
         public ActionResult urunSec(int musteriid,int bayiid)
         {
             bayiTable bayi = db.bayiTable.Where(x => x.id == bayiid).SingleOrDefault();
             ViewBag.bayibilgiler = bayi;
-
             ViewBag.musteriid = musteriid;
             ViewBag.musteriad = db.musteriTable.Find(musteriid).ad;
             ViewBag.bayiad = db.bayiTable.Find(bayiid).bayiad;
@@ -154,7 +115,6 @@ namespace LiftSepeti.Controllers
             ViewBag.bayiid = bayiid;
             return View(urunler);
         }
-
         public ActionResult bakim( int bayiid)
         {
             bayiTable bayi = db.bayiTable.Where(x => x.id == bayiid).SingleOrDefault();
@@ -167,7 +127,6 @@ namespace LiftSepeti.Controllers
                 client.BaseAddress = new Uri("https://5ff8af7517386d0017b5172b.mockapi.io/");
                 var responseTask = client.GetAsync("musterisiparis");
                 responseTask.Wait();
-
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
@@ -177,22 +136,15 @@ namespace LiftSepeti.Controllers
                 }
                 else
                 {
-                    //musterisiparismodel = (IEnumerable<yoneticiTable>)Enumerable.Empty<musteriAPIController>();
-                    //ModelState.AddModelError(string.Empty, "hataaaaaa");
                 }
                 return View(musterisiparismodel);
             }
         }
         public ActionResult bakimaAl(int id, int bayiid, int liftid, string bayiad,string liftad,string resim,double fiyat,double kar,int musteriid,int modelid,int bakimperiyot)
         {
-
             ViewBag.bayiid = bayiid;
-
             var alisFiyat = db.siparisTable.Where(x => x.bayiid == bayiid && x.liftid == liftid).FirstOrDefault().liftTable.fiyat;
-
-          
             musterisiparisModel musterisiparis = new musterisiparisModel();
-            //musterisiparis.id = id;
             musterisiparis.musteriid = musteriid;
             musterisiparis.bayiid = bayiid;
             musterisiparis.liftid = liftid;
@@ -206,14 +158,12 @@ namespace LiftSepeti.Controllers
             musterisiparis.tarih = DateTime.Now;
             musterisiparis.bakim = 1;
             musterisiparis.musterinumara = db.musteriTable.Find(musteriid).telefon;
-
             IEnumerable<musterisiparisModel> musterisiparismodel = null;
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("https://5ff8af7517386d0017b5172b.mockapi.io/musterisiparis/"+id.ToString());
                 var postJob = client.PutAsJsonAsync<musterisiparisModel>(client.BaseAddress, musterisiparis);
                 postJob.Wait();
-
                 var result = postJob.Result;
                 if (result.IsSuccessStatusCode)
                 {
@@ -221,14 +171,9 @@ namespace LiftSepeti.Controllers
                 }
                 else
                 {
-                    //musterisiparismodel = (IEnumerable<yoneticiTable>)Enumerable.Empty<musteriAPIController>();
-                    //ModelState.AddModelError(string.Empty, "hataaaaaa");
                     return RedirectToAction("Index", "login");
                 }
             }
         }
-
-
-
     }
 }
