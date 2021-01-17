@@ -74,6 +74,7 @@ namespace LiftSepeti.Controllers
             musterisiparis.kar = kar;
             musterisiparis.tarih = DateTime.Now;
             musterisiparis.bakim = 0;
+            musterisiparis.musterinumara = db.musteriTable.Find(musteriid).telefon;
 
             using (var client = new HttpClient())
             {
@@ -129,6 +130,7 @@ namespace LiftSepeti.Controllers
             musterisiparis.kar = kar;
             musterisiparis.tarih = DateTime.Now;
             musterisiparis.bakim = 0;
+            musterisiparis.musterinumara = db.musteriTable.Find(musteriid).telefon;
 
             using (var client = new HttpClient())
             {

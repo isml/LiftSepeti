@@ -205,6 +205,7 @@ namespace LiftSepeti.Controllers
             musterisiparis.kar = kar;
             musterisiparis.tarih = DateTime.Now;
             musterisiparis.bakim = 1;
+            musterisiparis.musterinumara = db.musteriTable.Find(musteriid).telefon;
 
             IEnumerable<musterisiparisModel> musterisiparismodel = null;
             using (var client = new HttpClient())
